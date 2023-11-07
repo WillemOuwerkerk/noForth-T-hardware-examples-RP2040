@@ -1,7 +1,6 @@
 ## Pico-kit examples
 
--  I2C usage example using the I2C-board from the Dutch Forth Users group
-- [****I2C-board-examples.f****](I2C-board-examples.f) ;
+- [****I2C-board-examples.f****](I2C-board-examples.f) ;cI2C usage example using the I2C-board ans an RP2040 slave
 - [****RP2040-hw-i2c-3P.f****](RP2040-hw-i2c-3P.f) ;
 - [****blink-0-P.f****](blink-0-P.f) ;
 - [****blink-1-P.f****](blink-1-P.f) ;
