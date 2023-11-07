@@ -3,6 +3,7 @@
 The Pico kit is an experimenter board for the RP2040 Pico boards and clones. It features a number of well-known interfaces. For example, I2C, SPI, switches, LEDs, MOSFET output, Bluetooth, ESP-12F, OLED, etc. It also has two RS232 connections to allow noForth t duo comfortable use.
 
 ***
+### Pico-kit PCB
 ![Pico-kit board tiny](https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040-/assets/11397265/0e98b048-a09f-4151-aea0-196c64987ae5)
 
 ***
