@@ -18,4 +18,4 @@ All code used here should run on any RP2040 with noForth t.
 - [****pwm-1.f****](pwm-1.f) ; Flexible use of the built-in PWM hardware
 - [****spi.f****](spi.f) ; Driver examples for built-in SPI0 & SPI1
 - [****temperature.f****](temperature.f) ; Use the built-in temperature sensor
-- [****spare\temperature+.f****](Spare\temperature+.f) ; Use the built-in temperature sensor with calibation
+- [****Spare/temperature+.f****](Spare/temperature+.f) ; Use the built-in temperature sensor with calibation
