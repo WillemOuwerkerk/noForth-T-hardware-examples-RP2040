@@ -15,5 +15,5 @@
 - [****SPI-OLED****](SPI-OLED/) ;
 
   ***
-  ### Pico-kit constructed with nRf24 & Logic analiser connected ###
+  ### Pico-kit constructed with nRF24L01P & logical analyzer connected ###
 ![Pico-kit-met-nRF24](https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040-/assets/11397265/b3e0bd95-723f-432e-b4ec-f172747ddd9c)
