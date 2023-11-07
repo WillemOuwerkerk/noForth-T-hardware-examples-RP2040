@@ -1,6 +1,6 @@
 ## Pico-kit examples
 
-- [****I2C-board-examples.f****](I2C-board-examples.f) ;
+- [****I2C-board-examples.f****](I2C-board-examples.f) ; I2C usage example using the I2C-board from the Dutch Forth Users group
 - 
 
   
