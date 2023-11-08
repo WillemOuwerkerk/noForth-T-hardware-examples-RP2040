@@ -8,3 +8,7 @@
 - [****4x8 graphic character set****](ssd1306-graphic-chars.f) ; Complete 4x8 graphic character set with demo
 - [****Animated hedgehog logo****](ssd1306-hedgehog.f) ; Demo showing an animated hedgehog using graphic characters
 
+***
+### 7x16 thin character set ###
+![7x16 character demo](https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/assets/11397265/242bb34f-d331-4b6f-aa0d-2cd84cea3b02)
+
