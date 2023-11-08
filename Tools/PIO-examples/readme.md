@@ -24,7 +24,7 @@
 - [****SPI-0 driver****](spi-4%20(GPIO26to29)%20125kHz%20&%20cs%20with%20mulitple%20bytes%20data.f) ; Multi byte 125 kHz SPI-0 driver on GPIO26 to GPIO29 with chip select
 - [****SPI-0 driver****](spi-5%20(GPIO26to29)%20250kHz%20&%20cs%20mulitple%20bytes.f) ;  Multi byte 250 kHz SPI-0 driver on GPIO26 to GPIO29 with chip select
 - [****UART-0 TX driver****](uart-0,%20TX%20(GPIO26)%20single%20uart%20using%20=baud.f) ; UART0 output at 115k2 baud on GPIO26
-- [****Dual UART-0 TX driver****](uart-1,%20TX%20(GPIO26)%20single%20uart%20using%20=baud%20&%20clone.f) ; Dual UART0 output at 115k2 baud & 38K4 baud on GPIO26&27
+- [****Dual UART-0 TX driver****](uart-1,%20TX%20(GPIO26&27)%20single%20uart%20using%20=baud%20&%20clone.f) ; Dual UART0 output at 115k2 baud & 38K4 baud on GPIO26&27
 - [****UART-0 TX & RX driver****](uart-2%20TX,RX%20(GPIO26&27)%20single%20uart.f) ; UART0 input & output at 115k2 baud on GPIO26&27
 - [****UART-0 TX & RX driver****](uart-3,%20TX,%20RX%20(GPIO26&27)%20with%20chat%20example.f) ; UART0 input & output at 115k2 baud on GPIO26&27 and a chat example
 - [****UART-0 TX & RX driver****](uart-4,%20TX,%20RX%20(GPIO26&27)%20replace%20KEY%20&%20EMIT.f) ; UART0 input & output at 460k8 baud on GPIO26&27, replace default KEY & EMIT in noForth t
