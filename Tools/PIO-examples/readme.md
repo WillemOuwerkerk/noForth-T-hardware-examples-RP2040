@@ -17,12 +17,12 @@
 - [****1000Hz PWM, range 0-400****](PWM-3%20(GPIO25&26)%201000Hz,%20400%20range.f) ; 1000 Hz pulse width modulation on GPIO25&26
 - [****10kHz PWM, range 0-400****](PWM-4%20(GPIO25&26)%2010000Hz,%20400%20range.f) ; 10 kHz pulse width modulation on GPIO25&26
 - [****Rotary encoder****](rotary-0%20(GPIO26to28)%20encoder.f) ; Rotary encoder on GPIO26 to GPIO28
-- [****SPI-0 driver****](spi-0%20(GPIO26to28)%20125kHz.f) ; Basic 125 kHz SPI-0 driver on GPIO26 to GPIO28
-- [****SPI-0 driver****](spi-1%20(GPIO26to28)%20125kHz&20%cs,%20v1.f) ; 125 kHz SPI-0 driver on GPIO26 to GPIO29 with chip select
-- [****SPI-0 driver****](spi-2%20(GPIO26to28)%20125kHz&20%cs,%20v2.f) ; 125 kHz SPI-0 driver on GPIO26 to GPIO29 with chip select
-- [****SPI-0 driver****](spi-3%20(GPIO26to28)%20250kHz%20&%20cs%20with%20normal%20IO.f) ; 250 kHz SPI-0 driver on GPIO26 to GPIO29 with external chip select
-- [****SPI-0 driver****](spi-4%20(GPIO26to28)%20125kHz%20&%20cs%20with%20mulitple%20bytes%20data.f) ; Multi byte 125 kHz SPI-0 driver on GPIO26 to GPIO29 with chip select
-- [****SPI-0 driver****](spi-5%20(GPIO26to28)%20250kHz%20&%20cs%20mulitple%20bytes.f) ;  Multi byte 250 kHz SPI-0 driver on GPIO26 to GPIO29 with chip select
+- [****SPI-0 driver****](spi-0%20(GPIO26to29)%20125kHz.f) ; Basic 125 kHz SPI-0 driver on GPIO26 to GPIO28
+- [****SPI-0 driver****](spi-1%20(GPIO26to29)%20125kHz&20%cs,%20v1.f) ; 125 kHz SPI-0 driver on GPIO26 to GPIO29 with chip select
+- [****SPI-0 driver****](spi-2%20(GPIO26to29)%20125kHz&20%cs,%20v2.f) ; 125 kHz SPI-0 driver on GPIO26 to GPIO29 with chip select
+- [****SPI-0 driver****](spi-3%20(GPIO26to29)%20250kHz%20&%20cs%20with%20normal%20IO.f) ; 250 kHz SPI-0 driver on GPIO26 to GPIO29 with external chip select
+- [****SPI-0 driver****](spi-4%20(GPIO26to29)%20125kHz%20&%20cs%20with%20mulitple%20bytes%20data.f) ; Multi byte 125 kHz SPI-0 driver on GPIO26 to GPIO29 with chip select
+- [****SPI-0 driver****](spi-5%20(GPIO26to29)%20250kHz%20&%20cs%20mulitple%20bytes.f) ;  Multi byte 250 kHz SPI-0 driver on GPIO26 to GPIO29 with chip select
 - [****UART-0 TX driver****](uart-0,%20TX%20(GPIO26)%20single%20uart%20using%20=baud.f) ; UART0 output at 115k2 baud on GPIO26
 - [****Dual UART-0 TX driver****](uart-1,%20TX%20(GPIO26)%20single%20uart%20using%20=baud%20&%20clone.f) ; Dual UART0 output at 115k2 baud & 38K4 baud on GPIO26&27
 - [****UART-0 TX & RX driver****](uart-2,%20TX,RX%20(GPIO26&27)%20single%20uart.f) ; UART0 input & output at 115k2 baud on GPIO26&27
