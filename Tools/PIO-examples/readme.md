@@ -30,7 +30,7 @@
 - [****UART-0 TX & RX driver****](uart-4,%20TX,%20RX%20(GPIO26&27)%20replace%20KEY%20&%20EMIT.f) ; UART0 input & output at 460k8 baud on GPIO26&27, replace default KEY & EMIT in noForth t
 - [****WS2812B driver & LED flasher****](WS2812%20on%20GPIO23%20&%20flash%20on%20GPIO25.f) ; WS2812B driver on GPIO23 and controlable LED flasher on GPIO25
 - [****WS2812B driver****](WS2812%20on%20GPIO23.f) ; WS2812B driver on GPIO23 
-- [****WS2812B driver & tracer output****](WS2812%20on%20GPIO23%20&%20trace%20output%20on%20GPIO26.f) ; WS2812B driver on GPIO23 with tracer output on GPIO26
-- [****Multiple WS2812B pattern driver****](WS2812%20on%20GPIO23%20&%20multi%20color%20pattern%20driver.f) ; WS2812B driver on GPIO23 and complete multi LED color pattern driver
+- [****WS2812B driver & tracer output****](WS2812T%20on%20GPIO23%20&%20trace%20output%20on%20GPIO26.f) ; WS2812B driver on GPIO23 with tracer output on GPIO26
+- [****Multiple WS2812B pattern driver****](WS2812a%20on%20GPIO23%20&%20multi%20color%20pattern%20driver.f) ; WS2812B driver on GPIO23 and complete multi LED color pattern driver
 
 ***
