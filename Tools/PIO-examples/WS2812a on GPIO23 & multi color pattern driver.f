@@ -72,13 +72,13 @@ pio}
 
 hex \ Copied from noForth-T more tools
 code 2! ( lo hi a -- )
-    day  sp 4 x) ldr,               \ lo
+    day  sp 4 #) ldr,               \ lo
     sun  sp ) ldr,   sun tos ) str, \ !hi
-    day  tos 4 x) str,              \ !lo
-    tos  sp 8 x) ldr,  sp C # adds, \ Pop stack
+    day  tos 4 #) str,              \ !lo
+    tos  sp 8 #) ldr,  sp C # adds, \ Pop stack
     next, end-code
 code 2@ ( a -- lo hi )
-    day  tos 4 x) ldr,       \ @lo
+    day  tos 4 #) ldr,       \ @lo
     tos  tos ) ldr,          \ @hi
     day  sp -) str,          \ lo
 next, end-code
