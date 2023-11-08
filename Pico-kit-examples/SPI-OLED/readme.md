@@ -12,6 +12,6 @@
 - [****SPI color OLED driver****](ssd1351-driver-P.f) ; Driver for a 128x128 bits full color SPI OLED driver demo
 
 ***
-### 7x16 thin character set ###
-![7x16 character demo](https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/assets/11397265/242bb34f-d331-4b6f-aa0d-2cd84cea3b02)
+### Hedgehog, PWM & WS2812 demos all running on the Pico-kit ###
+https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/assets/11397265/ae649ed3-928d-4cdb-9b29-3ec6bdee7f9c
 
