@@ -7,7 +7,10 @@ with variable length (Dynamic Payload), Fifo of 3 deep, 125 selectable frequenci
 adjustable output power, CRC, etc.   
 
 - [****SPI0 driver****](spi0.f) ; SPI0 driver tailored for the nRF24L01+
-- [****nRF24L01+ driver****](basic 24L01dn RP2040 pico-kit.f) ; Dynamic payload driver for the nRF24L01+
+- [****nRF24L01+ driver****](basic%2024L01dn%20RP2040%20pico-kit.f) ; Dynamic payload driver for the nRF24L01+
 - [****Mesh network driver****](mesh%20node%20v4.1rf%20RV-dn-pico-kit.f) ; Mesh network driver for the nRF24L01+
-- [****Directory with RF tests****](/Tests) ; Carrier wave scanner, send & receive test, etc.
+- [****Directory with RF tests****](Tests/) ; Carrier wave scanner, send & receive test, etc.
 
+***
+### Pico-kit with connected nRF24L01+ ##
+![Pico-kit-met-nRF24](https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/assets/11397265/7cbd7b54-7080-4655-8686-2a8421bdf796)
