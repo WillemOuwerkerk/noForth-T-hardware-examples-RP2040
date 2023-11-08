@@ -31,13 +31,9 @@ decimal
 
 460800  2 cfg !     \ Baudrate is 460k8
 
-03      3 cfg !     \ Use GPIO-3 for S?
+03      3 cfg !     \ Use GPIO-3 for S? ( S2 on Pico-kit )
 
-4 cfg @ 0< [if]     \ Is it noForth duo?
-
-2       4 cfg !     \ Yes, also make sure to (re)start the second image
-
-[then]
+4 cfg @ abs 4 cfg ! \ Make sure to (re)start the second image if any
 
 hex  config         \ Test new configuration
 
