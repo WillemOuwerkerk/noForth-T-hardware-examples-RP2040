@@ -11,7 +11,7 @@
 - [****Generating frequencies****](music-0%20(GPIO26to29).f) ; Generating four different frequencies from 8Hz to 20kHz with timbre setting
 - [****Blink a LED****](on&off-1%20(GPIO24&25)%20pin,%20invert,%20delay.f) ; The LED toggles each 500 ms, using the PIN? function
 - [****Toggle a LED on/off****](on&off-2%20(GPIO24&25)%20pin,%20invert,%20delay.f) ; Switch LED on/off using PIN? function
-- [****Toggle a LED on/off****](on&off-2%20(GPIO24&25)%20pin,%20invert,%20delay.f) ; Switch LED on/off using PIN? function and the WAIT command
+- [****Toggle a LED on/off****](on&off-3%20(GPIO24&25)%20pin,%20invert,%20debounce.f) ; Switch LED on/off using PIN? function and the WAIT command
 - [****1000Hz PWM, range 0-100****](PWM-1%20(GPIO25&26)%201000Hz,%20100%20range.f) ; 1000 Hz pulse width modulation on GPIO25&26
 - [****1000Hz PWM, range 0-200****](PWM-2%20(GPIO25&26)%201000Hz,%20200%20range.f) ; 1000 Hz pulse width modulation on GPIO25&26
 - [****1000Hz PWM, range 0-400****](PWM-3%20(GPIO25&26)%201000Hz,%20400%20range.f) ; 1000 Hz pulse width modulation on GPIO25&26
