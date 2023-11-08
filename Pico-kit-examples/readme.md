@@ -8,7 +8,7 @@ The Pico kit is an experimenter board for the RP2040 Pico boards and clones. It 
 
 ***
 
-- [****I2C-board-examples.f****](I2C-board-examples.f) ; I2C usage example using the I2C-board and an RP2040 slave
+- [****I2C-board-examples.f****](I2C-board-examples.f) ; I2C usage example with the I2C board and RP2040 slave
 - [****RP2040-hw-i2c-3P.f****](RP2040-hw-i2c-3P.f) ; I2C1 master implementation
 - [****blink-0-P.f****](blink-0-P.f) ; Simple blinker using the BOOT-key for escape
 - [****blink-1-P.f****](blink-1-P.f) ; Simple blinker using S2 for escape
