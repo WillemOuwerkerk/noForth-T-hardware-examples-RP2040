@@ -26,7 +26,7 @@
 - [****UART-0 TX driver****](uart-0,%20TX%20(GPIO26)%20single%20uart%20using%20=baud.f) ; UART0 output at 115k2 baud on GPIO26
 - [****Dual UART-0 TX driver****](uart-1,%20TX%20(GPIO26)%20single%20uart%20using%20=baud%20&%20clone.f) ; Dual UART0 output at 115k2 baud & 38K4 baud on GPIO26&27
 - [****UART-0 TX & RX driver****](uart-2,%20TX,RX%20(GPIO26&27)%20single%20uart.f) ; UART0 input & output at 115k2 baud on GPIO26&27
-- [****UART-0 TX & RX driver****](uart-3,%20TX%20(GPIO26&27)%20with%20chat%20example.f) ; UART0 input & output at 115k2 baud on GPIO26&27 and a chat example
+- [****UART-0 TX & RX driver****](uart-3,%20TX,%20RX%20(GPIO26&27)%20with%20chat%20example.f) ; UART0 input & output at 115k2 baud on GPIO26&27 and a chat example
 - [****UART-0 TX & RX driver****](uart-4,%20TX,%20RX%20(GPIO26&27)%20replace%20KEY%20&%20EMIT.f) ; UART0 input & output at 460k8 baud on GPIO26&27, replace default KEY & EMIT in noForth t
 - [****WS2812B driver & LED flasher****](WS2812%20on%20GPIO23%20&%20flash%20on%20GPIO25.f) ; WS2812B driver on GPIO23 and controlable LED flasher on GPIO25
 - [****WS2812B driver****](WS2812%20on%20GPIO23.f) ; WS2812B driver on GPIO23 
