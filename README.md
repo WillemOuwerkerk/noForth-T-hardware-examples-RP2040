@@ -1,7 +1,7 @@
-# noForth t hardware examples
+<h1 align="center"> noForth t hardware examples </h1>
 
 These are all hardware examples to learn how to use the internal hardware of the RP2040.
-This code runs on noForth t (duo) from version 231010.
+All code should run on noForth t (duo) from version 231010 onwards.
 
 - [****Configuration****](Configuration) ; Setting system clock, baudrate & pin for S?
 - [****Dual core****](Dual-core) ; Fifo word set & words to start & stop code on the second core
@@ -11,5 +11,6 @@ This code runs on noForth t (duo) from version 231010.
 
   
 ***
-**YP-RP2040 a pin compatible Chinese Pico board clone**
+<h3 align="center">YP-RP2040 a pin compatible Chinese Pico board clone</h3>
+
 ![Pico with headers for noForth DUO-R](https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040-/assets/11397265/4e747dc8-8551-425e-b57e-7ade88b18e25)
