@@ -1,4 +1,4 @@
-# noForth t hardware examples RP2040
+# noForth t hardware examples
 
 These are all hardware examples to learn how to use the internal hardware of the RP2040.
 This code runs on noForth t (duo) from version 231010.
