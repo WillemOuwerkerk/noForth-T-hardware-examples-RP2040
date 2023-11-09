@@ -8,6 +8,8 @@
     RXF>        = Data from RX fifo           ( sm -- x )
     EXEC        = Execute instruction on 'sm' ( instr sm -- )
     CLOCK-DIV   = Set clock divider on 'sm'   ( u sm -- )
+    SYNC        = Synchronize state machines  ( bitmask -- )
+    RESTART     = Restart state machines      ( bitmask -- )
     FREQ        = Set 'sm' to clock freq. 'u' ( u sm -- )
 
 This program is written for a 32-bits cell size
