@@ -2,7 +2,7 @@
 
 These are all noForth t specific additions, specificly the PIO assembler and disassembler.
 
-- [****PIO-assembler.f****](PIO-assembler.f) ; Forth style PIO assembler [documentation](PIO-assembler-docs.pdf)
+- [****PIO-assembler.f****](PIO-assembler.f) ; Forth style PIO assembler with [documentation](PIO-assembler-docs.pdf)
 - [****PIO-disassembler.f****](PIO-disassembler.f) ; Forth style PIO disassembler
 - [****mini-PIO.f****](mini-PIO.f) ; Stand alone small PIO control command set
 - [****PIO-examples****](PIO-examples/) ; Lots of PIO programs, bit-io, RS232, SPI, etc.
