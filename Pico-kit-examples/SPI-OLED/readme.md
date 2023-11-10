@@ -7,8 +7,8 @@
 - [****8x16 bold character set****](ssd1306-bigbold-chars.f) ; Complete 8x16 bold character set with demo
 - [****4x8 graphic character set****](ssd1306-graphic-chars.f) ; Complete 4x8 graphic character set with demo
 - [****Animated hedgehog logo****](ssd1306-hedgehog.f) ; Demo showing an animated hedgehog using graphic characters
-- [****Simple SPI OLED driver****](spi-OLED-example-P.f) ; Simple PFW demo driver demo for SPI OLED
-- [****Scrolling SPI OLED driver****](spi-OLED-scroll-P.f) ; Scrolling SPI OLED driver demo, that uses only one RAM cell
+- [****Simple SPI OLED driver****](SPI-OLED-example-P.f) ; Simple PFW demo driver demo for SPI OLED
+- [****Scrolling SPI OLED driver****](SPI-OLED-scroll-P.f) ; Scrolling SPI OLED driver demo, that uses only one RAM cell
 - [****SPI color OLED driver****](ssd1351-driver-P.f) ; Driver example for a full color 128x128 bit SPI OLED
 
 ***
