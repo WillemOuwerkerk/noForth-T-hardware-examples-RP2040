@@ -15,3 +15,7 @@
 ### Hedgehog, PWM & WS2812 demos all running on the Pico-kit ###
 https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/assets/11397265/ae649ed3-928d-4cdb-9b29-3ec6bdee7f9c
 
+***
+### Hedgehog full color demo on the Pico-kit ###
+https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/assets/11397265/05afa7a1-b321-459c-a4d5-726ecde5ec83
+
