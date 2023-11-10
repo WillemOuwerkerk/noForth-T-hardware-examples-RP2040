@@ -1,9 +1,9 @@
 <h1 align="center"> noForth t hardware examples </h1>
 
 These are all hardware examples to learn how to use the internal hardware of the RP2040.
-All code should run on noForth t (duo) from version 231010 onwards.
+All code should run on noForth t (duo) from version 231010 onwards. If you don't have a noForth t yet, you can find it [here](https://home.hccnet.nl/anij/nof/noforth.html).
 
-- [****Configuration****](Configuration) ; Setting system clock, baudrate & pin for S?
+- [****Configuration****](Configuration) ; Setting the system clock, baudrate & pin for S?
 - [****Dual core****](Dual-core) ; Fifo word set & words to start & stop code on the second core
 - [****Tools****](Tools) ; Show configuration, PIO (dis)assembler, PIO code examples, etc.
 - [****Pico-kit examples****](Pico-kit-examples) ; Examples tailored to the Pico-kit experimenter board
