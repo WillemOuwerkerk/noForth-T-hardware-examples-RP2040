@@ -5,9 +5,11 @@ All code should run on noForth t (duo) from version 231010 onwards. If you don't
 
 <p align="center">
 <a href="https://home.hccnet.nl/anij/nof/noforth.html" target="_blank">
-<img align="center" width="30%" src="https://home.hccnet.nl/anij/nof/noforth.jpg">
+<img align="center" width="200" src="https://home.hccnet.nl/anij/nof/noforth.jpg">
 </a>
 </p>
+
+***
 
 - [****Configuration****](Configuration) ; Setting the system clock, baudrate & pin for S?
 - [****Dual core****](Dual-core) ; Fifo word set & words to start & stop code on the second core
