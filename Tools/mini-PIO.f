@@ -8,10 +8,13 @@
     RXF>        = Data from RX fifo           ( sm -- x )
     EXEC        = Execute instruction on 'sm' ( instr sm -- )
     CLOCK-DIV   = Set clock divider on 'sm'   ( u sm -- )
-    SYNC        = Synchronize state machines  ( bitmask -- )
-    RESTART     = Restart state machines      ( bitmask -- )
     FREQ        = Set 'sm' to clock freq. 'u' ( u sm -- )
-
+    
+    sm's is a bitmask where the bit's 0 to 3 represent state machines
+    
+    SYNC        = Synchronize state machines  ( sm's -- )
+    RESTART     = Restart state machines      ( sm's -- )
+ 
 This program is written for a 32-bits cell size
 
 *)
@@ -44,6 +47,7 @@ v: extra definitions
 : >TXF      ( u sm -- )     4 + pio! ;      \ Store TX data in FIFO
 : RXF>      ( sm -- u )     8 + pio@ ;      \ Fetch RX data from FIFO
 : EXEC      ( instr sm -- ) 4 swap sm-offset+ pio! ; \ Exec. instruction
+\ sm's is a bitmask where the bit's 0 to 3 represent state machines
 : SYNC      ( sm's -- )     7 8 0 field! ;  \ Sync. clock divider
 : RESTART   ( sm's -- )     7 4 0 field! ;  \ Restart state machine
 
