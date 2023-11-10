@@ -9,7 +9,7 @@
 - [****Animated hedgehog logo****](ssd1306-hedgehog.f) ; Demo showing an animated hedgehog using graphic characters
 - [****Simple SPI OLED driver****](spi-OLED-example-P.f) ; Simple PFW demo driver demo for SPI OLED
 - [****Scrolling SPI OLED driver****](spi-OLED-scroll-P.f) ; Scrolling SPI OLED driver demo, that uses only one RAM cell
-- [****SPI color OLED driver****](ssd1351-driver-P.f) ; Driver for a 128x128 bits full color SPI OLED driver demo
+- [****SPI color OLED driver****](ssd1351-driver-P.f) ; Driver example for a full color 128x128 bit SPI OLED
 
 ***
 ### Hedgehog, PWM & WS2812 demos all running on the Pico-kit ###
