@@ -148,7 +148,7 @@ create SM-OFFSETS    32 c, 38 c, 3E c, 44 c, align   \ Address state machine con
 : SET-PIN   ( pin pos offset -- )    2>r  1F  2r> sm-field! ; \ Replace PIN field
 
 
-\ Secured argument types, datastack: code type in short is: ct
+\ Secured argument types, datastack ( code type ) in short is ( ct )
 : ARGUMENT  ( type code -- ct )     create , , does> dup @ swap cell+ @ ;
 
 \ Format: <addr> <jumptype> JMP
