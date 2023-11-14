@@ -1,4 +1,4 @@
-\ Multi color multi WS2812 driver, alternative coding style where 
+\ Multi color multi WS2812 driver, alternative coding style where
 \ X and Y scratch registers are used for color code and the length
 \ of the LED string. In only 15 opcodes a flexible WS2812 LED driver,
 \ the maximum string length is only limited by the update rate and
@@ -33,12 +33,12 @@ clean-pio  decimal          \ Empty code space mirror
     6666666 =freq               \ On 6.666.666 Hz frequency
     23 1 =side-pins  opt        \ GPIO 23 for SIDE-SET optional
     23 1 =out-pins              \ for OUT & SET
-    23 1 =set-pins  
+    23 1 =set-pins
     23 =jmp-pin                 \ Pin 23 is input too
     32 0 =autopull  0 =out-dir  \ OSR shift left
 
     1 pindirs set,
-    begin, 
+    begin,
         0 side  pull,           \ Number of LEDs in string
         osr y mov,              \ Get length string tp Y
         y--? if, then,          \ Decrease Y by 1
@@ -64,7 +64,7 @@ pio}
     6666666 =freq               \ On 6.666.666 Hz frequency
     22 1 =side-pins  opt        \ GPIO 22 for SIDE-SET optional & SET
     22 1 =out-pins              \ for OUT & SET
-    22 1 =set-pins  
+    22 1 =set-pins
     22 =jmp-pin                 \ Pin 22 is input too
     32 0 =autopull  0 =out-dir  \ OSR shift left
     0 =exec                     \ Start SM-1 at address 0 too
@@ -143,7 +143,7 @@ red >fcolor    black >bcolor
 : MLINE     ( dot-pos -- )          \ Display one line with DOT
     begin
         dup #leds u< 0= while       \ Too large value?
-        #leds -                     \ Yes, scale back 
+        #leds -                     \ Yes, scale back
     repeat
     begin
         .mline

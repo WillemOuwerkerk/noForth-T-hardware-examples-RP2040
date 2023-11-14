@@ -1,4 +1,4 @@
-\ Print the 5 cells noForth-T configuration
+\ Print the 5 cells noForth-t configuration
 
 : .CFG      ( -- )
     base? >r  decimal

@@ -1,4 +1,4 @@
-\ PCF8574 example
+\ PCF8574 like example, accessing slaves & EEPROM
 v: inside also definitions
 : >PCF8574      ( b dev -- )    device!  1 {i2c-write  bus!} ;
 : PCF8574>      ( dev -- b )    device!  1 {i2c-read   bus@} ;

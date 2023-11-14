@@ -1,4 +1,4 @@
-\ WS2812 driver & tracer output on GPIO 26
+\ WS2812 driver on GPIO 23 & tracer output on GPIO 26
 
 clean-pio  decimal          \ Empty code space mirror
 0 0 {pio                    \ Use state machine-0 on PIO-0

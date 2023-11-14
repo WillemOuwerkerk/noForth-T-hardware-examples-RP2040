@@ -343,7 +343,7 @@ create CUSTOM  10 allot  \ Building place for custom graphics chars (p q r s)
     base @ >r  2 base !
     2* 2* custom +  4 bounds do
         cr i c@ s>d <# # # # # # # # # #> type space
-    loop 
+    loop
     r> base ! ;
 
 : .G-ROW    ( a -- )            \ Output 4x8 (graphic) character
@@ -373,7 +373,7 @@ create CUSTOM  10 allot  \ Building place for custom graphics chars (p q r s)
     0 1 xy ch P 20 bounds do  i &emit  loop
     0 3 xy 20 0 do  &" UT"  loop   \ Some patterns, build
 
-    empty  dm 58 0 >cc  dm 60 0 >cc \ two custom chars  
+    empty  dm 58 0 >cc  dm 60 0 >cc \ two custom chars
            dm 59 1 >cc  dm 61 1 >cc \ out of default chars
     0 5 xy 20 0 do  &" pq"  loop ; \ Show both custom chars
 

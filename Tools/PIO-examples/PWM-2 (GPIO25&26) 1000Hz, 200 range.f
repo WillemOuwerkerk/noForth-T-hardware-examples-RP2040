@@ -28,7 +28,7 @@ clean-pio  decimal          \ Empty code space mirror
 pio}
 
 \ The PWM range is 0 to 200, 0 is outputs off, 200 is maximal on.
-\ Note that the value 0 is corrected to -1, that sets the PWM completely off 
+\ Note that the value 0 is corrected to -1, that sets the PWM completely off
 : >PWM  ( n -- )    200 umin  dup 0= +  0 >txf ;
 
 \ End

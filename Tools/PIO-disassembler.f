@@ -1,4 +1,4 @@
-\ More portable disassembler vsn 0.2f
+\ More portable disassembler vsn 0.2f for noForth t
 \
 \ Version 0.2c: Changed factorisation & removed decode bug from .IN
 \               Opcode decoding & integrated with PIO-ass!

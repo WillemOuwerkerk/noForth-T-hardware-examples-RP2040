@@ -17,7 +17,7 @@ clean-pio  decimal          \ Empty code space mirror
         31 []  pin? if,         \ Pin 24 low?
             pins inv pins mov,  \ Invert pin 25, LED on/off
             31 x set,           \ Delay ~500 millisec.
-            begin,  
+            begin,
             31 []  x--? until,
         then,
     again,

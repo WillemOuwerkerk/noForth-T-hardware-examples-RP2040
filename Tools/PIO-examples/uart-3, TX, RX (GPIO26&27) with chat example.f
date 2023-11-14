@@ -1,4 +1,4 @@
-(*  Creating a simple chat progam using two Pico's with this file 
+(*  Creating a simple chat progam using two Pico's with this file
     Single UART, TX on state machine 0 & RX on state machine 1 of PIO 0
 *)
 

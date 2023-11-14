@@ -1,4 +1,4 @@
-(* Pico-kit GPIO example
+(* Pico-kit GPIO example for noForth t
 
 More on SIO chapter 2.3.1 page 27 ff
 More on IO user bank chapter 2.19 page 235 ff

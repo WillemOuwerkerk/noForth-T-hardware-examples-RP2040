@@ -802,7 +802,7 @@ align
     loop
     key drop  &page
     4 0 do
-        0 i 2* xy 
+        0 i 2* xy
         7 0 do  [char] @ &emit  bl &emit  loop
     loop ;
 

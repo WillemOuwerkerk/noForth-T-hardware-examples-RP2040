@@ -1,4 +1,4 @@
-(* SSD1351 driver, with help from the source of author N0082
+(* SSD1351 driver, with help from the source of author: N0082
 
 First send a command 5Ch, DC is low, then DC to high and
 always send 2Bytes color values.
@@ -141,7 +141,7 @@ v: extra definitions
 
 : WAIT      ( -- )
     begin  40 ms  key? while  key drop  repeat ;
-    
+
 F800 constant RED
 07E0 constant GREEN
 001F constant BLUE
@@ -203,7 +203,7 @@ black value BC     \ Background color
     if  lc  else  bc  then  \ Output one colored bit
     5C {cmd  b-b >ol >ol  spi} ;
 
-code REVERSE ( b0 -- b1 )   \ Reverse bit order in byte b0 
+code REVERSE ( b0 -- b1 )   \ Reverse bit order in byte b0
     day 0 # movs,       \ Init. used registers
     hop 0 # movs,
     sun 8 # movs,

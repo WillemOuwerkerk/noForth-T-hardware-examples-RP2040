@@ -1,4 +1,4 @@
-(* Primitive SPI OLED text driver
+(* Primitive SPI OLED text driver for noForth t
 
 UCA1 = OLED
     (RST=GPIO10, SIMO=GPIO19, CLK=GPIO18, CS=GPIO10, DC=GPIO11)

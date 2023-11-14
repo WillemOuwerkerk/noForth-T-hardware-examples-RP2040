@@ -923,9 +923,9 @@ align
     loop
     key drop  &page
     2 0 do
-        0 i 4 * xy 
+        0 i 4 * xy
         6 0 do  bl &emit  82 &emit  loop
-        0 i 4 * 2 + xy 
+        0 i 4 * 2 + xy
         6 0 do  81 &emit  bl &emit  loop
     loop ;
 

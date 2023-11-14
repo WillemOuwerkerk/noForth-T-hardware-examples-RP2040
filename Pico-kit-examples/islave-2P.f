@@ -11,8 +11,8 @@ I2C registers from page  465 ff.
 08  = IC_SAR            Slave Address Register
 10  = IC_DATA_CMD       Rx/Tx Data Buffer and Command Register
 1C  = IC_FS_SCL_HCNT    Fast Mode or Fast Mode Plus I2C Clock
-20  = IC_FS_SCL_LCNT    
-2C  = IC_INTR_STAT      IC_FS_SCL_HCNT    
+20  = IC_FS_SCL_LCNT
+2C  = IC_INTR_STAT      IC_FS_SCL_HCNT
 54  = IC_CLR_TX_ABRT    Clear TX abort flag by reading
 6C  = IC_ENABLE         Enable Register
 70  = IC_STATUS         Status Register
@@ -33,7 +33,7 @@ hex  here
 create I2C   ( -- )
 noname
     adr 'i2c ,              \ I2C device pointer
-code> 
+code>
     tos  sp -) str,         \ 3 - Save TOS
     ip  { tos } ldm,        \ 2 - Read inline data
     w  { w } ldm,           \ 2 - Read I2C pointer

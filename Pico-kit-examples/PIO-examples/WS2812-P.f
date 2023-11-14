@@ -1,4 +1,4 @@
-\ WS2812 driver
+\ WS2812 driver for Pico-kit
 
 clean-pio  decimal          \ Empty code space mirror
 0 0 {pio                    \ Use state machine-0 on PIO-0

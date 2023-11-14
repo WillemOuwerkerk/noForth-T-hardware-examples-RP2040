@@ -60,7 +60,7 @@ hex
 : LED-OFF  17 1 exec  E000 1 exec ; \ Pin 25 & 26 off, jump to wait loop (address 23)
 : LED-ON   17 1 exec  F801 1 exec ; \ Pin 25 & 26 on, jump to wait loop (address 23)
 
-0 .sm 
+0 .sm
 1 .sm
 
 \ End

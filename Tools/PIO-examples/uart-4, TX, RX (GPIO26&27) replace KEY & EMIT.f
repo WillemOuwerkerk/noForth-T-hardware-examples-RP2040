@@ -73,13 +73,13 @@ pio}
     begin  pkey? until  1 rxf> ;
 
 : ALT   ( -- )      \ Use GPIO26 & GPIO27 for RS232
-    ['] pkey to 'key  
-    ['] pemit to 'emit  
+    ['] pkey to 'key
+    ['] pemit to 'emit
     ['] pkey? to 'key? ;
 
 : ORG   ( -- )      \ Use standard RS232 configuration
-    ['] key) to 'key  
-    ['] emit) to 'emit  
+    ['] key) to 'key
+    ['] emit) to 'emit
     ['] key?) to 'key? ;
 
 \ End

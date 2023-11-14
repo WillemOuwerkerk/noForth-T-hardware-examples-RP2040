@@ -1,4 +1,4 @@
-(* Separate minimal PIO control 08-march-2023
+(* Separate minimal PIO control 08-march-2023 for noForth t
 
     SM-ON       = (De)activate state machine  ( f sm -- )
     SET-PIO     = Select PIO 0 or 1           ( n -- )
@@ -9,12 +9,12 @@
     EXEC        = Execute instruction on 'sm' ( instr sm -- )
     CLOCK-DIV   = Set clock divider on 'sm'   ( u sm -- )
     FREQ        = Set 'sm' to clock freq. 'u' ( u sm -- )
-    
+
     sm's is a bitmask where the bit's 0 to 3 represent state machines
-    
+
     SYNC        = Synchronize state machines  ( sm's -- )
     RESTART     = Restart state machines      ( sm's -- )
- 
+
 This program is written for a 32-bits cell size
 
 *)

@@ -25,7 +25,7 @@ clean-pio  decimal          \ Empty code space mirror
         begin,  31 []  pin? until,  \ Pin 24 low?
         1 clr irq,                  \ Clear interrupt
         31 []  high 24 gpio wait,   \ Wait until pin 24 high
-    wrap 
+    wrap
     over =exec              \ Start SM-0 code at address from stack
 pio}
 

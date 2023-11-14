@@ -1,5 +1,5 @@
 \ Single 8-bit SPI with CSN on state machine 0 and PIO 0, Clock phase = 0
-\ Chip enable is done using side-set, data is input using pull. 
+\ Chip enable is done using side-set, data is input using pull.
 \ The Y-register is used to count if a byte is transmitted.
 \ SCK  = Side-set pin 0, SPI clock = 125 kHz
 \ CSN  = Side-set pin 1

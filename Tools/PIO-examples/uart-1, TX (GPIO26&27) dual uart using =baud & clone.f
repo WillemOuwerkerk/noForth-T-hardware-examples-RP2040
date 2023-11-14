@@ -50,4 +50,4 @@ pio}
 : BCD       ( -- )      s" BCD " ~type ;
 : PICO      ( -- )      s" PICO " ~type ;
 
-\ End 
+\ End

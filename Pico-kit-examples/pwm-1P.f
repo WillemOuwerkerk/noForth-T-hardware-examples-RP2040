@@ -1,4 +1,4 @@
-(* Pico-kit PWM on GPIO26 & 27
+(* Pico-kit PWM on GPIO26 & 27 for noForth t
 
 This code uses two consecutive pins as pulse width outputs
 it's the way the PWM hardware works! So 16,17 or 18,19, etc.

@@ -21,7 +21,7 @@
     power-on  100 ms  power-off  00 \ Flash output, init. counter
     read-mode
     begin
-        response? if                \ Action on nRF24? 
+        response? if                \ Action on nRF24?
           cr  #me 1 .r              \ Yes, show node number
           xkey dup [char] T = if    \ Char 'T' received?
             emit  ." = "            \ Yes, show

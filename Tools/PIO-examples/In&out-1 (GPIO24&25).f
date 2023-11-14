@@ -19,7 +19,7 @@ clean-pio  decimal          \ Empty code space mirror
             31 []  nop,
         31 []  y--? until,
         0 pins set,         \ Set pin 25 (LED) off
-    again, 
+    again,
     0 =exec
 pio}
 

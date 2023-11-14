@@ -601,10 +601,10 @@ align
 : SMALLDEMO     ( -- )          \ Display small token set
     display-setup  small  &page
     dm 30 0 xy" Egel project"   \ Startup message
-    dm 36 2 xy" Characters" 
-    dm 48 4 xy" by W.O." 
+    dm 36 2 xy" Characters"
+    dm 48 4 xy" by W.O."
     key drop  &page
-    80 bl do  i &emit  loop    	\ Show character set
+    80 bl do  i &emit  loop     \ Show character set
     key drop  &page
     8 0 do                      \ Display @ pattern
         0 i xy  ( new line )

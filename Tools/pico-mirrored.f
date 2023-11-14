@@ -27,3 +27,5 @@ line-len 2/  value LINE-MIDDLE
     begin  aft  key? until  cr ;
 
 maft
+
+\ End
