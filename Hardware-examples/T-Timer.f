@@ -1,4 +1,4 @@
-(* Using alarms on the timer unit
+(* Using alarms on the timer unit for noForth t
 
     Timer base register: 4005,4000
     Setting the alarms:  4005,4010, etc.
@@ -14,7 +14,7 @@ Functions:
 
 *)
 
-40054010 constant ALARM0    \ 00 04 08 0C   Four alarm cells 
+40054010 constant ALARM0    \ 00 04 08 0C   Four alarm cells
 40054020 constant ARMED     \ 01 02 04 08   Four armed flags
 40054028 constant TIMERAWL  \ Low part of 64-bits timer
 40054034 constant INTR      \ 01 02 04 08   Four interrupt flags
@@ -40,7 +40,7 @@ Functions:
 
 \ Defining word for alarm functions
 : ALARM     ( interval alarm -- f ) \ Define timer using the alarm function
-    create  
+    create
         swap ,  3 umin          \ Alarm interval
         dup cells  alarm0 + ,   \ Used alarm
         bitmask ,               \ Bit masker

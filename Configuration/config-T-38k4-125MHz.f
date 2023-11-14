@@ -6,7 +6,7 @@
     3 CFG  = Used GPIO pin for S?
     4 CFG  = Boot method
 
-    GROW   = Resize noForth with the number of bytes from the stack
+    GROW   = Resize noForth t with the number of bytes from the stack
 
 Valid data for these parameters are:
     Clock    = 12, 30, 60, 120, 125, 132, 200 & 250 MHz

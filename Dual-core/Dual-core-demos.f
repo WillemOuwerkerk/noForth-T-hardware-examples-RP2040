@@ -1,4 +1,4 @@
-(* Demo's that demonstrate programs that are running on two cores
+(* Demo's that demonstrate programs that are running on both cores
 
     1) Counter
     2) Switch

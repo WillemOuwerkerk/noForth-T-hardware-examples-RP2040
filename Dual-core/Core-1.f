@@ -1,6 +1,6 @@
 (* Let core-1 on RP2040 run it's own code
 
-Primitives for activating CORE-1 from CORE-0
+Primitives for activating code on CORE-1 from CORE-0
 
 \ PSM_BASE = 40010000 ( Power-on State Machine )
 40010000 = FRC_OFF

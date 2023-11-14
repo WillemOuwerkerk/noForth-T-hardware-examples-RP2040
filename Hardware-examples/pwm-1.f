@@ -1,4 +1,4 @@
-(* PWM on Pico
+(* PWM on the RP2040
 
 This code uses two consecutive pins as pulse width outputs
 it's the way the PWM hardware works! So 16,17 or 18,19, etc.
@@ -37,7 +37,7 @@ pwm-csr 10 +                    constant PWM-TOP    \ PWM wrap register
 
 : PWM-ON    ( -- )      \ Activate on of the eight PWM units
     4 gpioa gpio!       \ GPIO-A & B = PWM
-    4 gpioa 1+ gpio!  
+    4 gpioa 1+ gpio!
     03 pwm-csr !        \ Enable phase correct PWM, both not inverted
     pwm# pwm-top !      \ PWM range (125000000/999+1)/2 = 62.5kHz
     dm 125 pwma         \ Set default PWM values, 25% & 50%

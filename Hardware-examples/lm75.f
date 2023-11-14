@@ -1,8 +1,10 @@
 (* I2C temperature measuring temperature with LM75CIM
+
   AUTHOR      : Willem Ouwerkerk, November 25, 1999
   LAST CHANGE : Willem Ouwerkerk, july 4, 2023, 484/984 bytes
   Added compensation value for the LM75 named #CAL
   Uses a special character 'BA' that displays the degrees sign
+
 *)
 
 hex  here

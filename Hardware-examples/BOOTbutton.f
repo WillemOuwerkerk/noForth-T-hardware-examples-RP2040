@@ -1,9 +1,9 @@
 (* Read the state of the Bootsel button.
    This one pulls the "Chip Select" wire of the QSPI flash low.
 
-   Disconnect the SPI memory logic, this is in the OEOVER field of the SS-pin,
-   wait a little (10us) for the charge to settle, read button state
-   and restore the QSPI state.
+   Disconnects the SPI memory logic, this is in the OEOVER field of the SS-pin,
+   waits a little (10us) for the charge to settle, then read the button state
+   and finally restore the QSPI state.
 
 More on SIO chapter 2.3.1 page 27 ff
 More on IO QSPI bank chapter 2.19.2 page 236/287 ff

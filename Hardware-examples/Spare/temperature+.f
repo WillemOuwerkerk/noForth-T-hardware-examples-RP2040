@@ -20,7 +20,7 @@ dm 180   value #CAL                 \ Calibration value, chip dependent
 
 \ s - in milliVolts
 \ c - in hundredths of degrees Celsius
-: CELSIUS ( s -- c ) 
+: CELSIUS ( s -- c )
     dm 373 dm 100 */ dm 5333 - negate \ Convert measurement to Celsius
     #cal + ; \ Add chip dependent correction value!
 

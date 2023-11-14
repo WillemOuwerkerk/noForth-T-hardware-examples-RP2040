@@ -1,4 +1,4 @@
-(* Small example on how to use the Analog-Digital-Converter W.O. 2023
+(* Example on how to use the Analog-Digital-Converter W.O. 2023
 
 More on ADC chapter 4.9 page 559 ff
 

@@ -1,5 +1,5 @@
 (* -------------------------------------------------------------
-    Example on how to use low edge pin interrupts on RP2040
+    Example on how to use low edge pin interrupts on the RP2040
     Used GPIO2 as input & GPIO25 as output
    -------------------------------------------------------------
     E000E100 = NVIC_ISER        Interrupt Set-Enable Register
@@ -50,7 +50,7 @@ end-code
     int-off                     \ Disable interrupts
     2000000 D0000020 !          \ GPIO_OE        set GPIO25 as output
     5A 2 pads!                  \ GPIO2_CTRL     Enable pull-up
-    pin-irq  0D irq!            \ PIN-IRQ to interrupt handler 13: IO IRQ bank 0 
+    pin-irq  0D irq!            \ PIN-IRQ to interrupt handler 13: IO IRQ bank 0
     2000 E000E100 !             \ NVIC_ISER      enable IO_BANK0, interrupt 13 in NVIC
     gpio-in 40014100 !          \ PROC0_INTE0    enable low edge interrupt for GPIO2
     gpio-in 400140F0 ! int-on ; \ IO_BANK0_INTR0 interrupt flag cleared & active

@@ -1,4 +1,5 @@
-(* Small example on how to use the Analog-Digital-Converter W.O. 2023
+(* Example on how to use the Analog-Digital-Converter
+   for temperature measurements for noForth t, W.O. 2023
 
 Celsius conversion routine built by Albert Nijhof
 More on ADC chapter 4.9 page 559 ff
@@ -19,7 +20,7 @@ dm 180   value #CAL                 \ Calibration value, chip dependent
 
 
 \ s = in milliVolts
-: CELSIUS       ( s -- celcius*100 ) 
+: CELSIUS       ( s -- celcius*100 )
     dm 373 dm 100 */ dm 5333 - negate \ Convert measurement to Celcius
     #cal + ; \ Add chip dependent correction value!
 

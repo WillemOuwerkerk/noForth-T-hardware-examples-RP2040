@@ -1,4 +1,4 @@
-(* RP2040 hardware I2C
+(* RP2040 hardware I2C for noForth t
 
     I2C core:         848 bytes
     with extensions: 1052 bytes

@@ -1,6 +1,7 @@
 \ Setting up a simple LED flasher for CORE-1
 \ Using only CPU registers and one I/O-pin
 \ More info on SIO_BASE from address 42 ff.
+
 code BLINK      ( -- )
 data>
     4000F000 ,          \ Reset IO-bank to HOP ( RESETS_BASE )

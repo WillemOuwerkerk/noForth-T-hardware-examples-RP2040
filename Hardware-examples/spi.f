@@ -1,4 +1,4 @@
-(* High level SPI-0 & 1 master primitives
+(* High level SPI-0 & 1 master primitives for noForth t
 
     SPI0-ON     ( clk +n -- )       - Activate SPI for port 0
     SPI0-I/O    ( b1 -- b2 )        - Send & receive on spi0

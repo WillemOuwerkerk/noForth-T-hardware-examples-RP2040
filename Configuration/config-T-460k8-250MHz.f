@@ -1,4 +1,4 @@
-(* Changing the configuration of noForth T ( 38.9mA )
+(* Changing the configuration of noForth t ( 38.9mA )
 
     0 CFG  = Clock frequency in Hz
     1 CFG  = Used UART ( 0 or 1 ) only 0 is valid for now
@@ -6,7 +6,7 @@
     3 CFG  = Used GPIO pin for S?
     4 CFG  = Boot method
 
-    GROW   = Resize noForth with the number of bytes from the stack
+    GROW   = Resize noForth t with the number of bytes from the stack
 
 Valid data for these parameters are:
     Clock    = 12, 30, 60, 120, 125, 132, 200, 250 MHz

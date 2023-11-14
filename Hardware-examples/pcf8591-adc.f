@@ -2,7 +2,9 @@
 \
 \ Note that: 48 = PCF8591 I2C-bus device address 0
 \
-\ Connections on module YL-40 e.g. at AliExpress:
+\ You may get YL-40 e.g. at AliExpress.
+\
+\ Connections on module YL-40 are:
 \  0 ADC - AIN0 = LDR
 \  1 ADC - AIN1 = Thermistor
 \  2 ADC - AIN2 = Free
@@ -10,17 +12,17 @@
 \  DAC is connected to an output and a green led
 
 hex
-\ This flag is set when DAC was used. Set to zero 
+\ This flag is set when DAC was used. Set to zero
 \ when DAC has to be off during ADC conversions!
 0 value DAC?  ( -- vlag )   \ Keep DAC active if true
 
 \ Read ADC input '+n', 'u' is the result of the conversion.
 : ADC       ( +n -- u )
     4A device!              \ Select ADC
-    3 and                   \ Select 1 of four inputs  
+    3 and                   \ Select 1 of four inputs
     dac? 40 and  or         \ (De)activate DAC & add input
     1 {i2c-write  bus! i2c} \ Send address & control byte
-    2 {i2c-read  bus@ drop  bus@ i2c} ; \ Get fresh ADC reading 
+    2 {i2c-read  bus@ drop  bus@ i2c} ; \ Get fresh ADC reading
 
 \ Set DAC-output the a value that matches 'u'.
 : DAC       ( u -- )

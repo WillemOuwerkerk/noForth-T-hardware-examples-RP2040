@@ -1,4 +1,4 @@
-(* GPIO
+(* GPIO input/output
 
 More on SIO chapter 2.3.1 page 27 ff
 More on IO user bank chapter 2.19 page 235 ff
@@ -15,7 +15,7 @@ D0000010 constant GPIO-OUT          \ GPIO output value
     3000 4001800C **bic ;           \ QSPI pin-SS peripheral function again
 
 : BLINK     ( -- )                  \ 1 Hz flashing led
-    5 dm 25 gpio!                   \ Enable SIO on pin 25 
+    5 dm 25 gpio!                   \ Enable SIO on pin 25
     dm 25 bitmask GPIO-OE **bis     \ Bit is output
     begin
         dm 25 bitmask GPIO-OUT **bix  200 ms \ Toggle LED
