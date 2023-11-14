@@ -1,4 +1,4 @@
-(* Changing the configuration of noForth T duo (Current use~29.5mA)
+(* Changing the configuration of noForth t duo (Current use~29.5mA)
 
     0 CFG  = Clock frequency in Hz
     1 CFG  = Used UART ( 0 or 1 ) only 0 is valid for now
