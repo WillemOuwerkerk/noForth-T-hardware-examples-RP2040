@@ -4,7 +4,7 @@
     1 CFG  = Used UART ( 0 or 1 ) only 0 is valid for now
     2 CFG  = Baudrate in bits per second
     3 CFG  = Used GPIO pin for S?
-    4 CFG  = Boot method
+    4 CFG  = Boot method single/duo
 
     GROW   = Resize noForth t with the number of bytes from the stack
 
