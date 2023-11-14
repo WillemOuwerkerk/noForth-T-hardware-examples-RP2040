@@ -16,4 +16,4 @@
 # *.jpg binary
 
 # Behoud CR/LF regeleinden voor specifieke bestanden
-  *.f binary
+*.f binary
