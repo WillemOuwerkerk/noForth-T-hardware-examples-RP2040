@@ -17,3 +17,5 @@
 
 # Behoud CR/LF regeleinden voor specifieke bestanden
 *.f binary
+
+*.f linguist-language=Forth
