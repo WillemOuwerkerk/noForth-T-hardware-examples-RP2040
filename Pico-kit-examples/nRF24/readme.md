@@ -11,6 +11,12 @@ adjustable output power, CRC, etc.
 - [****Mesh network driver****](mesh%20node%20v4.1rf%20RV-dn-pico-kit.f) ; Mesh network driver for the nRF24L01+
 - [****Directory with RF tests****](Tests/) ; Carrier wave scanner, send & receive test, etc.
 
+
+To load a first demo load these files in the given order:
+- SPI0 driver
+- nRF24L01+ driver
+- Range checker G2553 usci.f
+
 ***
 ### Pico-kit with connected nRF24L01+ ##
 ![Pico-kit-met-nRF24](https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/assets/11397265/7cbd7b54-7080-4655-8686-2a8421bdf796)
