@@ -1,4 +1,4 @@
-\ WS2812 driveron GPIO28, demo & LED control on GPIO 25 using state machine 0 & 1
+\ WS2812B driveron GPIO28, demo & LED control on GPIO 25 using state machine 0 & 1
 
 clean-pio  decimal          \ Empty code space mirror
 0 0 {pio                    \ Use state machine-0 on PIO-0
