@@ -13,9 +13,10 @@ adjustable output power, CRC, etc.
 
 
 To load a first demo load these files in the given order:
-- SPI0 driver
-- nRF24L01+ driver
-- Range checker G2553 usci.f
+- The SPI0 driver
+- The nRF24L01+ driver
+- From the Test folder: Range checker G2553 usci.f
+- Finally run the program CHECK this scans for carriers on all valid channels
 
 ***
 ### Pico-kit with connected nRF24L01+ ##
