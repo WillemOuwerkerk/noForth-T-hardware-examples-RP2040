@@ -8,6 +8,8 @@ Before this code can be loaded, first the [****PIO-assembler****](../../Tools/PI
 - [****WS2812 & flash-P2.f****](WS2812%20&520flash-P2.f) ; Dual WS2812 & LED driver for an YD-RP2040 board
 - [****WS2812-P.f****](WS2812-P.f) ; Single WS2812 & LED driver for any Pico (compatible) board
 - [****WS2812-P2.f****](WS2812-P2.f) ; Dual WS2812 & LED driver for an YD-RP2040 board
+- [****WS2812 & flash-P (wrap).f****](WS2812%20&%20flash-P%20(wrap).f) ; Single WS2812 & LED driver using wrap
+- [****WS2812-&-flash-P-(wrap).f****](WS2812B-&-flash-P-(wrap).f) ; Stand alone single WS2812 & LED driver using wrap
 
 ***
 ### WS2812B working on YD-RP2040 board ###
