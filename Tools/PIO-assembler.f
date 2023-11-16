@@ -1,4 +1,4 @@
-\ RP2040 PIO assembly sketch v0.6, W.O. 12-oct-2022 - 13-may-2023
+\ RP2040 PIO assembly sketch v0.6a, W.O. 12-oct-2022 - 16-nov-2023
 \
 \ This version is for noForth T.
 \
@@ -20,6 +20,7 @@
 \
 \ Version 0.5      Added HEX-ON HEX-OFF & PIO-HEX for saving PIO drivers
 \ Version 0.6      Changed >EXEC, added: EXEC  FREQ  CLOCK-DIV  SM-ON
+\ Version 0.6a     Updated CLEAN-UP a minor restart error
 \ To-do:           Signalling shortcomings, IRQ control
 
 v: forth definitions
@@ -311,10 +312,10 @@ v: extra definitions
 : >TXF      ( u sm -- )     cell+ pio! ;     \ Store TX data in FIFO of state machine
 : RXF>      ( sm -- u )     2 cells + pio@ ; \ Fetch RX data from FIFO of state machine
 
-: CLEAN-PIO ( pa s -- pa s )     \ PIO cleanup function
-    'sim 140 pcells 0 fill       \ Erase code mirror
-    >r dup - r>  0 to phere      \ Start code from address zero
-    0 to pdp  0 -1 0 0 field! ;  \ Stop all state machines, etc.
+: CLEAN-PIO ( pa s -- pa s )    \ PIO cleanup function
+    'sim 140 pcells 0 fill      \ Erase code mirror
+    >r dup - r>  0 to phere     \ Start code from address zero
+    0 to pdp  0 0 pio! ;        \ Stop all state machines, etc.
 : SM        ( f -- )        1 #sm 0 field! ;         \ (De)activate current SM
 v: pio definitions
 : =PIO      ( +n -- )       set-pio ;                \ Select active pio block
