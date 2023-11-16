@@ -22,10 +22,11 @@ This program is written for a 32-bits cell size
 hex
 v: inside also definitions
 0 value 'PIO                \ Pointer to current active PIO
-: PIO-ADDR  ( offset -- a ) cells  'pio + ; \ Convert to real address
+: PIO-ADDR  ( offset -- a ) cells 'pio + ; \ Convert to real address
 : PIO@      ( offset -- x ) pio-addr @ ;
 : PIO!      ( x offset -- ) pio-addr ! ;
 
+\ This table contains the offset in 32-bits cells to a state machine control block
 create SM-OFFSETS    32 c, 38 c, 3E c, 44 c, align  \ Address SM control blocks
 : SM-OFFSET+ ( off1 sm -- off2 ) sm-offsets + c@ + ;
 
