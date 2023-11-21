@@ -1,6 +1,6 @@
 ## Pico-kit examples
 
-The [Pico kit is an experimenter board](Pico-kit-v1%20manual.pdf) for the RP2040 Pico boards and clones. It features a number of well-known interfaces. For example, I2C, SPI, switches, LEDs, MOSFET output, Bluetooth, ESP-12F, OLED, etc. It also has two RS232 connections to allow noForth t duo comfortable use.
+The [Pico kit is an experimenter board](Pico-kit-v1a%20manual.pdf) for the RP2040 Pico boards and clones. It features a number of well-known interfaces. For example, I2C, SPI, switches, LEDs, MOSFET output, Bluetooth, ESP-12F, OLED, etc. It also has two RS232 connections to allow noForth t duo comfortable use.
 
 ***
 
