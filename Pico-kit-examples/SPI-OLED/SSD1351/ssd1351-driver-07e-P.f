@@ -505,7 +505,7 @@ end-code
 
 
 
-\ Partial character set
+\ Thin character set
 v: inside definitions
 : ||    ( bitrow -- )        \ Read & compile character row
     0  0D parse  10 min bounds
