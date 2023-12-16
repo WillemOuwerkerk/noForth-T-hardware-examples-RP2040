@@ -8,7 +8,7 @@ which can be placed anywhere on the screen.
 - [****4x8 graphic character set****](ssd1351-graphic-chars-P.f) ; Complete 4x8 graphic character set with demo
 - [****Animated hedgehog logo****](ssd1351-hedgehog-P2.f) ; Demo showing an animated hedgehog using graphic characters
 
-**** SSD1351 in action ****
-
+***
+### SSD1351 in action ###
 https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/assets/11397265/e6d7664d-55f1-4d4f-b327-29345d1d7cf7
 
