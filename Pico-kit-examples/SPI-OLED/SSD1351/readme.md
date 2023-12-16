@@ -3,7 +3,7 @@
 This is a fast full color OLED driver for the SSD1351 display chip. It supports a primitive window system
 which can be placed anywhere on the screen.
 
-- [****SSD1351 OLED driver****](ssd1351-driver-07e-P.f) ; SSD1306 control primitives, XY, FILL, PAGE, etc.
+- [****SSD1351 OLED driver****](ssd1351-driver-07e-P.f) ; SSD1351 control primitives, XY, FILL, PAGE, WINDOW, etc.
 - [****5x8 small character set****](ssd1351-small-chars-P.f) ; Complete 5x8 small character set with demo
 - [****4x8 graphic character set****](ssd1351-graphic-chars-P.f) ; Complete 4x8 graphic character set with demo
 - [****Animated hedgehog logo****](ssd1351-hedgehog-P2.f) ; Demo showing an animated hedgehog using graphic characters
