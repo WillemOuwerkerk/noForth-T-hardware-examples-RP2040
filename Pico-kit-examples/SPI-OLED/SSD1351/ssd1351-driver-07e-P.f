@@ -9,10 +9,10 @@ always send 2Bytes color values.
     __red__|green_|_blue_|
     0...31 |0..63 |0...31|
 
-8410 = 16 + 32 + 16 = Lichtgrijs        light-gray
-4208 =  8 + 16 +  8 = Staalgrijs        steel-grey
-2104 =  4 +  8 +  4 = Leigrijs          Slate-gray
-18C3 =  3 +  6 +  3 = Antracietgrijs    antracit-gray
+8410 = 16 + 32 + 16 = Ligt gray         light-gray
+4208 =  8 + 16 +  8 = Steel gray        steel-gray
+2104 =  4 +  8 +  4 = Slate gray        Slate-gray
+18C3 =  3 +  6 +  3 = Antracit gray     antracit-gray
 
 SIO special offsets
 
@@ -35,7 +35,7 @@ Current use by the display while active, 4 mA (black), to 60 mA (white)
 
 hex  v: inside also definitions
 : KHZ>          ( khz -- div1 div2 )
-    0 cfg @ dm 1,000 *  swap /                    \ Calculate divisor
+    0 cfg @ dm 1,000 *  swap /                  \ Calculate divisor
     dup FF < if  7E and  0000  exit  then       \ 254 or smaller
     dup 6000 < if  19 /  1800  exit  then       \ 6000 or smaller
     dup dm 64770 < if  FA /  F900  exit  then   \ 64770 or smaller
