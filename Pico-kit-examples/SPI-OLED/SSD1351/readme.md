@@ -19,5 +19,6 @@ which can be placed anywhere on the screen.
 
 ### SSD1351 in action ###
 
-https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/assets/11397265/69807ad5-ed31-4172-9c23-8dc95ddb6fd8
+https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/assets/11397265/ebd42a0f-a124-446d-be10-9857327618e6
+
 
