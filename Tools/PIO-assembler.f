@@ -21,7 +21,7 @@
 \ Version 0.5      Added HEX-ON HEX-OFF & PIO-HEX for saving PIO drivers
 \ Version 0.6      Changed >EXEC, added: EXEC  FREQ  CLOCK-DIV  SM-ON
 \ Version 0.6a     Updated CLEAN-UP a minor restart error
-\ To-do:           Signalling shortcomings, IRQ control
+\ To-do:           Signalling shortcomings, IRQ control, storing multi PIO code!
 
 v: forth definitions
 \ Flexible cell wide .HEX
@@ -34,7 +34,7 @@ v: vocabulary PIO      \ Active words
 \ Hold copy's of PIO's internal data & address pointers
 HEX  v: inside also definitions
 0 value HEX?                    \ Debug on/off flag
-0 value PDP
+0 value PDP                     \ PIO actions pointer
 create PIO-ACTIONS  800 cells allot
     pio-actions  800 cells  FF fill
 : (!)       ( x a -- x a )
@@ -68,6 +68,7 @@ v: pio also definitions
 v: extra definitions
 : SET-PIO   ( pio -- )      0<> 100000 and  50200000 +  to 'pio ;
 v: inside definitions
+\ : >SIM      ( offset -- a ) 'pio 50200000 <>  A0 and +  'sim + ;
 : SET-SM    ( sm -- )       3 and to #sm ;
 : PIO-ADDR  ( offset -- a ) pcells  'pio + ;        \ Convert to real address
 : PIO@      ( offset -- x ) pio-addr p@ ;
@@ -79,7 +80,7 @@ v: inside definitions
 
 v: pio definitions
 : PIO,      ( x -- )            \ PIO assemble action
-    phere code!  phere 1+ to phere
+    phere code!  incr phere
     phere 1F > ?abort ( PIO memory full )
     0 to delay  0 to side? ;
 
@@ -149,7 +150,7 @@ create SM-OFFSETS    32 c, 38 c, 3E c, 44 c, align   \ Address state machine con
 : SET-PIN   ( pin pos offset -- )    2>r  1F  2r> sm-field! ; \ Replace PIN field
 
 
-\ Secured argument types, datastack ( code type ) in short is ( ct )
+\ Secured argument types, datastack: code type in short is: ct
 : ARGUMENT  ( type code -- ct )     create , , does> dup @ swap cell+ @ ;
 
 \ Format: <addr> <jumptype> JMP
@@ -407,3 +408,4 @@ v: fresh
 shield PIO\  \ freeze
 
 \ End
+

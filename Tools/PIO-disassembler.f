@@ -1,10 +1,11 @@
-\ More portable disassembler vsn 0.2f for noForth t
+\ More portable disassembler vsn 0.2f
 \
 \ Version 0.2c: Changed factorisation & removed decode bug from .IN
 \               Opcode decoding & integrated with PIO-ass!
 \ Version 0.2d: Added .PINCONTROL & integrated in vsn 0.3d of PIO-ass
 \ Version 0.2e: Added .SM for more complete state machine overview
 \ Version 0.2f: Simplyfied structure, thanks to A.N.
+\ Add support for dual PIO code disassembly
 
 v: inside also definitions
 : -TRAILING ( a +n1 -- a +n2 )  \ Cut trailing spaces from a string
