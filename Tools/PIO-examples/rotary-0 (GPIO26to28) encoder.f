@@ -26,7 +26,7 @@ pio}
 : ENCODER?  ( -- f )        0 rx-depth  0= 0= ; \ True when encoder is used
 
 \ 0 = Not turned, 1 = forward, -1 = backward, Press = true (Knob pressed)
-: ENCODER   ( -- 1|-1 press )
+: ENCODER   ( -- 0|1|-1 press )
     begin  encoder? until   \ Knob moved
     0 rxf>                  \ Read data, save knob pressed flag
     dup 4 and 0= >r         \ Save press switch
