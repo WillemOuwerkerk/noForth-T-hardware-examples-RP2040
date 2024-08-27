@@ -58,8 +58,8 @@ Functions:
             swap @  !  true  exit       \ Store in alarm reg. and leave true
         then  drop  false ;             \ Remove data address & leave false
 
-1000 1 alarm ONE    \ Define alarm-1 with 1000 cycles
-8000 2 alarm TWO    \ Define alarm-2 with 8000 cycles
+1000 1 alarm ONE    \ Define alarm-1 with 1000 microseconds
+8000 2 alarm TWO    \ Define alarm-2 with 8000 microseconds
 
 \ Als f = false, druk . of anders het karakter van de stack
 : .CH       ( f ch -- )    and dup 0= if  drop ch .  then emit ;
