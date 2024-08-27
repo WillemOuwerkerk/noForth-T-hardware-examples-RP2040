@@ -12,7 +12,7 @@ More on IO QSPI bank chapter 2.19.2 page 236/287 ff
 
 hex
 : BOOTKEY?  ( -- f )
-    2000 4001800C **bis  1 10us \ QSPI pin-SS is input (OEOVER bitfield)
+    2000 4001800C **bis  10 us  \ QSPI pin-SS is input (OEOVER bitfield)
     2 D0000008 bit** 0=         \ Read boot key on QSPI pin-SS
     3000 4001800C **bic ;       \ QSPI pin-SS peripheral function again
 
