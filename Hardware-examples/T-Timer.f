@@ -37,19 +37,26 @@ Functions:
     1 intr bit** until      \ Ready, when alarm gone off
     cr ." Ready " intr @ . ; \ Show off status
 
+\ Restart the defined time "name" with the time "interval".
+: RESTART  ( interval "name" -- )        \ Interval in microseconds!
+    '  >body >r                          \ Get alarm body address
+    dup r@  !                            \ Save new interval first
+    timerawl @ +                         \ Calc. next alarm time too
+    r> cell + @  ! ;                     \ and store in the alarm register
 
-\ Defining word for alarm functions
-: ALARM     ( interval alarm -- f ) \ Define timer using the alarm function
+\ Defining word for alarm functions (interval = microseconds)
+: ALARM     ( interval alarm -- f )     \ Define timer using the alarm function
     create
-        swap ,  3 umin          \ Alarm interval
-        dup cells  alarm0 + ,   \ Used alarm
-        bitmask ,               \ Bit masker
+        over ,  3 umin >r               \ Alarm interval
+        r@ cells  alarm0 +  tuck ,      \ Used alarm
+        r> bitmask ,                    \ Bit masker
+        timerawl @ +  swap !            \ Init. first alarm interval
     does>
-        dup 2 cells + @         \ Read bit mask
-        armed bit** 0= dup if   \ Alarm not enabled or triggered?
-            drop  @+ timerawl @ +   \ Ok, calc. next alarm time,
-            swap @ !  true  true    \ set it and leave true
-        then  nip ;             \ Remove data address
+        dup 2 cells + @                 \ Read bit mask
+        armed bit** 0= if               \ Alarm triggered?
+            @+ timerawl @ +             \ Yes, calc. next alarm time,
+            swap @  !  true  exit       \ Store in alarm reg. and leave true
+        then  drop  false ;             \ Remove data address & leave false
 
 1000 1 alarm ONE    \ Define alarm-1 with 1000 cycles
 8000 2 alarm TWO    \ Define alarm-2 with 8000 cycles
