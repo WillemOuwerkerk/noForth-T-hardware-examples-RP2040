@@ -1,1 +1,48 @@
-<h1 align="center"> USB drivers </h1>
+<h1 align="center"> USB driver </h1>
+
+This is a in plain Forth written USB CDC driver, that uses some small code words and a coöperative  multitasker to run on top of noForth t. The picture below shows the finished driver in Windows 10.
+
+<img width="320" height="142" alt="image" align="center" src="https://github.com/user-attachments/assets/561e14b4-8114-4397-8f8b-1a02d46a920a" />
+
+***
+
+**What do we have to do**
+
+    1. Initialising the USB hardware on the RP2040.
+    2. Receiving and responding to setup packets from the host (PC). This determines which driver the OS will load.
+    3. If the host is satisfied with the setup, then sending and receiving data packets may start.
+
+***
+
+**In more detail:**
+
+    • The host detects a new device on the USB bus
+    • The host issues a USB bus reset command to the new device
+        ◦ It also detects what type of USB it is ( 1.10 or 2.00, etc. )
+        ◦ Now device 0 is asked for information (what are you?)
+        ◦ On Windows and Linux, we then get another USB bus reset
+        ◦ Now we are assigned an address, we should start using that address from now on
+        ◦ Then the device information is once again requested
+        ◦ Then the configuration info (how are you put together?)
+        ◦ Now (partly optional) some strings are requested
+            ▪ The language you speak in
+            ▪ The device that you are
+            ▪ The manufacturer
+            ▪ The version number of the device
+        ◦ Now the requests are getting more specific
+            ▪ The UART settings
+            ▪ Configuration status
+            ▪ The line status ( can there be communication? )
+        ◦ On a yes, data can be sent back and forth
+
+Note: Requests and the number of them vary from OS to OS.
+
+***
+
+<img width="1045" height="571" alt="image" src="https://github.com/user-attachments/assets/78d3f146-085c-401f-90a5-cb94b4e07596" />
+<h4 align="center">The host detects a new device on the USB bus</h4>
+
+
+<end>
+
+        
