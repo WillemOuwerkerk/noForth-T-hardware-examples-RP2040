@@ -8,3 +8,8 @@ The whole handler is implemented in the word USB-HANDLER
 which is used in the words; USB-KEY? USB-KEY and USB-EMIT
 The word USB-ON activates this CDC driver.
 
+***
+**Add the CDC driver:**
+
+    1) Load the file: USB-XS-005hi-barebone.f
+    2) Type: USB-ON and ready
