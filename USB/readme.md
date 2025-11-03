@@ -23,7 +23,8 @@ This is a in plain Forth written USB CDC driver, that uses some small code words
         ◦ It also detects what type of USB it is ( 1.10 or 2.00, etc. )
         ◦ Now device 0 is asked for information (what are you?)
         ◦ On Windows and Linux, we then get another USB bus reset
-        ◦ Now we are assigned an address, we should start using that address from now on
+        ◦ Now we are assigned an address, we should start using that 
+          address from now on
         ◦ Then the device information is once again requested
         ◦ Then the configuration info (how are you put together?)
         ◦ Now (partly optional) some strings are requested
