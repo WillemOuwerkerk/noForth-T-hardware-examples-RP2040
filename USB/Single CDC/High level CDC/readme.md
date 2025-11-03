@@ -1,4 +1,4 @@
-<h1 align="center"> USB driver </h1>
+<h1 align="center"> High level Forth USB CDC driver </h1>
 
 A high level implementation of the single port CDC driver.
 It is implemented with an absolute minimum of noForth specific
@@ -12,4 +12,4 @@ The word USB-ON activates this CDC driver.
 **Add the CDC driver:**
 
     1) Load the file: USB-XS-005hi-barebone.f
-    2) Type: USB-ON and ready
+    2) Type: USB-ON <enter> and ready
