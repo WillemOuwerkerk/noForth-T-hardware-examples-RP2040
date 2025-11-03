@@ -10,3 +10,13 @@ The whole driver only needs 3200 bytes.
 
 The word USB-ON activates this CDC driver.
 
+***
+**Add the dual CDC driver:**
+
+    1) Load the file: tasker.f
+    2) Load the file: USB-XS-008a.f
+    3) Type: SWITCH <enter> <enter>
+    4) Load the file: USB-XS-008b.f
+    5) Type: SWITCH <enter> <enter>
+    6) Type: FREEZE <enter>
+    7) Type: COLD or press reset and ready
