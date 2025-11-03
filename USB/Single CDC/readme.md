@@ -14,4 +14,4 @@ The word USB-ON activates this CDC driver.
     1) Load the file: tasker.f
     2) Load the file: USB-XS-005.f
     3) Type: USB-ON <enter> and ready
-    
+    4) To make it permanent type: FREEZE <enter>
