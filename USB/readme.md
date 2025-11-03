@@ -46,6 +46,13 @@ Note: Requests and the number of them vary from OS to OS.
 <img width="1045" height="571" alt="image" src="https://github.com/user-attachments/assets/78d3f146-085c-401f-90a5-cb94b4e07596" />
 <h4 align="center">The host detects a new device on the USB bus</h4>
 
+***
+**Add the CDC driver:**
+
+    1) Load the file: tasker.f
+    2) Load the file: USB-XS-005hilevel.f
+    3) Type: USB-ON <enter> and ready
+    4) To make it permanent type: FREEZE <enter>
 
 <end>
 
