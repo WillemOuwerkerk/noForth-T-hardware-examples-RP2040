@@ -9,8 +9,10 @@ This is a in plain Forth written USB CDC driver, that uses some small code words
 **What do we have to do**
 
     1. Initialising the USB hardware on the RP2040.
-    2. Receiving and responding to setup packets from the host (PC). This determines which driver the OS will load.
-    3. If the host is satisfied with the setup, then sending and receiving data packets may start.
+    2. Receiving and responding to setup packets from the host (PC). 
+       This determines which driver the OS will load.
+    3. If the host is satisfied with the setup, then sending and 
+       receiving data packets may start.
 
 ***
 
