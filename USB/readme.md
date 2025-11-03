@@ -1,4 +1,4 @@
-<h1 align="center"> USB driver </h1>
+<h1 align="center"> USB CDC driver </h1>
 
 This is a in plain Forth written USB CDC driver, that uses some small code words and a coöperative  multitasker to run on top of noForth t. The picture below shows the finished driver in Windows 10.
 The highlevel version shown in the USB base folder is for documentation only, it is however fully functional!
