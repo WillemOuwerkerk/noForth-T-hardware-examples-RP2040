@@ -13,3 +13,4 @@ The word USB-ON activates this CDC driver.
 
     1) Load the file: USB-XS-005hi-barebone.f
     2) Type: USB-ON <enter> and ready
+    3) To make it permanent type: FREEZE <enter>
