@@ -47,12 +47,16 @@ Note: Requests and the number of them vary from OS to OS.
 <h4 align="center">The host detects a new device on the USB bus</h4>
 
 ***
+
+After noForth is booted, take the following actions.
+
 **Add the CDC driver:**
 
     1) Load the file: tasker.f
     2) Load the file: USB-XS-005hilevel.f
     3) Type: USB-ON <enter> and ready
     4) To make it permanent type: FREEZE <enter>
+       noForth will boot now with this CDC-driver added.
 
 <end>
 
