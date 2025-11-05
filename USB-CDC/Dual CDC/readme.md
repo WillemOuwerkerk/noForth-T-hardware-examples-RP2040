@@ -11,6 +11,10 @@ The whole driver only needs 3200 bytes.
 The word USB-ON activates this CDC driver.
 
 ***
+
+Connect a USB to serial cable to GPIO0 & GPIO1, reset noForth.
+After noForth is booted, take the following actions.
+
 **Add the dual CDC driver:**
 
     1) Load the file: tasker.f
@@ -20,3 +24,4 @@ The word USB-ON activates this CDC driver.
     5) Type: SWITCH <enter> <enter>
     6) Type: FREEZE <enter>
     7) Type: COLD or press reset and ready
+       noForth will boot with a dual CDC driver
