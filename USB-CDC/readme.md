@@ -48,6 +48,7 @@ Note: Requests and the number of them vary from OS to OS.
 
 ***
 
+Connect a USB to serial cable to GPIO0 & GPIO1, reset noForth.
 After noForth is booted, take the following actions.
 
 **Add the CDC driver:**
