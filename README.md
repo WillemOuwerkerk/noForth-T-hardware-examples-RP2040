@@ -16,7 +16,7 @@ All code should run on noForth t (duo) from version 231010 onwards. If you don't
 - [****Tools****](Tools) ; Show configuration, PIO (dis)assembler, PIO code examples, etc.
 - [****Pico-kit examples****](Pico-kit-examples) ; Examples tailored to the Pico-kit experimenter board
 - [****Hardware examples****](Hardware-examples) ; General code that will run on every RP2040 with noForth t
-- [****USB****](USB) ; USB driver that will run on a RP2040 with noForth t with multitasker added
+- [****USB-CDC****](USB-CDC) ; USB driver that will run on a RP2040 with noForth t with multitasker added
   
 ***
 <h3 align="center">YP-RP2040 a pin compatible Chinese Pico board clone</h3>
