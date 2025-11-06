@@ -74,7 +74,7 @@ create EP6   4 cells allot    5010,00B0  dup ,   4 + ,     5010,0400 ,
                                     r@ >pkt @  r@ @  over -  dup r@ !  40 min r> >pkt ! ;
 : !PKT      ( pkt ep -- ictrl )     >r  r@ >pid @ or  8000 or   \ pid + pkt + mask
                                     r> >ictrl @  tuck ! ;
-: USB-RECEIVE   ( ep -- )           >r r@ >octrl @   r@ >pid @  40 or  over !
+: PREP-RCV  ( ep -- )               >r r@ >octrl @   r@ >pid @  40 or  over !
                                     2000 r> >pid **bix  400 swap **bis ;
 : GONE?     ( ep -- f )             >ictrl @ @ 400 and 0= ;
 : USB1?     ( -- +n )               usb-state h@ ;
@@ -94,7 +94,7 @@ code >NEXT      685D689C ,  605D192D ,  1B2D681D ,
                 2D40601D ,  2540D900 ,  0023609D ,  CA10C804 ,  FFFF46A7 ,  end-code
 code !PKT       C92068DC ,  2580432C ,  432C022D ,
                 601C691B ,  CA10C804 ,  FFFF46A7 ,  end-code
-code USB-RECEIVE  68DD695C ,  43352640 ,
+code PREP-RCV   68DD695C ,  43352640 ,
                 26206025 ,  68DF0236 ,  60DF4077 ,  1362640 ,
                 60254335 ,  C804C908 ,  46A7CA10 ,  end-code
 code GONE?      681B3310 ,  2404681B ,  40230224 ,
@@ -122,7 +122,7 @@ create YOURS    ( +n -- )   \ Free spinlock +n
 
 \ Basic receive & transmit packet handlers
 : USB-SEND   ( ep -- )      >r  r@ >next  r@ !pkt  2000 r> >pid **bix  400 swap **bix ;
-: USB-RCV    ( pid ep -- )  tuck >pid !  usb-receive ;
+: USB-RCV    ( pid ep -- )  tuck >pid !  prep-rcv ;
 
 : SETUP>        ( a u -- )      \ Handle the answer for all setup packages
     2000 ep0 >pid !  ep0 prepare                \ Start with DATA1, setup packet data
@@ -274,7 +274,7 @@ code>
             ep3 >buf @  r@          \ Yes, fill RX0 buffer
             for  c@+ >rx0  next
             10 us  drop  80 xor     \ Done
-            ep3 usb-receive         \ And allow next RX0 packet
+            ep3 prep-rcv            \ And allow next RX0 packet
         then  rdrop
     then
     dup 2000 and if                 \ Delayed reception active?
@@ -285,7 +285,7 @@ code>
                 ep6 >buf @  r@      \ Yes, fill RX1 buffer
                 for  c@+ >rx1  next drop
                 0 yours  8 us  2000 xor \ Done
-                ep6 usb-receive     \ Allow next RX1 packet
+                ep6 prep-rcv        \ Allow next RX1 packet
             then
         then  rdrop
     then ;  >r
@@ -333,3 +333,4 @@ v: extra definitions
 v: fresh
 shield CDC0\  \ freeze
 here swap - dm .
+
