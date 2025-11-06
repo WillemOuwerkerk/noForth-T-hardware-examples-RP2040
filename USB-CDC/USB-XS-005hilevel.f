@@ -17,7 +17,7 @@ Non standard words used are:
 : **BIX ( msk a -- )    >r r@ @ xor  r> ! ;
 : BIT** ( msk a -- b )  @ and ;
 
-This program needs a 'coöperative' multitasker too. Used mutitasker words:
+This program needs a 'coÃ¶perative' multitasker too. Used mutitasker words:
 TASK:       ( "name" -- )   Define task
 START-TASK  ( xt task -- )  Execute 'xt' with 'task'
 PAUSE       ( -- )          Switch task
@@ -96,7 +96,7 @@ create EP3   4 cells allot   50100098  dup ,   4 + ,    50100280 ,
                                     r@ >pkt @  r@ @  over -  dup r@ !  40 min r> >pkt ! ;
 : !PKT      ( pkt ep -- ictrl )     >r  r@ >pid @ or  8000 or   \ pid + pkt + mask - Store next packet to sedn for EPx
                                     r> >ictrl @  tuck ! ;
-: USB-RECEIVE   ( ep -- )           >r r@ >octrl @   r@ >pid @  40 or  over !   \ Prepare to receive a packet on EPx
+: USB-RCV)  ( ep -- )               >r r@ >octrl @   r@ >pid @  40 or  over !   \ Prepare to receive a packet on EPx
                                     2000 r> >pid **bix  400 swap **bis ;
 : GONE?     ( ep -- f )             >ictrl @ @ 400 and 0= ;     \ Leave true when Epx packet was sent
 : USB?      ( -- +n )               usb-state h@ 3 = ;          \ True when host & device are connected
@@ -104,7 +104,7 @@ create EP3   4 cells allot   50100098  dup ,   4 + ,    50100280 ,
 
 \ Basic receive & transmit packet handlers
 : USB-SEND   ( ep -- )      >r  r@ >next  r@ !pkt  2000 r> >pid **bix  400 swap **bix ;
-: USB-RCV    ( pid ep -- )  tuck >pid !  usb-receive ;
+: USB-RCV    ( pid ep -- )  tuck >pid !  usb-rcv) ;
 
 : BUS-RESET     ( -- )
     80000  50113050  !                     \ SIE_STATUS - BUS_RESET (Clear bit)
@@ -221,7 +221,7 @@ buffer1 #l + 3 cells + constant BUFFER2 \ Start of out buffer
                 ep3 >buf @  5010009C c@
                 0 ?do c@+ >rx loop  \ Yes, fill RX buffer
                 18 us  2drop  false \ Done
-                ep3 usb-receive     \ And allow next RX packet
+                ep3 usb-rcv)        \ And allow next RX packet
             then
         then
     again ;
@@ -250,3 +250,4 @@ task: USB1      task: USB2      \ The USB tasks
 here swap - decimal . hex
 
 usb-on
+
