@@ -85,7 +85,7 @@ create EP3   4 cells allot   50100098  dup ,   4 + ,    50100280 ,
 : PREPARE   ( a u ep -- )           >r  dup r@ >cnt !  40 min r@ >pkt !  r> >org ! ; \ Prepare data to send for EPx
 : >NEXT     ( ep -- pkt )           >r  r@ >pkt @   r@ >org @  +  r@ >org !     \ Get next packet size for EPx
                                     r@ >pkt @  r@ @  over -  dup r@ !  40 min r> >pkt ! ;
-: !PKT      ( pkt ep -- ictrl )     >r  r@ >pid @ or  8000 or   \ pid + pkt + mask - Store next packet to sedn for EPx
+: !PKT      ( pkt ep -- ictrl )     >r  r@ >pid @ or  8000 or   \ pid + pkt + mask - Store next packet to send for EPx
                                     r> >ictrl @  tuck ! ;
 : PREP-RCV  ( ep -- )               >r r@ >octrl @   r@ >pid @  40 or  over !   \ Prepare to receive a packet on EPx
                                     2000 r> >pid **bix  400 swap **bis ;
@@ -105,7 +105,7 @@ create EP3   4 cells allot   50100098  dup ,   4 + ,    50100280 ,
 : SETUP>        ( a u -- )      \ Handle the answer for all setup packages
     2000 ep0 >pid !  ep0 prepare                \ Start with DATA1, setup packet data
     begin
-        ep0 ep-in move  ep0 usb-send            \ Send packet
+        ep0 ep-in move  ep0 usb-send            \ Store & send packet
         1 50110058                              \ Packet gone?
         begin  2dup bit** until  **bis
     ep0 @ 0= until  2000 ep0 usb-rcv ;          \ Handle ZLP

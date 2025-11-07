@@ -242,7 +242,7 @@ shield CDC\  \ freeze
 here swap - dm .
 
 v: inside
-: USB   ( -- )
+: USB   ( -- )  \ Install terminal-i/O vectors
     ['] usb-key?    to 'key?
     ['] usb-key     to 'key
     ['] usb-emit    to 'emit ;
