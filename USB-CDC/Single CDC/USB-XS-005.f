@@ -1,5 +1,5 @@
 (* USB driver used Leon's & Alex Taradov's code & RP2040 datasheet for documentation
-    Henny Luijkx made the overview of Alex's code ( 3200 bytes + 648 for tasker words )
+    Henny Luijkx made the overview of Alex's code ( 3184 bytes + 648 for tasker words )
     Willem Jager, Leon Konings & Henny Luijkx did test and document this effort
 
 0000 = R/W, 1000=XOR, 2000=SET, 3000=CLEAR
@@ -210,8 +210,8 @@ code>
             #L #tx - r@ >           \ Yes, enough space in TX buffer?
             #L #rx - r@ > and if    \ And next RX packet fits too?
                 ep3 >epbuf @  r@    \ Yes, fill RX buffer
-                for  c@+ >rx  next
-                20 us  2drop  false \ Done
+                for  c@+ >rx  pause  next
+                2drop  false        \ Done
                 ep3 prep-rcv        \ And allow next RX packet
             then  rdrop
         then
@@ -222,8 +222,8 @@ code>
         begin  pause  usb? until    \ Still connected?
         #tx if                      \ EP2 Any chars to send?
             ep2 gone? if            \ Yes, previous packet gone?
-                80 us  ep2 >epbuf @ #tx 40 umin \ Packet place & size
-                2dup ep2 prepare  bounds        \ Init. transmit pointers
+                ep2 >epbuf @ #tx 40 umin        \ Packet place & size
+                2dup ep2 prepare pause bounds   \ Init. transmit pointers
                 ?do  tx> i c!  loop             \ Place data in EP2-buffer
                 ep2 usb-send                    \ Send to host
             then
