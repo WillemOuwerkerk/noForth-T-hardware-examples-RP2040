@@ -24,7 +24,7 @@ The single CDC also contains a CDC driver without code and multitasker for porta
 
     • The host detects a new device on the USB bus
     • The host issues a USB bus reset command to the new device
-	    ◦ The device gives itself device address 0
+		◦ The device gives itself device address 0
         ◦ It also detects what type of USB it is ( 1.10 or 2.00, etc. )
         ◦ Now device 0 is asked for information (what are you?)
         ◦ On Windows and Linux, we then get another USB bus reset
