@@ -9,7 +9,9 @@
 \ using a 1 millisec. line delay and with macOS using character handshake.
 \
 \ This programme assumes 32-bit cells.
-\ Non standard words used are:
+\ Non DPANS94 standard words used are:
+\ : C@+   ( a1 -- a2 b )  count ;
+\ : @+    ( a1 -- a2 u )  dup @ >r  cell+  r> ;
 \ : H@    ( a - h )       count swap  c@ 8 lshift  or ;
 \ : H!    ( h a -- )      >r  dup r@ c!  8 rshift  r> 1+ c! ;
 \ : **BIS ( msk a -- )    >r r@ @ or  r> ! ;
@@ -113,12 +115,12 @@ create EP3   4 cells allot   50100098  dup ,   4 + ,    50100280 ,
 : XTABLE    ( +n "name" -- )    \ Define custom execution table
     create  ,
     does> @+    ( req -- )
-    >r r@ for  2dup @ = if              \ Token found?
-            nip  rdrop  r> cells +      \ Yes, calc. cell with XT
+    >r r@ 0 ?do  2dup @ = if            \ Token found?
+            nip  r> drop  r> cells +    \ Yes, calc. cell with XT
             @ execute  exit             \ Fetch & execute XT
         then
         cell+
-    next  rdrop  2drop                  \ No token found
+    loop  r> drop  2drop                \ No token found
     1 5011,0068 !  800 5010,0080 ! ;    \ Send EP0 stall
 
 : ZLP>          ( -- )      here false setup> ;             \ Send EP0 ZLP
@@ -181,11 +183,11 @@ buffer1 #l + 3 cells + constant BUFFER2 \ Start of out buffer
     r@ @ 1+ #r and  r@ !            \ Increase & protect read pointer
     true  r> 2 cells -  +! ;        \ Decrease used space
 
-0 value IFLAG
+variable IFLAG  0 iflag !
 : ENDPOINTS ( -- )   \ Handle used endpoints
     50110058 @ >r
     r@ 04 and if  zlp>      then    \ EP1 active?
-    iflag  r@ 80 and or to iflag    \ EP3 active, remember
+    iflag @  r@ 80 and or  iflag !  \ EP3 active, remember
     r> 50110058 ! ;
 
 : REQUESTS  ( -- )                  \ Handle all USB requests
@@ -196,19 +198,19 @@ buffer1 #l + 3 cells + constant BUFFER2 \ Start of out buffer
 
 : USB-HANDLER       ( -- )  \ Handle USB setup & character I/O
     requests
-    iflag if                    \ Next RX packet wanted?
+    iflag @ if                  \ Next RX packet wanted?
         #L #tx - 40 >           \ Yes, enough space in TX buffer?
         #L #rx - 40 > and if    \ And next RX packet fits too?
             ep3 >buf @  5010009C c@
             0 ?do c@+ >rx loop  \ Yes, fill RX buffer
-            drop false to iflag \ Done
+            drop false  iflag ! \ Done
             ep3 prep-rcv        \ And allow next RX packet
         then
     then
     usb? if                     \ Still connected?
         #tx if                  \ EP2 Any chars to send?
             ep2 gone? if        \ Yes, previous packet gone?
-                ep2 >buf @  #tx  40 umin    \ Packet place & size
+                ep2 >buf @  #tx  40 min     \ Packet place & size
                 2dup ep2 prepare  bounds    \ Init. transmit pointers
                 ?do  tx> i c!  loop         \ Place data in EP2-buffer
                 ep2 usb-send                \ Send to host
@@ -222,7 +224,7 @@ buffer1 #l + 3 cells + constant BUFFER2 \ Start of out buffer
 
 : USB-ON            ( -- )
     50100300  [ #L 2* 6 cells + ] literal  false fill \ Init. buffer space to zero
-    start-usb  false usb-state !  false to iflag
+    start-usb  false usb-state !  false iflag !
     ['] usb-key? to 'key?           \ Install USB CDC char. I/O vectors
     ['] usb-key  to 'key
     ['] usb-emit to 'emit ;
