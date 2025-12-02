@@ -1,5 +1,5 @@
 \ USB driver used Leon's & Alex Taradov's code & RP2040 datasheet for documentation
-\   Henny Luijkx made the overview of Alex's code ( 4200 bytes )
+\   Henny Luijkx made the overview of Alex's code ( 4216 bytes )
 \   Willem Jager, Leon Konings & Henny Luijkx did test and document this effort
 \
 \ 0000 = R/W, 1000=XOR, 2000=SET, 3000=CLEAR
@@ -116,7 +116,7 @@ create EP3   4 cells allot   50100098  dup ,   4 + ,    50100280 ,
     create  ,
     does> @+    ( req -- )
     >r r@ 0 ?do  2dup @ = if            \ Token found?
-            nip  r> drop  r> cells +    \ Yes, calc. cell with XT
+            nip  unloop  r> cells +     \ Yes, calc. cell with XT
             @ execute  exit             \ Fetch & execute XT
         then
         cell+
