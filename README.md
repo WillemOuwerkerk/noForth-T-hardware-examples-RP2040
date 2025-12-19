@@ -1,7 +1,7 @@
-<h1 align="center"> noForth t hardware examples </h1>
+<h1 align="center"> noForth t hardware examples <br> and more </h1>
 
 These are all hardware examples to learn how to use the internal hardware of the RP2040.
-All code should run on noForth t (duo) from version 231010 onwards. If you don't have a noForth t yet, you can find it [here](https://home.hccnet.nl/anij/nof/noforth.html).
+All code should run on noForth t solo & duo from version 251010 onwards. If you don't have a noForth t yet, you can find it [here](https://home.hccnet.nl/anij/nof/noforth.html).
 
 <p align="center">
 <a href="https://home.hccnet.nl/anij/nof/noforth.html" target="_blank">
