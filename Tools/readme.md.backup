@@ -11,7 +11,7 @@ These are all specific additions to noForth t, particularly the PIO assembler an
 - [****print-cfg.f****](print-cfg.f) ; Show current noForth t configuration
 - [****noForth-t-asm-dec2025.f****](noForth-t-asm-dec2025.f) ; RP2040 assembler for noForth t 
 - [****noforth-t-asm-ext.f****](noforth-t-asm-ext.f) ; Less used RP2040 assembler opcodes for noForth t 
-- [****commacode-t.f****](commacode-t.f) ; Generating assembler less machine code, read the [documentation](commacode-for-noforth-t.pdf)
+- [****commacode-t.f****](commacode-t.f) ; Generating assembler less machine code [documentation](commacode-for-noforth-t.pdf)
 - [****noforth-T-more-words.f****](noforth-T-more-words.f) ; More standard words for noForth t
 - [****Set-PLL-02b.f****](Set-PLL-02b.f) ; Setting the clock frequency from 12 MHz to 400 MHz
 - [****inspect.f****](inspect.f) ; Universal decompiler/disassembler
