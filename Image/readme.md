@@ -1,6 +1,6 @@
 ## Generating turnkey images
 
-An UF2 image generator will be added as an extra tool for noForth t. This tool runs on win32Forth and uses an Intel-Hex image generator from the library on noForth t. This allows you to build your own self-starting noForth apps.
+An UF2 image generator will be added as an extra tool for noForth t. This tool runs on win32Forth and uses an Intel-Hex image generator from the [this file](..\Tools\image-01.f) or from the library of noForth t. This allows you to build your own self-starting noForth apps.
 
 The win32Forth program is called: Build-UF2-v3.f
 And this is how you use it: 
@@ -18,6 +18,7 @@ A file named “filename.hex” is read. This is converted in three steps to a U
 The image used is the last frozen image!
 
 1. Load the image generator: NEED IMAGE
+<br>Or using the file: [image-01.f](..\Tools\image-01.f)
 2. Open the log function of your terminal emulator
 3. Type: CORE IMAGE
 4. An Intel-Hex is generated
@@ -28,3 +29,9 @@ The image used is the last frozen image!
 9. Type: HEX>UF2 “filename”
 10. The resulting UF2 is saved e.g. "filename-251010.uf2"
 11. Now your personal UF2 is ready
+
+---
+
+<H4>A logged win32Forth UF2 session</h4>
+
+![](../Pics/hex-to-uf2.jpg)

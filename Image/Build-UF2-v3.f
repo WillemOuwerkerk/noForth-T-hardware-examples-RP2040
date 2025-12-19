@@ -1,7 +1,7 @@
 \  Build UF2 binary file for RP2040 bootloader
 \
 \   Based on the original code from Willem Jager but simplyfied, W.O. 01jun2025
-\   Now converted to a seprate Intel-Hex to UF2-file converter.
+\   Now converted to a separate Intel-Hex to UF2-file converter.
 \
 \
 
