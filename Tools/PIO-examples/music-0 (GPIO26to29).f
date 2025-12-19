@@ -3,7 +3,7 @@
 \ Frequency: 8Hz to 20kHz, timbre range: 0 to 100
 
 decimal
-: HZ        ( hz sm -- )        >r  dm 300 *  r> freq ;
+: HZ        ( hz sm -- )        >r  dm 300 *  r> set-freq ;
 
 clean-pio                   \ Empty code space mirror
 0 0 {pio                    \ Use state machine-0 on PIO-0

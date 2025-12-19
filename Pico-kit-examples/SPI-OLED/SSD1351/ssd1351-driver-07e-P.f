@@ -107,7 +107,7 @@ v: inside definitions
 
 [else]
 
-code DATA
+create DATA
     gpio-out 4 + ,
     0B bitmask ,
     4003C00C ,
@@ -122,7 +122,7 @@ code>
     next,
 end-code
 
-code COMM
+create COMM
     gpio-out 8 + ,
     0B bitmask ,
 code>
@@ -131,7 +131,7 @@ code>
     next,
 end-code
 
-code {SPI
+create {SPI
     gpio-out 8 + ,
     0A bitmask ,
 code>
@@ -140,7 +140,7 @@ code>
     next,
 end-code
 
-code SPI}
+create SPI}
     gpio-out 4 + ,
     0A bitmask ,
     4003C00C ,
@@ -172,7 +172,7 @@ routine OL>)    ( -- a )    \ DAY = SPI data register, W = OLED command or data
     lr bx,
 end-code
 
-code >OL        ( b -- )
+create >OL        ( b -- )
     4003C008 ,
 code>
     day  w ) ldr,
@@ -183,7 +183,7 @@ code>
     next,
 end-code
 
-code 2>OL        ( b0 b1 -- )
+create 2>OL        ( b0 b1 -- )
     4003C008 ,
 code>
     day  w ) ldr,
@@ -196,7 +196,7 @@ code>
     next,
 end-code
 
-code >PIX   ( 0|n -- )
+create >PIX   ( 0|n -- )
     adr lc ,    \ Letter color
     adr bc ,    \ Backgound color
     gpio-out ,  \ Control line ouput address
@@ -310,7 +310,7 @@ v: extra definitions
 inside also  forth also
 
 (*
-code XLIM   ( -- x )        \ Calc. window X-limit
+create XLIM   ( -- x )        \ Calc. window X-limit
     adr WX ,
     adr 'X ,
 code>
@@ -322,7 +322,7 @@ code>
     next,
 end-code
 
-code YLIM   ( -- y )        \ Calc. window Y-limit
+create YLIM   ( -- y )        \ Calc. window Y-limit
     adr WY ,
     adr 'Y ,
 code>
@@ -360,7 +360,7 @@ end-code
     'x x <  'y y < or       \ Border overflow
     or 0= ;
 [else]
-code ONSCR? ( -- f )
+create ONSCR? ( -- f )
     adr x ,  adr y ,        \ TOS = X,  HOP = Y
     adr wy ,  adr y ,       \ HOP = 'X, DAY = 'Y
 code>

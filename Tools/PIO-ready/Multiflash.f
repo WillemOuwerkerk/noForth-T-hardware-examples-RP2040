@@ -1,6 +1,6 @@
 (* PIO example programs generated with the EXPORT function
 
-For use with the 'mini-PIO.f' base file
+For use with the 'piobase.f' base file
 
 WS2812  - Changes color all the time
 FLASH   - LED on GPIO25 flashes
@@ -70,15 +70,13 @@ hex
     0018 502000B8 !
     0015 502000F0 !
     0003 50200000 !
-    0000 set-pio ;    \ Set PIO address
+    0000 =pio ;    \ Set PIO address
 
 multi-flash
 
-: FLASH    18 1 exec ;              \ Jump to address 24, start flasher
-: LED-OFF  17 1 exec  E000 1 exec ; \ Pin 25 & 26 off, jump to wait loop (address 23)
-: LED-ON   17 1 exec  F801 1 exec ; \ Pin 25 & 26 on, jump to wait loop (address 23)
+: FLASH    18 1 exec-opc ;                  \ Jump to address 24, start flasher
+: LED-OFF  17 1 exec-opc  E000 1 exec-opc ; \ Pin 25 & 26 off, jump to wait loop (address 23)
+: LED-ON   17 1 exec-opc  F801 1 exec-opc ; \ Pin 25 & 26 on, jump to wait loop (address 23)
 
 ' multi-flash  to app
 shield MULTI\   ( freeze )
-
-\ End

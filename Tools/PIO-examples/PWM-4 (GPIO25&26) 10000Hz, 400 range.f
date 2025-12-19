@@ -4,7 +4,7 @@
 clean-pio  decimal          \ Empty code space mirror
 \ 10 kHz PWM, range 0 to 400
 0 0 {pio                    \ Use state machine-0 on PIO-0
-    12000000 =set-freq      \ State machine 0 runs on 12MHz
+    12000000 =freq          \ State machine 0 runs on 12MHz
     25 2 =side-pins  opt    \ GPIO 25 for side-set
     25 2 =set-pins          \ GPIO 25 for SET
     0 =in-dir               \ Shift ISR to left!

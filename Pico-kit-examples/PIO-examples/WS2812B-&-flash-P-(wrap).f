@@ -55,9 +55,9 @@ hex
     0003 50200000 !
     0000 set-pio ;
 
-: FLASH    17 1 exec ;              \ Jump to address 24, start flasher
-: LED-OFF  16 1 exec  E000 1 exec ; \ Pin 25 & 26 off, jump to wait loop (address 22)
-: LED-ON   16 1 exec  F801 1 exec ; \ Pin 25 & 26 on, jump to wait loop (address 22)
+: FLASH    17 1 exec-opc ;              \ Jump to address 24, start flasher
+: LED-OFF  16 1 exec-opc  E000 1 exec-opc ; \ Pin 25 & 26 off, jump to wait loop (address 22)
+: LED-ON   16 1 exec-opc  F801 1 exec-opc ; \ Pin 25 & 26 on, jump to wait loop (address 22)
 
 ' pio-prog  to app
 shield WS2812B\  freeze

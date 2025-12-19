@@ -1,6 +1,6 @@
 (* Let core-1 on RP2040 run it's own code
 
-Primitives for activating code on CORE-1 from CORE-0
+Primitives for activating CORE-1 from CORE-0
 
 \ PSM_BASE = 40010000 ( Power-on State Machine )
 40010000 = FRC_OFF
@@ -32,7 +32,7 @@ When a WFE instruction is executed the current drops about
 
 v: extra definitions
 \ Reset core-1
-code RESET1 ( -- )      \ 26 bytes
+create RESET1 ( -- )      \ 26 bytes
     40010008 ,          \ Watchdog reset select
     40058000 ,          \ Watchdog control
     00010000 ,          \ Reset core-1 pattern
@@ -46,7 +46,7 @@ end-code
 
 \ : FTX?          ( -- f )    2 D000,0050 bit** 0<> ;
 \ : FRX?          ( -- f )    1 D000,0050 bit** 0<> ;
-code FRX?       ( -- f )
+create FRX?     ( -- f )
     D000,0050 ,
 code>
     day 1 # movs,       \ 1 - Fifo RX? bit
@@ -60,7 +60,7 @@ code>
     then,
     next,               \ 6
 end-code
-code FTX?       ( -- f )
+create FTX?     ( -- f )
     D000,0050 ,
 code>
     day 2 # movs,       \ Fifo TX? bit
@@ -69,7 +69,7 @@ end-code
 
 v: extra definitions
 \ Send data to core-1
-code FIFO!      ( x -- )
+create FIFO!    ( x -- )
     D0000050 ,          \ FIFO status register
 code>
     w  w ) ldr,
@@ -85,7 +85,7 @@ code>
 end-code
 
 \ Read data from core-1
-code FIFO@      ( -- x )
+create FIFO@    ( -- x )
     D0000050 ,          \ FIFO status register
 code>
     w  w ) ldr,

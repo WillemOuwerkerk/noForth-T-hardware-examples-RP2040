@@ -109,7 +109,7 @@ s" Forth"  dup ec, em,
 
 
 \ Show stored string from EEPROM
-v: fresh
+v: fresh inside
 : EEPROM        ( -- )
     i2c-on
     begin
@@ -163,6 +163,5 @@ v: forth definitions
 v: fresh
 ' scan-i2c  to app
 shield HW-I2C\ \ freeze
-cr .( Length with examples )  here swap - dm .
 
 \ End

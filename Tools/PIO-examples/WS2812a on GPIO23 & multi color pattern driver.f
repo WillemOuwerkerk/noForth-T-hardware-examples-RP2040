@@ -31,7 +31,7 @@
 clean-pio  decimal          \ Empty code space mirror
 0 0 {pio                        \ Use state machine-0 on PIO-0
     6666666 =freq               \ On 6.666.666 Hz frequency
-    23 1 =side-pins  opt        \ GPIO 23 for SIDE-SET optional
+    23 1 =side-pins  opt        \ GPIO 25 for SIDE-SET optional
     23 1 =out-pins              \ for OUT & SET
     23 1 =set-pins
     23 =jmp-pin                 \ Pin 23 is input too
@@ -84,19 +84,25 @@ code 2@ ( a -- lo hi )
 next, end-code
 
 decimal
-10 constant #LEDS   \ Number of WS2812 LEDs connected
+11 constant #LEDS   \ Number of WS2812 LEDs connected
 0 value #POS        \ Current LED position
 
-hex
-: BLACK     ( -- dc )       000000 ;    \ Leds on and off
-: WHITE     ( -- dc )       202012 ;
-: GREEN     ( -- dc )       200000 ;
-: RED       ( -- dc )       002000 ;
-: BLUE      ( -- dc )       000020 ;
-: ICY       ( -- dc )       20203F ;
-: WARM      ( -- dc )       303F20 ;
-: HOT       ( -- dc )       303808 ;
-
+: CLR       ( -- )          0 to #pos ;
+: BLACK     ( -- c )        000000 ;    \ Leds on and off
+: WHITE     ( -- c )        101009 ;
+: GREEN     ( -- c )        100000 ;
+: RED       ( -- c )        001000 ;
+: DARKRED   ( -- c )        000800 ;
+: BLUE      ( -- c )        000010 ;
+: DARKBLUE  ( -- c )        000008 ;
+: BLUEGREEN ( -- c )        1A0008 ;
+: YELLOW    ( -- c )        181400 ;
+: ORANGE    ( -- c )        081000 ;
+: PURPLE    ( -- c )        000314 ;
+: DARKGREEN ( -- c )        080000 ;
+: ICY       ( -- c )        10101F ;
+: WARM      ( -- c )        181F10 ;
+: HOT       ( -- c )        181C04 ;
 : >LEDS     ( c +n -- )
     1 umax  2dup   dup +to #pos  \ Length is minimal 1 LED
     begin  1 tx-depth  3 < until  1 >txf  1 >txf   \ Data for GPIO 22

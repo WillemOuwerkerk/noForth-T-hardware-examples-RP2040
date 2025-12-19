@@ -1,4 +1,4 @@
-(* PWM on the RP2040
+(* PWM on Pico
 
 This code uses two consecutive pins as pulse width outputs
 it's the way the PWM hardware works! So 16,17 or 18,19, etc.
@@ -23,7 +23,7 @@ PWM frequency = ((sysclock/div)/pwm-top+1)/PH+1
 *)
 
 hex     \ PWM base pin 0, 2, 4, 8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28
-dm 16                           constant GPIOA      \ PWM base pin 16, etc.
+dm 02                           constant GPIOA      \ PWM base pin 16, etc.
 dm 999                          constant PWM#       \ PWM wrap value
 gpioa 0F and 2/  14 *  40050000 + constant PWM-CSR  \ PWM control register
 pwm-csr 0C +                    constant PWM-PULSE  \ PWM pulsewidth register

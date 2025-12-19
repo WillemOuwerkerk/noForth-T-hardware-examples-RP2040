@@ -1,5 +1,5 @@
 (* -------------------------------------------------------------
-    Example on how to use low edge pin interrupts on the RP2040
+    Example on how to use low edge pin interrupts on RP2040
     Used GPIO2 as input & GPIO25 as output
    -------------------------------------------------------------
     E000E100 = NVIC_ISER        Interrupt Set-Enable Register
@@ -34,11 +34,11 @@ dm 25 bitmask           constant GPIO-OUT   \ GPIO25 mask
 \  dm 25 bitmask D000001C ! ;   \ GPIO_OUT_XOR  Toggle GPIO25 (LED) on interrupt
 routine PIN-IRQ    ( -- )
     { w hop day lr } push,
-    data>   gpio-in ,       \ GPIO2         clear high edge mask
+    (data   gpio-in ,       \ GPIO2         clear high edge mask
             400140F0 ,      \ INTR0         interupt 0 register
             gpio-out ,      \ GPIO25        bit mask
             D000001C ,      \ GPIO_OUT_XOR  toggle register
-    code>
+    data)
     w  { hop day } ldm,     \ HOP=GPIO2, DAY=Input
     hop  day ) str,         \ Reset GPIO2
     w  { hop day } ldm,     \ HOP=GPIO25, DAY=GPIO_XOR

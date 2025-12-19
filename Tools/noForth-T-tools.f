@@ -25,6 +25,14 @@ v: fresh extra definitions inside also
     then hx 1B over = ?abort
     bl <> ;
 
+v: forth definitions
+: .S ( -- )
+    ?stack (.) space
+    depth false
+    ?do  depth i - 1- pick
+        base @ 0A = if . else u. then
+    loop ;
+
 v: inside definitions
 : RECUR ( -- )  \ use only within for-next
     2r> over 0=                     \ index & unnest address
@@ -33,7 +41,7 @@ v: inside definitions
         else ch 0 - dup 0A u< and   \ 0..9
             2* 2*                   \ new index
         then swap
-    then 2>r ;
+    then  2>r ;
 
 (*
   1 for ... recur next \ repeat controlled by key
@@ -50,23 +58,17 @@ v: extra definitions
 v: extra definitions
 : MANY   ( -- )  ?stack  >in @ stop? and >in ! ;
 
-v: forth definitions
-: .S ( -- )
-    ?stack (.) space
-    depth false
-    ?do  depth i - 1- pick
-        base @ 0A = if . else u. then
-    loop ;
-
 v: extra definitions
 \ ----- DUMP - 07mar23 an/wo
-: DMP ( a -- )
-    base? swap  hex
-    1 for
-        cr dup 5 .r ." : "
-        8 for  count 3 .r  next  8 -  ."  |"
-        8 for  count pchar emit  next ." | "
-    recur next  drop  to base? ;
+: DMP ( a -- )                  \ this is a DUMP without count
+   hx FF s>d du.str nip 1+      \ column width
+   swap    ( colw adr )
+   1 for cr base @ hex over 4 u.r ." : " base !
+      swap ( adr colw )
+      over 8 bounds do i c@ over .r loop ."  |"  8 us
+      swap ( colw adr )
+      8 false    do count pchar emit loop ." | "  8 us
+   recur next 2drop ;
 
 v: only definitions  extra also  forth also  inside
 \ nieuwe versie 2nov20 + iwords
@@ -86,9 +88,9 @@ v: only definitions  extra also  forth also  inside
 v:      vp c@ = (*
         2 r@ execute        (           \ no vocs
 *)
-        if  dup lfa>n space count 1F and type space
+        if  dup lfa>n space count 1F and type space  8 us
             48 hor < if cr then
-        then compile@ swap !            \ unlink
+        then lnk@ swap !                \ unlink
     repeat 2drop
 v:  (*
     rdrop ; : IWORDS ['] = >r           \ no vocs
@@ -115,7 +117,10 @@ v: fresh inside definitions
             then  ( a +n )
             ?dup if
                 over c@  7F and  =      \ count ok? \ v
-                if  dup 1 and ?exit     \ nfa odd -> ok
+                if  dup 1 and if        \ nfa odd -> ok
+                    dup 1- cell- @      \ Correct link?
+                    over < and exit
+                then
         then then then
     then  false and ;
 
@@ -154,15 +159,22 @@ v:      dup 1- c@ 7F and .voc           \ Show vocabulary
         c@ 80 and if  ."  imm" then space
         'see @ cell- >nfa ?dup if
             (.) space @name type space  \ made by ..
+        else
+            'see @  h@+ swap h@ h+h     \ Read doer
+            46E7B401 = if               \ Is it unknown DOES part
+                (.) ."  DOES> "
+            then
         then
         false exit                      \ ----
     then  true ;
 
+: CFA@      ( a -- xt )     h@+ swap h@ h+h ;
+
 : .CFA      ( -- )      \ Decode CFA contents
-    'see compile@  >nfa ?dup if         \ contents = nfa ?
+    'see cfa@  >nfa ?dup if         \ contents = nfa ?
         @name type exit                 \ .compiled word
     else                                \ compile@ = body?
-        'see compile@ cell- >nfa ?dup if
+        'see cfa@ cell- >nfa ?dup if
             (.) space @name type space  \ made by ..
             exit
         then
@@ -215,11 +227,22 @@ v: fresh inside
 
 : SEE           ( <name> -- )       ' msee ;
 
+: [ELSE] true
+  begin begin begin ?dup 0= ?exit
+    [char] [  beyond  >in @ 1- dup 0<> + >in !
+    bl-word count 2dup upper
+    s" [THEN]" 2over s<> 0= while 2drop 1+ repeat
+    s" [ELSE]" 2over s<> 0= while 2drop dup -1 = - repeat
+    s" [IF]" s<> 0= if 1- then
+  again ; immediate
+: [IF] ?exit postpone [else] ; immediate
+: [THEN] ; immediate
+
 
 v: extra definitions  inside
 v: : .VOCS         ( -- )  \ Show all present vocabularies
 v:    wid-link
-v:    c? [if] 2 + [else] cell+ [then]
+v:    cell+ \ c? [if] 2 + [else] cell+ [then]
 v:    h@ 1+  0
 v:    (.) space
 v:    do  i .voc  loop ;

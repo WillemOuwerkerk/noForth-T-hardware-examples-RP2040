@@ -17,9 +17,14 @@ All code should run on noForth t (duo) from version 231010 onwards. If you don't
 - [****Pico-kit examples****](Pico-kit-examples) ; Examples tailored to the Pico-kit experimenter board
 - [****Hardware examples****](Hardware-examples) ; General code that will run on every RP2040 with noForth t
 - [****USB-CDC****](USB-CDC) ; USB driver that will run on a RP2040 with noForth t with multitasker added
-  
+ - [****Hard-fault****](Hard-fault) ; Hard fault handler
+- [****Hayes-tester****](Hayes-tester) ; The Hayes test for standard & noForth t specific words
+- [****Library****](Library) ; A Flash ROM source code library for noForth t
+ - [****Multi-tools****](Multi-tools) ; A multitasker tool set
+
+ 
 ***
 <h3 align="center">YP-RP2040 a pin compatible Chinese Pico board clone</h3>
-  
+
 ![Pico with headers for noForth DUO-R](https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040-/assets/11397265/4e747dc8-8551-425e-b57e-7ade88b18e25)
 

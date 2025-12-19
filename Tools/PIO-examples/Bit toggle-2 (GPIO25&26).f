@@ -16,10 +16,10 @@ clean-pio  decimal          \ Empty code space mirror
             7 [] 0 pins set,        \ LED (pin 25 & 26 off)
         7 [] y--? until,            \ Wait longer
     wrap
-    0 =exec                 \ Start SM-0 code at address 0
+    0 =exec                \ Start SM-0 code at address 0
 pio}
 
 hex
-: FLASH    2 0 exec ;      \ Jump to address 2, start flasher
-: LED-OFF  1 0 exec  E000 0 exec ; \ Pin 25 off, jump to wait loop
-: LED-ON   1 0 exec  E001 0 exec ; \ Pin 25 on, jump to wait loop
+: FLASH    2 0 exec-opc ;      \ Jump to address 2, start flasher
+: LED-OFF  1 0 exec-opc  E000 0 exec-opc ; \ Pin 25 off, jump to wait loop
+: LED-ON   1 0 exec-opc  E001 0 exec-opc ; \ Pin 25 on, jump to wait loop

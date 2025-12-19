@@ -39,39 +39,30 @@ A0  = IC_FS_SPKLEN      Spike suppression (byte)
 *)
 
 hex  here
-40044000 value 'I2C     \ I2C0_BASE     I2C register pointer
-create I2C   ( -- )
-noname
-    adr 'i2c ,              \ I2C device pointer
-code>
-    tos  sp -) str,         \ 3 - Save TOS
-    ip  { tos } ldm,        \ 2 - Read inline data
-    w  { w } ldm,           \ 2 - Read I2C pointer
-    w  { w } ldm,           \ 2 - Read contents of pointer
-    tos w add,              \ 1 - Make I2C register address
-    next,                   \ 6
-end-code
-does>        ( -- )    flyer  compile,  , ; immediate
+v: also inside
+: -LITERAL  ( u1 offset -- u2 )  \ Build number from u1 and an offset leaving u2
+    flyer  bl-word count number? 0<> ?abort drop  +  postpone literal ;
+v: previous
 
-: I2C1          ( -- )
-    03 0E gpio! 03 0F gpio! \ I2C1 on GPIO14 & GPIO15
-    4A 0E pads! 4A 0F pads! \ Set GPIO14=SDA & GPIO15=SCL with pull up
-    40048000 to 'I2C ;      \ Use I2C1 register set
+40044000 constant 'I2C      \ I2C0_BASE     I2C register pointer
+
+: 'I2C   ( öffset" -- )      'i2c  -literal ; immediate
 
 : DEVICE-ON     ( mode my-addr -- )
-    i2c1                    \ Initialise GPIO14 & GPIO15 for I2C
-    1 [ 6C ] i2c  **bic     \ Disable I2C
-         [ 8 ] i2c  !       \ Set SAR (slave) address
-         [ 0 ] i2c  !       \ Set I2C mode for this device
-    1 [ 6C ] i2c  **bis ;   \ Enable I2C
+    03 0C gpio! 03 0D gpio! \ I2C1 on GPIO12 & GPIO13
+    4A 0C pads! 4A 0D pads! \ Set GPIO12=SDA & GPIO13=SCL with pull up
+    1  'i2c 6C **bic    \ Disable I2C
+       'i2c 08 !        \ Set SAR (slave) address
+       'i2c 00 !        \ Set I2C mode for this device
+    1  'i2c 6C **bis ;  \ Enable I2C
 
 : RESET-FLAGS   ( -- )
-    [ 50 ] i2c              \ Clear interrupt registers base
-    @+ drop  @ drop ;       \ Clear read request & TX abort
+    'i2c 50             \ Clear interrupt registers base
+    @+ drop  @ drop ;   \ Clear read request & TX abort
 
-: I2C-READ?     ( -- 0|x )  20 [ 2C ] i2c  bit** ;  \ I2C read request?
-: I2C-WRITE?    ( -- 0|x )   8 [ 70 ] i2c  bit** ;  \ I2C write request?
-: I2C-DATA      ( -- a )    [ 10 ] i2c ;            \ I2C data register
+: I2C-READ?     ( -- 0|x )  20 'i2c 2C bit** ;  \ I2C read request?
+: I2C-WRITE?    ( -- 0|x )  08 'i2c 70 bit** ;  \ I2C write request?
+: I2C-DATA      ( -- a )    'i2c 10 ;           \ I2C data register
 
 here over - dm .
 
@@ -100,6 +91,6 @@ create RAM  100 allot       \ Data buffer
     cr ." Slave off " ;
 
 here swap - dm .
-shield I2MSLAVE\
+shield I2C-MSLAVE\
 
 \ End

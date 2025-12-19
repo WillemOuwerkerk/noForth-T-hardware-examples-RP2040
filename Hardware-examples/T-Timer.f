@@ -1,6 +1,6 @@
-(* Using alarms on the timer unit for noForth t
+(* Using alarms on the timer unit
 
-    Timer base register: 4005,4000
+    Timer base register: 4005,4000 ( in microseconds from 1µs to 4295 seconds )
     Setting the alarms:  4005,4010, etc.
 
 Timer is chapter 4.6 from page 436 ff
@@ -37,29 +37,25 @@ Functions:
     1 intr bit** until      \ Ready, when alarm gone off
     cr ." Ready " intr @ . ; \ Show off status
 
-\ Restart the defined time "name" with the time "interval".
-: RESTART  ( interval "name" -- )        \ Interval in microseconds!
-    '  >body >r                          \ Get alarm body address
-    dup r@  !                            \ Save new interval first
-    timerawl @ +                         \ Calc. next alarm time too
-    r> cell + @  ! ;                     \ and store in the alarm register
+: INTERVAL  ( interval "name" -- )      '  >body ;
+
 
 \ Defining word for alarm functions (interval = microseconds)
-: ALARM     ( interval alarm -- f )     \ Define timer using the alarm function
+: ALARM     ( interval alarm -- f ) \ Define timer using the alarm function
     create
-        over ,  3 umin >r               \ Alarm interval
-        r@ cells  alarm0 +  tuck ,      \ Used alarm
-        r> bitmask ,                    \ Bit masker
-        timerawl @ +  swap !            \ Init. first alarm interval
+        over ,  3 umin              \ Alarm interval
+        dup cells  alarm0 +  dup ,  \ Used alarm
+        swap bitmask ,              \ Bit masker
+        >r  timerawl @ +  r> !      \ Set first interval
     does>
-        dup 2 cells + @                 \ Read bit mask
-        armed bit** 0= if               \ Alarm triggered?
-            @+ timerawl @ +             \ Yes, calc. next alarm time,
-            swap @  !  true  exit       \ Store in alarm reg. and leave true
-        then  drop  false ;             \ Remove data address & leave false
+        dup 2 cells + @             \ Read bit mask                     ai msk
+        armed bit** 0= dup if       \ Alarm not enabled or triggered?   ai f
+            drop  @+ timerawl @ +   \ Ok, calc. next alarm time,        aa na
+            swap @  !  true  true   \ set it and leave true             tf tf
+        then  nip ;                 \ Remove data address               f
 
-1000 1 alarm ONE    \ Define alarm-1 with 1000 microseconds
-8000 2 alarm TWO    \ Define alarm-2 with 8000 microseconds
+1000 1 alarm ONE    \ Define alarm-1 with 1000 cycles
+8000 2 alarm TWO    \ Define alarm-2 with 8000 cycles
 
 \ Als f = false, druk . of anders het karakter van de stack
 : .CH       ( f ch -- )    and dup 0= if  drop ch .  then emit ;
@@ -69,6 +65,11 @@ Functions:
 \   one ch A .ch many      \ Test alarm-1
 \   two ch B .ch many      \ Test alarm-2
 \   one ch A .ch two ch B .ch many
+\
+\ Set new intervaltime for alarm ONE
+\
+\ 10000 interval one  !  one drop
+
 
 
 \ Timer alarm-0 interrupt example
@@ -84,12 +85,12 @@ dm 25 bitmask   constant GPIO-OUT   \ GPIO25 mask
 
 routine FLASHES ( -- a )
     { w hop day sun lr } push, \ Save used registers
-    data>
+    (data
         period ,    \ Alarm-0 cycle duration
         40054000 ,  \ Timer base addr. ALARM0=10, TIMERAWL=28, INTR=34
         gpio-out ,  \ Output bit mask
         D000001C ,  \ GPIO_OUT_XOR register
-    code>
+    data)
     w { hop day } ldm,  \ HOP=duration, DAY=timer-base
     sun  day 28 #) ldr, \ TIMER_AWL     Read timer low
     sun hop add,        \ Add duration
@@ -113,5 +114,23 @@ end-code
     timerawl @ period +  alarm0 ! ; \ Start alarm-0 of timer unit
 
 \ start-alarm0
+
+
+\  Time measurement
+
+40054028 constant TIMERAWL  \ Low part of 64-bits timer
+0 value T-START
+
+: START     ( -- )      timerawl @  to T-start ;
+: TIME      ( -- µs )   timerawl @  t-start - ;
+
+: .TIME     ( -- )
+    time hx 3E8 /mod  cr
+    0 <# #s #> type ."  millisec & "
+    0 <# #s #> type ."  microsec " ;
+
+: MEASURE   ( "name" -- )
+    base @ >r  decimal  '
+    start  catch drop  .time  r> base ! ;
 
 \ End

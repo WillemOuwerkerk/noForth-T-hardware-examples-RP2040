@@ -1,6 +1,6 @@
 (* PIO example program generated with the EXPORT function
 
-For use with the 'mini-PIO.f' base file
+For use with the 'piobase.f' base file
 
 Starts flashing when it's loaded
 
@@ -24,11 +24,9 @@ hex
     0001 5020005C !
     0000 502000D8 !
     0001 50200000 !
-    0000 set-pio ;
+    0000 =pio ;
 
 pio-prog
 
 ' pio-prog  to app
 shield FLASH\  ( freeze )
-
-\ End

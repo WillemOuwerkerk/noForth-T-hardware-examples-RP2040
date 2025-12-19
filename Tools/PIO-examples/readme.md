@@ -32,5 +32,10 @@
 - [****WS2812B driver****](WS2812%20on%20GPIO23.f) ; WS2812B driver on GPIO23 
 - [****WS2812B driver & tracer output****](WS2812T%20on%20GPIO23%20&%20trace%20output%20on%20GPIO26.f) ; WS2812B driver on GPIO23 with tracer output on GPIO26
 - [****Multiple WS2812B pattern driver****](WS2812a%20on%20GPIO23%20&%20multi%20color%20pattern%20driver.f) ; WS2812B driver on GPIO23 and complete multi LED color pattern driver
+- [****DHT22 moisture sensor driver****](PIO-DHT22-1.f) ; DHT22 moisture/temperture sensor read out
 
 ***
+
+<h3>One PIO state machine</h3>
+
+![](../../Pics/SM0.jpg)

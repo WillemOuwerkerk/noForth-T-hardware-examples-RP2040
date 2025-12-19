@@ -35,11 +35,11 @@ dm 25 bitmask           constant GPIO-OUT   \ GPIO25 mask
 \  dm 25 bitmask D000001C ! ;   \ GPIO_OUT_XOR  Toggle GPIO25 (LED) on interrupt
 routine PIN-IRQ    ( -- )
     { w hop day lr } push,
-    data>   gpio-in ,       \ GPIO3         clear high edge mask
+    (data   gpio-in ,       \ GPIO3         clear high edge mask
             400140F0 ,      \ INTR0         interupt 0 register
             gpio-out ,      \ GPIO25        bit mask
             D000001C ,      \ GPIO_OUT_XOR  toggle register
-    code>
+    data)
     w  { hop day } ldm,     \ HOP=GPIO3, DAY=Input
     hop  day ) str,         \ Reset GPIO3
     w  { hop day } ldm,     \ HOP=GPIO25, DAY=GPIO_XOR

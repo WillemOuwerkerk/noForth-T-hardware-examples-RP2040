@@ -101,7 +101,7 @@ D0000004 constant GPIO-IN           \ GPIO input value
 
 \ (Re)define {NRF NRF}
 0 [if]
-code {NRF        ( -- )
+create {NRF     ( -- )
     GPIO-OUT ,          \ Output port address
     11 bitmask invert , \ Inverted CSN bitmask
 code>
@@ -112,7 +112,7 @@ code>
     next,
 end-code
 
-code NRF}        ( -- )
+create NRF}     ( -- )
     GPIO-OUT ,          \ utput port address
     11 bitmask ,        \ CSN bitmask
 code>
@@ -150,7 +150,7 @@ v: inside definitions
 
                     ( USCI-B0 SPI interface to nRF24L01+ )
 
-code CE-LOW      ( -- )
+create CE-LOW   ( -- )
     GPIO-OUT ,          \ Output port address
     14 bitmask invert , \ Bitmask CE
 code>
@@ -161,7 +161,7 @@ code>
     next,
 end-code
 
-code CE-HIGH     ( -- )
+create CE-HIGH  ( -- )
     GPIO-OUT ,          \ Output port address
     14 bitmask ,        \ Bitmask CE
 code>

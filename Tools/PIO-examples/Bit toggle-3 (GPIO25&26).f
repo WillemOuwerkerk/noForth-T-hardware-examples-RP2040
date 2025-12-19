@@ -24,8 +24,8 @@ clean-pio  decimal          \ Empty code space mirror
 pio}
 
 hex
-: FLASH    3 0 exec ;               \ Jump to address 3, start flasher
-: LED-OFF  2 0 exec  F000 0 exec ;  \ Pin 25 & 26 off, jump to wait loop
-: LED-ON   2 0 exec  F801 0 exec ;  \ Pin 25 & 26 on, jump to wait loop
+: FLASH    3 0 exec-opc ;               \ Jump to address 3, start flasher
+: LED-OFF  2 0 exec-opc  F000 0 exec-opc ;  \ Pin 25 & 26 off, jump to wait loop
+: LED-ON   2 0 exec-opc  F801 0 exec-opc ;  \ Pin 25 & 26 on, jump to wait loop
 
 \ End

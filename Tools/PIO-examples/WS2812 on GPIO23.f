@@ -1,4 +1,4 @@
-\ WS2812 driver for YL-RP2040
+\ WS2812 driver
 
 clean-pio  decimal          \ Empty code space mirror
 0 0 {pio                    \ Use state machine-0 on PIO-0
@@ -35,5 +35,3 @@ clean-pio  decimal          \ Empty code space mirror
 pio}
 
 0 .sm
-
-\ End

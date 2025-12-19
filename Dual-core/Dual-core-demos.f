@@ -1,4 +1,4 @@
-(* Demo's that demonstrate programs that are running on both cores
+(* Demo's that demonstrate programs that are running on two cores
 
     1) Counter
     2) Switch
@@ -23,7 +23,6 @@
 
 
 \ Demo-2: Switch a program status on the other core
-\ Can be loaded on both cores, start a different program on each core!
 : SWITCH        ( -- )
     false  begin
     s? 0= if  invert dup fifo!  1 ms  then

@@ -64,9 +64,9 @@ pio}
 pio}
 
 hex
-: FLASH    18 2 exec ;              \ Jump to address 24, start flasher
-: LED-OFF  17 2 exec  E000 2 exec ; \ Pin 25 & 26 off, jump to wait loop (address 23)
-: LED-ON   17 2 exec  F801 2 exec ; \ Pin 25 & 26 on, jump to wait loop (address 23)
+: FLASH    18 2 exec-opc ;              \ Jump to address 24, start flasher
+: LED-OFF  17 2 exec-opc  E000 2 exec-opc ; \ Pin 25 & 26 off, jump to wait loop (address 23)
+: LED-ON   17 2 exec-opc  F801 2 exec-opc ; \ Pin 25 & 26 on, jump to wait loop (address 23)
 
 
 0 .sm  1 .sm  2 .sm

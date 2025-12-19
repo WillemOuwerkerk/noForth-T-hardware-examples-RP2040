@@ -2,17 +2,13 @@
     Single UART, TX on state machine 0 & RX on state machine 1 of PIO 0
 *)
 
-v: pio also  definitions
-: =BAUD ( b sm -- )    8 * =freq ;
-v: previous
-
 \ With optional Side-set
 clean-pio  decimal          \ Empty code space mirror
 0 0 {pio                    \ Use state machine-0 on PIO-0
-\   9600 =baud              \ 9600
-\   38400 =baud             \ 38k4
-\   115200 =baud            \ 115k2
-    460800 =baud            \ 460k8
+\   9600   8 * =freq        \ 9600
+\   38400  8 * =freq        \ 38k4
+\   115200 8 * =freq        \ 115k2
+    460800 8 * =freq        \ 460k8
     26 1 =side-pins  opt    \ GPIO 26 for optional SIDE
     26 1 =out-pins          \ GPIO 26 for OUT & SET
     26 1 =set-pins
@@ -29,10 +25,10 @@ clean-pio  decimal          \ Empty code space mirror
 pio}
 
 1 0 {pio                    \ Use state machine-1 on PIO-0
-\   9600 =baud              \ 9600
-\   38400 =baud             \ 38k4
-\   115200 =baud            \ 115k2
-    460800 =baud            \ 460k8
+\   9600   8 * =freq        \ 9600
+\   38400  8 * =freq        \ 38k4
+\   115200 8 * =freq        \ 115k2
+    460800 8 * =freq        \ 460k8
     27 =jmp-pin
     27 =in-pin              \ GPIO 27 for IN & SET
     1 27 1 =inputs          \ Pull-up on input

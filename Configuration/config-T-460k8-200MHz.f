@@ -1,20 +1,21 @@
-(* Changing the configuration of noForth t ( 38.9mA )
+(* Changing the configuration of noForth T ( 38.9mA )
 
-    CFG      = Clock frequency in Hz
-    CFG 04 + = Used UART ( 0 or 1 ) only 0 is valid for now
-    CFG 08 + = Baudrate in bits per second
-    CFG 0C + = Used GPIO pin for S?
-    CFG 10 + = Boot method
+    0 CFG  = Switch S? and clock frequency in Hz
+    1 CFG  = Used UART address
+    2 CFG  = Baudrate in bits per second
+    3 CFG  = GPIO input address register
+    4 CFG  = Boot method
 
-    GROW     = Resize noForth t with the number of bytes from the stack
+    GROW   = Resize noForth with the number of bytes from the stack
 
 Valid data for these parameters are:
-    Clock    = 12, 30, 60, 120, 125, 132, 200, 250 MHz
-    Uart     = 0  (will be upgraded when this version is stable)
-    Baudrate = Any baudrate like 9600, 115200 until 921600 was tested ok
-    S? pin   = GPIO 24, but any free GPIO pin will do
-    Boot     = 0 = Single image noForth t
-               1/-1 = noForth t duo
+    Clock       = 12, 30, 48, 60, 120, 125, 132, 200 & 250 MHz
+    Uart        = Used UART address
+    Baudrate    = Any baudrate like 9600, 115200 until 921600 was tested ok
+    S? pin      = GPIO 24, but any free GPIO pin will do
+    S? address  = GPIO input address register
+    Boot        = 0 = noForth t solo
+                  1/-1 = noForth t duo
 
     FREEZE   = Save bootup image
     FREEZE2  = Save spare image
@@ -25,17 +26,17 @@ Valid data for these parameters are:
 
 decimal  cfg
 
-200     over !  cell+   \ Set maximal valid frequency in MHz
+24 200 h+h  0 cfg ! \ Set switch I/O-bit & frequency in MHz
 
-0       over !  cell+   \ Use UART-0
+hx 40034000 1 cfg ! \ Default UART or UART1 = 40038000
 
-460800  over !  cell+   \ Baudrate is 460k8
+460800      2 cfg ! \ Baudrate is 460k8
 
-24      over !  cell+   \ Use GPIO-24 for S?
+hx D0000004 3 cfg ! \ GPIO input address register
 
-4 cfg @ abs 4 cfg ! \ Make sure to (re)start the second image
+4 cfg @ abs 4 cfg ! \ (Re)start the second image, if any
 
-drop  hex
+hex  config         \ Test new configuration
 
   cfg config    \ Test new configuration
 
