@@ -16,7 +16,7 @@ All code should run on noForth t solo & duo from version 251010 onwards. If you 
 - [****Tools****](Tools) ; Show configuration, PIO (dis)assembler, PIO code examples, etc.
 - [****Pico-kit examples****](Pico-kit-examples) ; Examples tailored to the Pico-kit experimenter board
 - [****Hardware examples****](Hardware-examples) ; General code that will run on every RP2040 with noForth t
-- [****USB-CDC****](USB-CDC) ; USB driver that will run on a RP2040 with noForth t with multitasker added
+- [****USB-CDC****](USB-CDC) ; USB driver that works on an RP2040 with the multitasker version of noForth t 
  - [****Hard-fault****](Hard-fault) ; Hard fault handler
 - [****Hayes-tester****](Hayes-tester) ; The Hayes test for standard & noForth t specific words
 - [****Library****](Library) ; A Flash ROM source code library for noForth t
