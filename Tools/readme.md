@@ -21,7 +21,7 @@ These are all specific additions to noForth t, particularly the PIO assembler an
 - [****last.f****](last.f) ; Execute the last defined shield
 - [****memmap.f****](memmap.f) ; Show the noForth t memory map
 - [****Number-output-0.f****](Number-output-0.f) ; Miniature tracer using independent number conversion
-- [****image-01.f****](image-01.f) ; Generate Intel Hex output to the terminal screen. This is intended to generate a UF2 file containing your own (turnkey) program.
+- [****image.f****](image.f) ; Generate Intel Hex output to the terminal screen. This is intended to generate a UF2 file containing your own (turnkey) program.
  
 
 ***
