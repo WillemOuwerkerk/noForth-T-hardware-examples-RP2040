@@ -10,7 +10,7 @@ And this is how you use it:
 
 A file named “filename.hex” is read. This is converted in three steps to a UF2 file named “filename-current-date.uf2”.
 
-- [****Build-UF2-v3.f****](Build-UF2-v3.f) ; Converting an Intel-Hex file to a woring UF2-file
+- [****Build-UF2-v3.f****](Build-UF2-v3.f) ; Convert an Intel-Hex file to a working UF2-file
 
 ***
 
