@@ -19,7 +19,7 @@ A file named “filename.hex” is read. This is converted in three steps to a U
 The image used is the last frozen image!
 
 1. Load the image generator: NEED IMAGE
-<br>Or using the file: [image.f](..\Tools\image.f)
+<br>Or using the file: [image.f](../Tools/image.f)
 2. Open the log function of your terminal emulator
 3. Type: CORE IMAGE
 4. An Intel-Hex is generated
