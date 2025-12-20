@@ -12,7 +12,7 @@ Valid data for these parameters are:
     Baudrate = Any baudrate like 9600, 115200 until 921600 was tested ok
     S? pin   = D0000004, but any address may be used
     Boot     = 0 = noForth t solo
-               1 = noForth t duo
+               1/-1 = noForth t duo
 
     FREEZE   = Save bootup images
     FREEZE2  = Save spare images
@@ -40,4 +40,5 @@ hex  config             \ Test new configuration
 \ freeze2       \ Save as spare system, boots when you type COLD2
 
 \ End
+
 
