@@ -69,8 +69,12 @@ header ABORT"   ' S" @ ,   reveal immediate
     r> r@ xor ?negate swap   r> ?negate swap ;
 : /REM      ( x1 x2 -- r q )    >r s>d r> sm/rem ;
 
+code ARSHIFT ( a b -- c )   \ Arithmetic right shift
+    D9002B20 ,  1D2320 ,  412BC908 , CA10C804 ,  46C046A7 ,
+end-code
 
-0   v: true or
+
+0  v: true or
     [if]
 only forth 1  constant FORTH-WORDLIST fresh inside
 : GET-CURRENT   v0 c@ ;
