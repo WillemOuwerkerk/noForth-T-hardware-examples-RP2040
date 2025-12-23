@@ -11,12 +11,15 @@ i handle the orders for our local Dutch Forth users group.
 
 ***
 
-- [****I2C slave examples****](I2C-board-examples.f) ; I2C bus scanner & usage examples with an EEPROM and RP2040 slaves
-- [****RP2040-hw-i2c-3P.f****](RP2040-hw-i2c-3P.f) ; I2C1 master implementation
-- [****blink-0-P.f****](blink-0-P.f) ; Simple blinker using the BOOT-key for escape
+- [****I2C board examples****](I2C-board-examples.f) ; I2C bus scanner & usage examples with an EEPROM and RP2040 slaves
+- [****RP2040-hw-i2c.f****](RP2040-hw-i2c.f) ; I2C high-level master implementation
+- [****RP2040-code-i2c.f****](RP2040-code-i2c.f) ; I2C asm master implementation
+- [****RP2040-bb-i2c.f****](RP2040-bb-i2c.f) ; I2C bit-bang master implementation
+- [****islave-io.f****](islave-io.f) ; I2C I/O-slave on core-1
+- [****islave-mem.f****](islave-mem.f) ; I2C RAM-memory-slave on core-1
+- [****blink-0-P.f****](blink-0-P.f) ; - Simple blinker using the BOOT-key for escape
 - [****blink-1-P.f****](blink-1-P.f) ; Simple blinker using S2 for escape
 - [****interrupt-1P.f****](interrupt-1P.f) ; Hardware interrupt using S2
-- [****islave-2P.f****](islave-2P.f) ; I2C slave on core-1
 - [****pwm-1P.f****](pwm-1P.f) ; PWM driver on GPIO26 with MOSFET output
 - [****I2C-OLED****](I2C-OLED/) ; PFW I2C OLED driver with multiple letter sets
 - [****nRF24L01P****](nRF24/) ; Basic nRF24L01P driver with carrier wave scanner

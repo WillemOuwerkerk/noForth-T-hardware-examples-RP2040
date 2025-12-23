@@ -162,6 +162,6 @@ v: forth definitions
 
 v: fresh
 ' scan-i2c  to app
-shield HW-I2C\ \ freeze
+shield I2C-EXAMPLES\ \ freeze
 
 \ End
