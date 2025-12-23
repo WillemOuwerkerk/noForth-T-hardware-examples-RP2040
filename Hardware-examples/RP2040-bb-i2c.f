@@ -1,8 +1,10 @@
 (* RP2040 bitbang I2C driver
 
-    I2C core:        1296 bytes
-    with extensions: 1508 bytes
-    with examples:   3744 bytes ( PC8574, 24C02 & bus scanner )
+    I2C core:        1336 bytes
+    with extensions: 1548 bytes
+    with examples:   3812 bytes ( PC8574, 24C02 & bus scanner )
+
+23-12-2025  Added clock bit stretching & improved bus@
 
 GPIO14 = SDA
 GPIO15 = SCL
@@ -44,25 +46,25 @@ D0000020 constant GPIO-OEN  \ GPIO_OE           output enable register
 SCL SDA or constant BUS     \ I2C bus lines
 
 0 value DEV   0 value SUM   0 value NACK?
-\ : WAIT          ( -- )      24 for next ;         \ About 100 KHz with 125 MHz clock
-  : WAIT          ( -- )      0D for next ;         \ About 200 KHz with 125 MHz clock
-\ : WAIT          ( -- )      6 for next ;          \ About 300 KHz with 125 MHz clock
-\ : WAIT          ( -- )      noop noop noop ;      \ About 500 KHz with 125 MHz clock
+\ : WAIT          ( -- )      20 for next ; \ About 100 KHz with 125 MHz clock
+  : WAIT          ( -- )      0A for next ; \ About 200 KHz with 125 MHz clock
+\ : WAIT          ( -- )      4 for next ;  \ About 300 KHz with 125 MHz clock
+\ : WAIT          ( -- )      ;             \ About 400 KHz with 125 MHz clock
 
 : I2START       ( -- )
     scl gpio-oen **bic  wait
     sda gpio-oen **bis  wait ;
 
 : I2ACK         ( -- )
-    scl gpio-oen **bis  sda gpio-oen **bis  wait
+    scl gpio-oen **bis  sda gpio-oen **bis  wait    \ bis
     scl gpio-oen **bic  wait ;
 
 : I2NACK        ( -- )
-    scl gpio-oen **bis  sda gpio-oen **bic  wait
+    scl gpio-oen **bis  sda gpio-oen **bic  wait    \ bic
     scl gpio-oen **bic  wait ;
 
 : I2ACK@        ( -- )
-    scl gpio-oen **bis  sda gpio-oen **bic  wait
+    scl gpio-oen **bis  sda gpio-oen **bic  wait    \ bic
     scl gpio-oen **bic  wait
     sda gpio-in bit** to nack? ;
 
@@ -73,7 +75,9 @@ v: extra definitions
         dup 80 and if   sda gpio-oen **bic
         else            sda gpio-oen **bis
         then            wait  2*
-        scl gpio-oen **bic  wait
+        scl gpio-oen **bic
+        begin  scl gpio-in bit** until  \ Clock bit stretching?
+        wait
     next  drop  i2ack@ ;
 
 v: inside definitions
@@ -83,16 +87,18 @@ v: inside definitions
 \ Higher level I2C access, hides internal details!
 v: extra definitions
 : I2C-ON        ( -- )
-     5 0C gpio!  5 0D gpio! \ Use nomal I/O on GPIO12 & GPIO13
-    4A 0C pads! 4A 0D pads! \ Set GPIO12=SDA & GPIO13=SCL with pull up
+     5 0E gpio!  5 0F gpio! \ Use nomal I/O on GPIO14 & GPIO15
+    4A 0E pads! 4A 0F pads! \ Set GPIO14=SDA & GPIO15=SCL with pull up
     bus  D000,0020 **bic    \ I2C bus inputs at startup (pulled high)
     bus  D000,0010 **bic ;  \ Init. bus outputs to low
 
 : BUS@          ( -- b )
     0  8 for
         2*  scl gpio-oen **bis  sda gpio-oen **bic  wait
-        sda gpio-in bit**  0<> 1 and  or
-        scl gpio-oen **bic wait
+        scl gpio-oen **bic
+        begin  scl gpio-in bit** until  \ Clock bit stretching?
+        sda gpio-in bit**  0<> 1 and or \ Read bit moved to here
+        wait
     next
     -1 +to sum
     sum if  i2ack  else  i2nack  then ;
@@ -126,8 +132,9 @@ here over - cr .( with I2C extensions ) dm .
 \ A first demo  PCF8574 output & PCF8574 input
 i2c-on
 : >PCF8574  ( b dev -- )    device!  1 {i2c-write  bus!  i2c} ;
+: PCF8574>  ( dev -- b )    device!  1 {i2c-read  bus@  i2c} ;
 : >LEDS     ( b -- )        invert 21 >pcf8574 ;
-: INPUT     ( -- b )        20 device!  1 {i2c-read  bus@  i2c}  FF xor ;
+: INPUT     ( -- b )        20 pcf8574>  FF xor ;
 : BLINK     ( -- )          true >leds 100 ms  false >leds 100 ms ;
 
 v: forth definitions
