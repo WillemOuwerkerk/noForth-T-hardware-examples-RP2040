@@ -3,7 +3,7 @@ v: inside also definitions
 : >PCF8574      ( b dev -- )    device!  1 {i2c-write  bus!} ;
 : PCF8574>      ( dev -- b )    device!  1 {i2c-read   bus@} ;
 
-i2c-on
+i2c-on  ( ** PCF8574 in & out demo ** )
 : >LEDS         ( b -- )        invert 21 >pcf8574 ;
 : INPUT         ( -- b )        20 pcf8574>  FF xor ;
 : BLINK         ( -- )          true >leds 100 ms  false >leds 100 ms ;
@@ -25,6 +25,7 @@ v: forth definitions
     i2c-on  blink  begin  input >leds  key? until  0 >leds ;
 
 
+    ( ** PCF8574 type I/O-slave demo ** )
 
 : COUNTER       ( -- )      \ I2C slave demo
     cr  i2c-on  0  begin
@@ -32,6 +33,8 @@ v: forth definitions
             dup 30 >pcf8574  1+
         then  20 ms
     key? until  drop ;
+
+    ( ** RAM memory slave demo ** )
 
 v: inside definitions
 : {MADDR        ( ma +n -- )    \ Address buffer
@@ -53,6 +56,7 @@ v: extra definitions
     key bl <> until  drop ;
 
 
+    ( ** 24C02 EEPROM demo ** )
 
 \ EEPROM 24C02 example
 v: extra definitions
@@ -120,6 +124,7 @@ v: fresh inside
 
 
 
+    ( ** Test if device 'dev' is on the I2c-bus ** )
 
 \ Show if a device with address 'dev' is present on the I2C-bus
 v: extra definitions
@@ -128,6 +133,7 @@ v: extra definitions
     0= if  ." not "  then  ." present " ;
 
 
+    ( ** Scan I2C-bus for connected devices and show them all ** )
 
 v: inside also definitions
 \ I2C bus scanner, after the original sample implementation by J. J. Hoekstra
@@ -165,3 +171,4 @@ v: fresh
 shield I2C-EXAMPLES\ \ freeze
 
 \ End
+
