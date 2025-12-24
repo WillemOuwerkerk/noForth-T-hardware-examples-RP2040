@@ -11,14 +11,21 @@ i handle the orders for our local Dutch Forth users group.
 
 ***
 
-- [****I2C board examples****](I2C-board-examples.f) ; I2C bus scanner & usage examples with an EEPROM and RP2040 slaves
 - [****RP2040-hw-i2c.f****](RP2040-hw-i2c.f) ; I2C high-level master implementation
 - [****RP2040-code-i2c.f****](RP2040-code-i2c.f) ; I2C asm master implementation
 - [****RP2040-bb-i2c.f****](RP2040-bb-i2c.f) ; I2C bit-bang master implementation
+
+![](../Pics/i2c-read-slave_2.png)
+
+- [****I2C board examples****](I2C-board-examples.f) ; I2C bus scanner & usage examples with an EEPROM and RP2040 slaves
+
+***
+
 - [****islave-io.f****](islave-io.f) ; I2C I/O-slave on core-1
 - [****islave-mem.f****](islave-mem.f) ; I2C RAM-memory-slave on core-1
 
-![](../Pics/i2c-read-slave_2.png)
+![](../Pics/I2C-slave-wiring.jpg)
+I2C slave wiring on Pico-kit
 
 ***
 
