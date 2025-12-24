@@ -17,6 +17,11 @@ i handle the orders for our local Dutch Forth users group.
 - [****RP2040-bb-i2c.f****](RP2040-bb-i2c.f) ; I2C bit-bang master implementation
 - [****islave-io.f****](islave-io.f) ; I2C I/O-slave on core-1
 - [****islave-mem.f****](islave-mem.f) ; I2C RAM-memory-slave on core-1
+![](../Pics/i2c-read-slave_2.png)
+
+***
+
+- [****BAMBOO-hilevel.f****](BAMBOO-hilevel.f) ; Example of converting serial to parallel outputs using the 74HC4094
 - [****blink-0-P.f****](blink-0-P.f) ; - Simple blinker using the BOOT-key for escape
 - [****blink-1-P.f****](blink-1-P.f) ; Simple blinker using S2 for escape
 - [****interrupt-1P.f****](interrupt-1P.f) ; Hardware interrupt using S2
