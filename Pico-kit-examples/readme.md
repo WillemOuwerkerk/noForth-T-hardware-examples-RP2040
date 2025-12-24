@@ -16,6 +16,7 @@ i handle the orders for our local Dutch Forth users group.
 - [****RP2040-bb-i2c.f****](RP2040-bb-i2c.f) ; I2C bit-bang master implementation
 
 ![](../Pics/i2c-read-slave_2.png)
+I2C read from PCF8574 and I/O-slave
 
 - [****I2C board examples****](I2C-board-examples.f) ; I2C bus scanner & usage examples with an EEPROM and RP2040 slaves
 
