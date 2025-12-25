@@ -47,9 +47,10 @@ create PAD  ( -- a )    40 allot    \ Scratchpad memory
 
 decimal
 create USB-STATE  0 ,           \ Hold current USB state: 3 = ready
-        4 c, 3 c, 9 c, 4 c,     \ English/US = language ID
-        115200 ,  0 c,  0 c,  8 c,  align  \ Line data: 115k2, Stop bits, Parity, Data bits
-hex                             \ Second half word for 900/880 requests
+                                \ Second half word for 900/880 requests
+    4 c, 3 c, 9 c, 4 c,         \ English/US = language ID
+    115200 ,  0 c,  0 c,  8 c,  \ Line data: 115k2, Stop bits, Parity, Data bits
+align  hex
 : START-USB     ( -- )
     1000000  4000C000           \ Bit-24 mask & Reset register
     2dup **bis  2dup **bic      \ Restart USB

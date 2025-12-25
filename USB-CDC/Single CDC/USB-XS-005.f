@@ -28,9 +28,9 @@ here >r     \ Configuration descriptor (9 or 75 bytes)
 7 c,  5 c,  3 c,  2 c,  40 c, 0 c,  0 c,  align         \ Endpoint 3 OUT descriptor
 
 create USB-STATE  0 ,           \ Hold current USB state: 7 = ready, 107 = functional
-        4 c, 3 c, 9 c, 4 c,     \ English/US = language ID
-        dm 115200 ,  0 c,  0 c,  8 c,  align  \ Line data: 115k2, Stop bits, Parity, Data bits
                                 \ Second half word for 900/880 requests
+    4 c, 3 c, 9 c, 4 c,         \ English/US = language ID
+    dm 115200 ,  0 c,  0 c,  8 c,  align  \ Line data: 115k2, Stop bits, Parity, Data bits
 
 \ Name:    CNT  ORG  PKT  PID   INBUF-CTRL  OUTBUF-CTRL   EPxBUF
 \ Offsets: 00   04   08   0C       10            14         18
