@@ -1,6 +1,6 @@
 <h1 align="center"> USB CDC driver </h1>
 
-This is a in plain Forth written USB CDC driver, that uses a coöperative  multitasker to run on top of noForth t. The picture below shows the finished driver in Windows 10.
+This is a in plain Forth written USB CDC driver, that uses a cooperative  multitasker to run on top of noForth t. The picture below shows the finished driver in Windows 10.
 This highlevel version shown in the USB-CDC base folder is for documentation only, it is however fully functional!
 
 The folders contain a dual and single CDC-driver using RP2040 assembly too.
@@ -52,8 +52,8 @@ Note: Requests and the number of them vary from OS to OS.
 
 ***
 
-Connect a USB to serial cable to GPIO0 & GPIO1, reset noForth.
-After noForth is booted, take the following actions.
+Connect a USB to serial cable to GPIO0 & GPIO1, reset noForth t.
+After noForth t is booted, take the following actions.
 
 **Add the CDC driver:**
 
