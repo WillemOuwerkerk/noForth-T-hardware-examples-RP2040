@@ -1,7 +1,7 @@
 <h1 align="center"> dual USB CDC driver </h1>
 
 A compact in low level implemented dual port CDC driver.
-It is implemented in three tasks of our coöperative multitasker.
+It is implemented in three tasks of our cooperative multitasker.
 The whole driver only needs 4400 bytes.
 
     1) Task-1 for the setup stage and input of data
@@ -13,7 +13,7 @@ The word USB-ON activates this CDC driver.
 ***
 
 Connect a USB to serial cable to GPIO0 & GPIO1, reset noForth.
-After noForth is booted, take the following actions.
+After noForth t is booted, take the following actions.
 
 **Add the dual CDC driver:**
 
