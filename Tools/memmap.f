@@ -26,8 +26,8 @@ v: inside also  extra definitions
     cr dm 10 spaces  u.l  cr cr
     ." RAM:      IVECS     HOT       UHERE ..  ORIGIN    CHERE ..  FLYBUF    (FP)"
     cr dm 10 spaces  fp  flybuf  chere  origin   uhere  hot  ivecs  7 u.l
-    cr cr ."           FLYBUF/   S0        R0        TIB       TIB/      RAMBORDER"
-    cr dm 10 spaces  ramborder  tib/  tib  r0  s0  flybuf/  6 u.l  cr
+    cr cr ."           FLYBUF/   R0        S0        TIB       TIB/      RAMBORDER"
+    cr dm 10 spaces  ramborder  tib/  tib  s0  r0  flybuf/  6 u.l  cr
     4 cfg @ if cr  ." The second system runs from: " ramborder .  then
     cr ." XRAM:     START     XHERE ..  END"
     cr 0A spaces  xhere FFF or 1+  xhere  xhere FFFFF000 and  3 u.l cr
