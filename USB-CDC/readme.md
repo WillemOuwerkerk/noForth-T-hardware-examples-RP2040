@@ -5,6 +5,7 @@ This highlevel version shown in the USB-CDC base folder is for documentation onl
 
 The folders contain a dual and single CDC-driver using RP2040 assembly too.
 The single CDC also contains a CDC driver without code and multitasker for portability purposes.
+The [USB documentation can be found here](https://home.hccnet.nl/willem.ouwerkerk/USB-doc/noForth-CDC-driver-doc.html).
 
 ![USB-drivers](https://github.com/user-attachments/assets/d22d2d55-bdf5-448c-8110-a597fe7b3845)
 
