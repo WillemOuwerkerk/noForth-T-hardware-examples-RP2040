@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<title>noForth CDC driver history</title>
+
+<style>
+body {font-size:100%; color:#000; font-family:"optima","Lucida Sans Unicode", "Lucida Grande",  sans-serif; }
+.buiten {padding:1em; width:40em; margin:auto auto; }
+a, pre, code {font-family: "courier new", "Andale Mono","Lucida Console", Monaco, monospace; }
+td {vertical-align:top; padding-right:1em; font-size:100%; }
+hr {border:0; border-bottom:1px solid #cee; }
+span {padding:0 ; color:#099; }
+a {color:#e50; text-decoration:none; font-style:italic; }
+a:hover {color:#099; }
+.license {border:1px solid #099; padding: 1em; font-size:67%; line-height:108%}
+ul, ol {padding-left:0.5em; }
+li {padding:0; }
+h5 {font-size:100%; margin:0.5em 0; }
+h4 {font-weight:100; font-size:125%; background-color:#dff; padding:0.3em; }
+h3 {font-weight:100; font-size:110%; }
+h2 {font-size:140%; color:#099; font-weight:100;}
+h1 {font-weight:100; font-size:300%; margin:0.3em; }
+.new {border-left:3px solid red; padding:0em 1em; }
+.mid {text-align:center; }
+.re1 {float:right; width:6em; margin: 0 3em; }
+.re2 {float:right; width:12em; margin:1em; }
+.box {border:1px solid #099; padding:0.5em; border-radius:7px;}
+h2 ul{margin:0 5em;}
+.blok{padding:0 1em; margin:2em; border-left:1px solid #099;}
+</style>
+
+<body>
+
+<div class="buiten">
+<div class="mid">
+<a href="https://home.hccnet.nl/anij/nof/noforth.html" target="_blank"><img src="noforth-groen.jpg" alt="noforth logo" width="250"></a>
+<br>november 2025
+
+<h4>noForth CDC driver history</h4>
+Authors: Leon Konings, Willem jager, Henny Luijkx &amp; Willem Ouwerkerk
+
+<br><br><sup>Copyright Wikipedia commons</sup><br>
+<a href="https://en.wikipedia.org/wiki/USB#History" target="_blank"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/USB_icon.svg/330px-USB_icon.svg.png" alt="USB logo" width="220"></a>
+<h2>Timeline for the development of noForth t with USB</h2>
+
+<pre style="text-align:left;" >
+<p>01) April 2024, Willem Ouwerkerk starts working on USB-CDC on RP2040.
+</p><p>02) Research into data together with Leon Konings:
+    a) Analysis of the zeptoforth code
+    b) Study of the <a href="https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf" target="_blank">RP2040 datasheet</a>
+</p><p>03) April 2024, the first code:
+    a) Hardware initialization taken from <a href="https://github.com/tabemann/zeptoforth/tree/master/src/rp_common/forth">zeptoforth</a>
+    b) Leon gets to work on the CDC driver under Linux
+</p><p>04) May 2024, first attempts at USB output:
+    a) This takes us about six months with limited success;
+       despite gaining more insight, the driver is not progressing
+    b) Various configuration tables tried without success
+    c) The output works on a single Linux (Ubuntu) implementation
+       An unstable intermediate version worked under Windows.
+       ZeptoForth did not prove to be a good starting point for us, and
+       the RP2040 datasheet was also difficult to understand.
+</p><p>05) October 2024, Willem Jager and Henny Luijkx join the project.
+</p><p>06) October 2024, Investigation into the functioning of Leon's driver.
+</p><p>07) December 2024, need for a simplified implementation:
+    a) Used the code from <a href="https://github.com/ataradov/usb-sniffer-lite/tree/main/firmware" target="_blank">Alex Taradov</a> as a reference.
+    b) Investigated multiple implementations.
+    c) Got a little help from AI here and there.
+    d) Created a new design based on Leon's structure.
+</p><p>08) December 3, 2024, Created setup for compact USB-CDC driver.
+    Copied the device and configuration tables and request handling.
+</p><p>09) January 4, 2025, the setup stage works, structure greatly simplified:
+    a) January 2, the <a href="https://github.com/ataradov/usb-sniffer" target="_blank">USB sniffer</a> is available, we can
+       view USB packets, which will soon provide much more insight
+    b) January 11, string output works.
+       Part of the protocol is implemented in the RP2040 firmware,
+       for example USB low level ACK/NAK handshakes. This made it
+       difficult to extract what is needed from the USB documentation.
+       A lot of experimentation and the USB sniffer via Wireshark provided
+       the necessary insight into the details of the USB protocol.
+</p><p>10) January 2025, text input to RP2040 via USB-CDC:
+    a) January 15, Willem Jager figured out key input
+       The driver code was modified and the first working input was done.
+    b) January 16, primitive key input in test loop.
+    c) January 19, working KEY routine.
+    d) January 23, noForth works with interactive input and output via CDC.
+       The multitasker is used for improved real-time response.
+</p><p>11) February 17, Step by step further improvement of the driver:
+    a) Factoring is improved.
+    b) Program components are rewritten to code.
+</p><p>12) February - March, The USB driver crashes when sending files or
+    pasting text. It seems to be too fast, so flow control is needed:
+    a) Various options are being tried;
+       Serial state notification, Control Line State Request, etc.
+       Unfortunately, without success so far.
+    b) Various handshake options for terminal applications are
+       tried, but only the E4thcom application works on Linux with a
+       slow HOST PC (Raspberry Pi 4).
+    c) The low-level USB ACK/NAK seems to work in combination with measuring
+       available space in the circular buffers.
+       Through trial and error, we figured out what the RP2040 USB hardware
+       already does for us
+    d) A tracer via RS232 gives us more insight into why the ring buffers
+       overflow, which gives direction to the software
+</p><p>13) March - April, We test the CDC driver with Linux, Windows, and macOS.
+</p><p>14) April - May, Testing and documenting usable terminal emulators:
+    1) Windows is Teraterm with 1 millisecond line delay.
+    2) Linux with GTKterm or Minicon with 1 ms and with e4thcom without delay.
+    3) macOS with Coolterm and character echo handshake.
+    The low-level USB ACK/NAK handshake is secure up to a delay of
+    500 to 600 milliseconds per data packet, which is perfectly workable.
+    With a longer delay, communication fails.
+</p><p>June 15, Project completion
+    a) Willem Jager starts working on the USB documentation.
+</p><p>16) June 14-2025, dual CDC implementation attempt
+    b) C example found with the help of a visitor to
+       Alex Taradov's Github page.
+    c) Leon compiles a working UF2 file from it.
+    d) Data collected and documented using the USB sniffer.
+    e) Henny Luijkx has started to document the configuration records
+       in detail to gain a better understanding of the function
+       of each record and to document the project.
+</p><p>17) September 15, 2025, The dual CDC driver is working and has been completed.
+    The driver runs in three tasks of the multitasker and uses
+    spinlocks from the RP2040 as write protection between the two
+    noForth-t-duo cores. The single CDC has been further reduced; it
+    runs in two tasks of the multitasker and uses execution
+    tables to handle the setup requests.
+</p><p>October 18, 2025, realisation of a <a href="https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/tree/main/USB-CDC" target="_blank">high level USB CDC driver</a>.
+    (without dependencies on noForth and multitasker)
+</p>
+</pre>
+*
+</body>
+</html>

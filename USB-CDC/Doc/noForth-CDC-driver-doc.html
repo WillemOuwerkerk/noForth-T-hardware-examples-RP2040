@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<title>noForth CDC driver documentation</title>
+
+<style>
+body {font-size:110%; color:#000; font-family:"optima","Lucida Sans Unicode", "Lucida Grande",  sans-serif; }
+.buiten {padding:1em; width:40em; margin:auto auto; }
+a, pre, code {font-size:110%; font-family: "courier new", "Andale Mono","Lucida Console", Monaco, monospace; }
+td {vertical-align:top; padding-right:1em; font-size:100%; }
+hr {border:0; border-bottom:1px solid #cee; }
+span {padding:0 ; color:#099; }
+a {font-size:110%; color:#e50; text-decoration:none; }
+a:hover {color:#099; }
+.license {border:1px solid #099; padding: 1em; font-size:67%; line-height:108%}
+ul, ol {padding-left:2em; }
+li {padding-left:0.1em; }
+h5 {font-size:100%; margin:0.5em 0; }
+h4 {font-weight:100; font-size:125%; background-color:#dff; padding:0.3em; }
+h3 {font-weight:100; font-size:110%; }
+h2 {font-size:140%; color:#099; font-weight:100;}
+h1 {font-weight:100; font-size:300%; margin:0.3em; }
+.new {border-left:3px solid red; padding:0em 1em; }
+.mid {text-align:center; }
+.re1 {float:right; width:6em; margin: 0 3em; }
+.re2 {float:right; width:12em; margin:1em; }
+.box {border:1px solid #099; padding:0.5em; border-radius:7px;}
+h2 ul{margin:0 5em;}
+.blok{padding:0 1em; margin:2em; border-left:1px solid #099;}
+
+.rintxt{float:right;margin:.5em;margin-right:0;}
+.lintxt{float:left;margin:.5em;margin-left:0;}
+
+figcaption {display:block;}
+</style>
+
+<body>
+
+<div class="buiten">
+<div class="mid">
+
+<a href="https://home.hccnet.nl/anij/nof/noforth.html" target="_blank"><img src="noforth-groen.jpg" alt="noforth logo" width="250"></a>
+<br>november 2025
+
+<h4>noForth CDC driver</h4>
+Authors: Leon Konings, Willem jager, Henny Luijkx &amp; Willem Ouwerkerk
+</div>
+
+<br><h2>a) introduction</h2>
+
+<p><sup>Copyright Wikipedia commons</sup>
+<br><a href="https://en.wikipedia.org/wiki/USB" target="_blank"><img class="lintxt" src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Certified_USB.svg/330px-Certified_USB.svg.png" alt="USB Logo" width="120"></a>
+This document describes the development of a USB-CDC
+(<a href="https://en.wikipedia.org/wiki/USB_communications_device_class" target="_blank">Communication Device Class</a>) device driver in noForth.
+The USB standard contains matching protocols for different types of devices.
+For example, for keyboards, virtual disks, and USB modems.
+The USB standard is a protocol that allows devices to be connected to a computer.
+</p>
+
+<p>
+USB is a bidirectional serial bus protocol.
+There are a number of standards with different speeds that can be used at the same time.
+Currently (November 2025), there are <a href="https://en.wikipedia.org/wiki/USB" target="_blank">four standards</a> for bus speed:
+</p>
+
+<div class="box">
+<ul>
+<li> USB 1.1 low speed (1.5 Mbit/s), full speed (12 Mbit/s);</li>
+<li> USB 2.0 (480 Mbit);</li>
+<li> USB 3.0 (5 Gbit/s);</li>
+<li> USB 4.0 (40 Gbit/s).</li>
+</ul>
+</div>
+
+<p>The protocol supports a single master (HOST) per bus and a maximum of 127 devices.
+The data lines consist of two twisted wires with differential
+signals. <br><a href="https://www.beyondlogic.org/usbnutshell/usb1.shtml" target="_blank">More information about USB</a>.
+</p>
+
+
+<br><h2>b) USB on the RP2040</h2>
+
+<p>
+The USB connection of the RP2040 provides power and the ability to upload and install programs.
+The USB hardware offers a 12 Mbit/s full-speed bus. The RP2040 has software in ROM to use the USB as a bootloader. The RP2040 then turns into a virtual USB disk.
+</p>
+
+<div class="mid">
+<a href="https://datasheets.raspberrypi.com/rp2040/rp2040-datasheet.pdf" target="_blank"> <img align="center>" src="USB-hardware.jpg" alt="RP2040 datasheet" width="600"></a>
+<br><sup>Copyright Raspberry Pi Ltd</sup>
+</div>
+
+<p>
+With that USB connection, instead of serial communication via
+a separate RS232 dongle, we can use the USB cable for interactive communication with the RP2040. That saves on extra cables, frees up the pins for other applications, and also significantly increases the communication speed.
+</p>
+
+<div class="box">
+<b>  What you'll need:</b>
+<ul>
+    <li> An RP2040 board<l/i>
+    <li> noForth <a href="noForth t release 2025/noForth t release 2025.zip" target="_blank">UF2 files</a> with USB driver </li>
+    <li> Suitable terminal program</li>
+    <li> More details in the document: <a href="https://home.hccnet.nl/anij/nof/t/getting%20started%20with%20noforth%20t%20dec2025.pdf" target="_blank">getting Started with noForth t</a></li>
+</ul>
+</div>
+<br>
+<div class="box">
+<b>  Setting up/troubleshooting USB on your PC:</b>
+<ul>
+<li> Every OS has its own characteristics.</li>
+<li> Terminal emulators have that too</li>
+<li> A USB hub can become overloaded or malfunction</li>
+</ul>
+</div>
+
+<p>
+If you have any problems, please refer to our
+<a href="usb-background-information.html" target="_blank">background documentation</a>.
+</p>
+
+<br><h2>c) The development of noForth with USB</h2>
+
+<p>
+<a href="https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/tree/main/USB-CDC" target="_blank">
+<img class="rintxt" src="USB-drivers.jpg" alt="USB-drivers" width="320">
+</a>
+
+We started researching data and examples in April 2024.
+The first code was ready in April 2024, but by October it was clear that progress was slow.
+<br>
+We got help, and in November we decided to develop a second, clear
+implementation alongside it. At the beginning of January 2025, the output was working, and
+at the end of January, the driver on top of noForth was working. After attempts to add handshake,
+ it was decided in March 2025 to apply the low-level ACK/NAK handshake.
+Now there is a working driver for both <a href="https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/tree/main/USB-CDC/Single%20CDC" target="_blank">noForth solo</a> and <a href="https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040/tree/main/USB-CDC/Dual%20CDC" target="_blank">noForth duo,</a> (two CDC channels).
+<br><a href="timeline.html" target="_blank">The complete timeline can be found here</a>.
+</p>
+
+<br><h2>d) USB Setup Stage</h2>
+
+<p>
+<sup>Copyright 2010 | Craig.Peacock@beyondlogic.org</sup>
+<br>
+<a href="https://www.beyondlogic.org/usbnutshell/usb4.shtml#Control" target="_blank"><img class="lintxt" src="setup-stage.gif" alt="Setup stage" width="320"></a>
+Please note that when using a USB hub, the connection
+may become less stable and occasionally freeze! Unfortunately, there is a lot of variation in quality
+when it comes to USB hubs. The order listed below
+and the number of requests will differ per OS. In general,
+the same requests are made.
+<br><a href="Usb dual port configuration.pdf" target="_blank">Check out the configuration tables</a>.
+</p>
+
+<div class="box">
+<b>USB setup in a nutshell</b>
+<ol>
+<li> Initialize the USB hardware of the RP2040.</li>
+<li> Receiving and responding to configuration packages from the host (PC).
+     This determines which driver the operating system will load.</i>
+<li> Once the host is satisfied with the configuration, sending and
+     receiving data packets can begin.</li>
+</ol>
+</div>
+
+<br>What happens when a USB device is connected?
+<br>The host detects a new device on the bus (plug & play).
+<br>This is followed by roughly the following sequence of actions.
+<br><br>
+
+<div class="box">
+<ol>
+<li> USB host issues a bus reset, device address = 0</li>
+<li> Bus speed detection</li>
+<li> Request for device descriptor at address 0
+<br>   Send device descriptor from address 0</li>
+<li> Second bus reset, device address = 0</li>
+<li> Bus speed detection</li>
+<li> We receive a device address from the host
+<br>   All data will now go via this device address</li>
+<li> Request for device descriptor
+<br>  Device descriptor is sent</li>
+<li> Request for configuration descriptor
+<br>   Configuration descriptor is sent</li>
+<li> Now the following requests in sequence:
+<br>    String descriptor 0
+<br>    String descriptor 2
+<br>    Device qualifier (Test on USB 3.0)
+<br>    Device descriptor
+<br>    Configuration descriptor (short)
+<br>    Configuration descriptor (complete)
+<br>    Set configuration
+<br>    String descriptor 2 (short)
+<br>    String descriptor 2
+<br>    String descriptor 0
+<br>    String descriptor 2</li>
+</ol>
+</div>
+
+
+<br><h2>e) Activate USB-CDC</h2>
+
+<p>
+After the USB basic setup procedure has been completed, the host knows that
+it is dealing with a USB-CDC connection. This is specified in the device and
+configuration descriptor.
+Below is an example of this procedure:
+</p>
+
+<div class="box">
+<ol>
+<li>   Get line coding request (RS232 parameters)</li>
+<li>   Set control line state (Is connection complete? = No)</li>
+<li>   Set line coding request (RS232 parameters)</li>
+<li>   Get line coding request (RS232 parameters)</li>
+<li>   Set control line state (Is connection complete? = Yes)</li>
+<li>   Set line coding request (RS232 parameters)</li>
+<li>   Get line coding request (RS232 parameters)</li>
+<li>   Ready, then the noForth startup notification will be sent.</li>
+</ol>
+</div>
+
+
+<br><h2>f) Gathering USB data</h2>
+
+<p>
+Each operating system has its own method of presenting the connected
+devices on the USB bus. Here is an overview:
+</p>
+
+<div class="box">
+<b>Windows:</b>
+<blockquote>
+       First, open <b>Device Manager</b> and then <b>Ports (COM & LPT)</b>.
+<br>   The COM port of the USB driver can be found there.
+<br>   Or open <b>Control Panel</b> and then <b>Devices and Printers</b> and click on the icon
+    under which noForth etc. is listed.
+</<blockquote>
+</div>
+
+<br><div class="box">
+<b>Linux:</b>
+<blockquote>
+Search there for information about the USB devices with: <b>ls /dev/tty*</b>, where the type of driver is listed.
+    This is usually an ACM device.
+<br>    Then there is <b>lsusb -v</b> for more information.
+</blockquote>
+</div>
+
+<br><div class="box">
+<b>Apple:</b>
+<blockquote>
+Look at ‘system information’ the driver is
+    listed as: <br><b>/dev/tty.usb-modemXXXX</b>.
+</blockquote>
+</div>
+
+<br><h2>g) Getting USB up and running</h2>
+
+<p>
+<img class="lintxt" src="RP2040-mini-kit.jpg" alt="RP2040-mini-kit" width="200">
+Connect the RP2040 to the PC via the USB-C or micro-USB connector on the board.
+Problems? <br>See: <a href="https://home.hccnet.nl/anij/nof/t/getting%20started%20with%20noforth%20t%20dec2025.pdf" target="_blank">getting started with noForth t</a>.
+<hr>
+When the terminal does not detect the port, please refer to:  <a href="usb-background-information.html" target="_blank"> background information</a>.
+<br>
+</p>
+
+
+<div class="box">
+<b>Windows:</b>
+<blockquote>
+ Start TeraTerm and select: COMxx Serial USB Device.
+<br>Set line delay and newline.
+</blockquote>
+</div>
+
+<br><div class="box">
+<b>Linux:</b>
+<blockquote>
+ Launch GTKterm and select: <b>/dev/ttyACMx</b>
+<br>   Set line delay to <b>1 ms</b> and <b>CR LF auto</b> and you're done.
+<br>   e4thcom with ACK/NAK or line delay also works.
+</blockquote>
+</div>
+
+<br><div class="box">
+<b>Apple:</b>
+<blockquote>
+ Start Coolterm and select: <b>/dev/tty.usb-modemXXXX</b>
+<br>  Set handshake to <b>wait for remote echo</b> and
+    enter key emulation
+<br>to <b>cr+lf</b>
+</blockquote>
+</div>
+
+
+<br><h2>h) Configuration tables</h2>
+
+Check the <a href="Usb dual port configuration.pdf" target="_blank">configuration tables</a>.
+
+<br><br>
+<div class="mid"> * </div>
+</body>
+</html>
