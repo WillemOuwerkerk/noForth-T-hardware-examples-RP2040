@@ -1,6 +1,6 @@
-\ More standard words for noForth t(v)(#)
+\ More standard words for noForth T(v)
 \ (C) 2015, Albert Nijhof & Willem Ouwerkerk
-\ Updated for noForth T march 2023
+\ Updated februari 2025
 
 
 v: fresh inside also       \ some definitions use inside words
@@ -50,6 +50,22 @@ code 2@     ( a -- lo hi )
     685D h,  681B h,  1F09 h,  600D h,  next,
 end-code
 
+( Minus ROT
+code -ROT   ( a b c -- c a b )
+    day  sp 4 #) ldr,   \ 2 - a to DAY
+    tos  sp 4 #) str,   \ 2 - TOS=c to a
+    tos  sp ) ldr,      \ 2 - b to TOS
+    day  sp ) str,      \ 2 - DAY=a to b
+    next,               \ 6
+end-code
+*)
+code -ROT   ( a b c -- c a b )
+    604B684D ,  600D680B ,  CA10C804 ,  FFFF46A7 ,
+end-code
+
+: 2TUCK   2SWAP 2OVER ;  ( x1 x2 x3 x4 -- x3 x4 x1 x2 x3 x4 )
+: 2ROT    2>R 2SWAP 2R> 2SWAP ;
+: -2ROT   2SWAP 2>R 2SWAP 2R> ;
 
 : [COMPILE]  ( "name" -- )  ' ?comp compile, ; immediate
 
@@ -69,12 +85,22 @@ header ABORT"   ' S" @ ,   reveal immediate
     r> r@ xor ?negate swap   r> ?negate swap ;
 : /REM      ( x1 x2 -- r q )    >r s>d r> sm/rem ;
 
+(* Arithmetic SHIFT right
+code ARSHIFT ( a b -- c )
+    tos 20 # cmp,  u>? if, \ 3 - 20 UMIN
+        tos 20 # movs,  \ 1
+    then,
+    day tos movs,       \ 1 - +n to DAY
+    tos  sp )+ ldr,     \ 2 - pop X1 to TOS
+    tos day asrs,       \ 1 - Shift TOS DAY positions left
+    next,               \ 6
+end-code
+*)
 code ARSHIFT ( a b -- c )   \ Arithmetic right shift
     D9002B20 ,  1D2320 ,  412BC908 , CA10C804 ,  46C046A7 ,
 end-code
 
-
-0  v: true or
+0   v: true or
     [if]
 only forth 1  constant FORTH-WORDLIST fresh inside
 : GET-CURRENT   v0 c@ ;
@@ -112,8 +138,8 @@ only forth 1  constant FORTH-WORDLIST fresh inside
    begin postpone then hx 88 of?
    until drop ; immediate
 
-\ : [DEFINED]     ( "name" -- f )     bl-word find nip 0<> ; immediate
-\ : [UNDEFINED]   ( "name" -- f )     postpone [defined] 0= ; immediate
+: [DEFINED]     ( "name" -- f )     bl-word find nip 0<> ; immediate
+: [UNDEFINED]   ( "name" -- f )     postpone [defined] 0= ; immediate
 
 v: FRESH
 
