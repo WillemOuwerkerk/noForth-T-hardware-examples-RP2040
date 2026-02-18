@@ -25,6 +25,7 @@ The image used is the last frozen image!
 4. An Intel-Hex is generated
 5. Copy the logged Intel-Hex to a text editor
 6. Clean the text file of non Intel-Hex text
+7. Save as "filename.hex"
 7. Start win32Forth
 8. Load the file: Build-UF2-v3.f
 9. Type: HEX>UF2 “filename” yes without extension
