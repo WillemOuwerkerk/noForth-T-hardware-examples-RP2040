@@ -3448,10 +3448,10 @@ hex
 v: inside also definitions
 ' forth value 'UNIT     \ Hold token of EXTERNAL vocabulary
 v: extra definitions
-: UNIT      ( -- voc )  fresh  ' to 'unit  'unit execute also  inside also  definitions ;
-: EXTERNAL  ( -- )      'unit execute  definitions ;
-: INTERNAL  ( -- )      inside  definitions ;
-: END-UNIT  ( -- )      fresh ;
+: UNIT      ( "voc" -- )    fresh  ' to 'unit  'unit execute also  inside also  definitions ;
+: EXTERNAL  ( -- )          'unit execute  definitions ;
+: INTERNAL  ( -- )          inside  definitions ;
+: END-UNIT  ( -- )          fresh ;
 v: fresh
 %%
 
