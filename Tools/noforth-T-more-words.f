@@ -50,7 +50,7 @@ code 2@     ( a -- lo hi )
     685D h,  681B h,  1F09 h,  600D h,  next,
 end-code
 
-( Minus ROT
+(* Minus ROT
 code -ROT   ( a b c -- c a b )
     day  sp 4 #) ldr,   \ 2 - a to DAY
     tos  sp 4 #) str,   \ 2 - TOS=c to a
@@ -144,3 +144,4 @@ only forth 1  constant FORTH-WORDLIST fresh inside
 v: FRESH
 
 \ <><>
+
