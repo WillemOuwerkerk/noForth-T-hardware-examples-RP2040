@@ -5,7 +5,7 @@ Works on: HC-SR04, US-100, US-015, RCW-0001, RCWL-1605, etc.
 \ Trigger = GPIO29
 \ Echo    = GPIO28
 
-need pio\
+\ need pio\     ( Needs to PIO assembler to be loaded first )
 
 clean-pio  decimal          \ Clear PIO
 0 0 {pio
@@ -43,7 +43,7 @@ pio}
 
 *)
 
-need piobase\
+\ need piobase\  ( Needs to PIObase routines to be loaded first )
 
 hex
 v: inside also  definitions

@@ -7,7 +7,7 @@ Works on: HC-SR04, US-100, US-015, RCW-0001, RCWL-1605, etc.
 
 *)
 
-need pio\
+\ need pio\     \ Needs the PIO assembler to be loaded first
 
 clean-pio  decimal          \ Clear PIO
 0 0 {pio
