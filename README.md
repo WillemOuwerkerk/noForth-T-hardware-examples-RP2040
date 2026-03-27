@@ -13,7 +13,7 @@ All code should run on noForth t solo & duo from version 251010 onwards. If you 
 
 - [****Configuration****](Configuration) ; Setting the system clock, baudrate & pin for S?
 - [****Dual core****](Dual-core) ; Fifo word set & words to start & stop code on the second core
-- [****Tools****](Tools) ; Show configuration, Assembler, decompiler, commacode, PIO (dis)assembler, PIO code examples, etc.
+- [****Tools****](Tools) ; Show configuration, Assembler, decompiler, commacode, PIO (dis)assembler, [PIO code examples](Tools/PIO-examples), etc.
 - [****Pico-kit examples****](Pico-kit-examples) ; Examples tailored to the Pico-kit experimenter board
 - [****Hardware examples****](Hardware-examples) ; General code that will run on every RP2040 with noForth t
 - [****USB-CDC****](USB-CDC) ; USB driver that works on an RP2040 with the multitasker version of noForth t 
