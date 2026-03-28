@@ -70,7 +70,7 @@ v: extra definitions
 
 : MEASURE3  ( -- )              \ Show distance in mm or a dash
     start-us  base @ >r  decimal
-    begin   pdistance dup dm 4500 < if  \ 450cm is maximum distance!
+    begin   pdistance dup dm 45000 < if \ 450cm is maximum distance!
                 dup 0 <# # # ch . hold #s #> type space  5 ms
             else  ." - " then
             drop
