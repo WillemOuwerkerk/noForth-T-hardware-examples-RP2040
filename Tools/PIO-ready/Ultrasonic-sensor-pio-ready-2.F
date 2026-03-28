@@ -73,7 +73,7 @@ v: extra definitions
     begin   pdistance dup dm 45000 < if \ 450cm is maximum distance!
                 dup 0 <# # # ch . hold #s #> type space  5 ms
             else  ." - " then
-            drop
+            drop  dm 15 ms
     key? until 
     r> base ! ;
 
