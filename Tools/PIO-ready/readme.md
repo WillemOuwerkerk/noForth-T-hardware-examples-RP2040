@@ -10,7 +10,7 @@ These files need only the file [****piobase.f****](../piobase.f) to execute.
 - [****Drive way simulation****](Car-04.f) ; Single drive way simuation using a string of WS2812B leds
 - [****Bluetooth UART****](uart-5,-(GPIO8&9)-bluetooth-KEY-&-EMIT.f) ; 9600 baud Bluetooth KEY & EMIT for noForth
 - [****Ultrasonic-sensor****](Ultrasonic-sensor-pio-ready-1.f) ; Universal ultrasonic sensor driver with result in cm (for HC-SR04, etc.)
-- [****Ultrasonic-sensor****](Ultrasonic-sensor-pio-ready-2.F) ; Shorter universal ultrasonic sensor driver with result in mm (for HC-SR04, etc.)
+- [****Ultrasonic-sensor****](Ultrasonic-sensor-pio-ready-2.f) ; Shorter universal ultrasonic sensor driver with result in mm (for HC-SR04, etc.)
 
 ![](../../Pics/us-echo.png)
 			**Ultrasonic sensor in action**
