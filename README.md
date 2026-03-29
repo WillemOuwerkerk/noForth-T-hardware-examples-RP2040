@@ -20,7 +20,7 @@ All code should run on noForth t solo & duo from version 251010 onwards. If you 
  - [****Hard-fault****](Hard-fault) ; Hard fault handler
  - [****Image****](Image) ; A Win32Forth tool to convert a Intel-Hex to a UF2 file
 - [****Hayes-tester****](Hayes-tester) ; The Hayes test for standard & noForth t specific words
-- [****Library****](Library) ; A Flash ROM source code library for noForth t
+- [****Library****](Library) ; A Flash ROM source code library for noForth t, here is a [small tutorial](https://home.hccnet.nl/anij/nof/t/library%20noforth%20t%20dec2025.pdf)
  - [****Multi-tools****](Multi-tools) ; A multitasker tool set
 
  
