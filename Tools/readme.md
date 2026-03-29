@@ -1,7 +1,7 @@
 ## More noForth t tools
 
 These are all specific additions to noForth t, particularly the PIO assembler and disassembler.  
-This is a small totorial on how to [start with the PIO](https://home.hccnet.nl/anij/nof/t/starting%20with%20the%20pio.pdf).
+This is a small tutorial on how to [start with the PIO](https://home.hccnet.nl/anij/nof/t/starting%20with%20the%20pio.pdf).
 
 - [****PIO-assembler.f****](PIO-assembler-v2.f) ; Forth style PIO assembler with [documentation](PIO%20assembler%20docs%20v2.pdf)
 - [****PIO-disassembler.f****](PIO-disassembler-v2.f) ; Forth style PIO disassembler
