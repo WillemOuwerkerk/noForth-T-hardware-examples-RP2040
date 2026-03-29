@@ -1,11 +1,11 @@
-(* Ultrasoon afstand meter via PIO, in 15 PIO-opcodes
+(* Ultrasonic sensor readout with PIO in only 10 PIO-opcodes
 
 Works on: HC-SR04, US-100, US-015, RCW-0001, RCWL-1605, etc.
 
 \ Trigger = GPIO29
 \ Echo    = GPIO28
 
-\ need pio\     ( Needs to PIO assembler to be loaded first )
+\ need pio\     ( Needs the PIO assembler to be loaded first )
 
 clean-pio  decimal          \ Reset PIO control
 0 0 {pio                    \ Use SM-0 on PIO-0
@@ -71,9 +71,8 @@ v: extra definitions
 : MEASURE3  ( -- )              \ Show distance in mm or a dash
     start-us  base @ >r  decimal
     begin   pdistance dup dm 45000 < if \ 450cm is maximum distance!
-                dup 0 <# # # ch . hold #s #> type space  5 ms
-            else  ." - " then
-            drop  dm 15 ms
+                dup 0 <# # # ch . hold #s #> type space
+            else  ." - " then  drop  9 ms
     key? until 
     r> base ! ;
 

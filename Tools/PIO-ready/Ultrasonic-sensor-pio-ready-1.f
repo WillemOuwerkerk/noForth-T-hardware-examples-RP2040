@@ -1,4 +1,4 @@
-(* Ultrasoon afstand meter via PIO, in 15 PIO-opcodes
+(* Ultrasonic sensor readout with PIO using 15 PIO-opcodes
 
 Works on: HC-SR04, US-100, US-015, RCW-0001, RCWL-1605, etc.
 
@@ -26,17 +26,17 @@ clean-pio  decimal          \ Clear PIO
     x osr mov,              \ Move 1 to OSR
     16 x out,               \ OSR 1 << 16 = 65636, 65,6 ms timeout
     osr x mov,              \ Move OSR to X
-    21 [] 2 pins set,       \ Generate 10 µs trigger pulse
-    31 [] 0 pins set,       \ Skip glitches
+    19 [] 2 pins set,       \ Generate 10 µs trigger pulse
+    31 [] 0 pins set,       \ Skip possible glitches
 
     high 28 gpio wait,      \ Echo pulse on GPIO28 started?
     begin,                  \ Measure echo pulse length
-        pin? if,            \ Echo pulse ending (GPIO28 low)?
+        pin? if,            \ 91) Echo pulse ending (GPIO28 low)?
             THREE  x isr mov, \ Push measured echo pulse
             noblock push,
             ONE> pio,       \ Ready, jump to wait loop
         then,
-    x--? until,             \ Timeout on echo?
+    x--? until,             \ (1) Timeout on echo?
     THREE> pio,             \ Timeout result = -1, push it
     over =exec
 pio} 
@@ -90,9 +90,9 @@ v: extra definitions
 : MEASURE3  ( -- )              \ Show distance in cm or a dash
     start-us  base @ >r  decimal
     begin   pdistance dup 0< 0= if
-                dup 3 u.r space  dm 15 ms
+                dup 3 u.r space
             else  ." - " then
-            drop  5 ms
+            drop  9 ms
     key? until 
     r> base ! ;
 
