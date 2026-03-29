@@ -1,4 +1,4 @@
-(* 2) Variable length bamboe driver ( 1 to 5) in only 8 PIO-opcodes
+(* Variable length bamboe driver (1 to 5) in only 8 PIO-opcodes
 
 \ 6 bitmask   constant OUT  \ Bamboe data out
 \ 7 bitmask   constant CLK  \ Bamboe clock
