@@ -52,17 +52,17 @@ v: inside also  definitions
 
 v: extra definitions
 : PDISTANCE  ( -- -1|cm )       \ Distance in cm.
-    pdistance) dup 0< 0= if
-        hx 10000 swap -
+    pdistance) dup 0< 0= if     \ Valid measurement?
+        hx 10000 swap -         \ Yes, convert to cm
         5 dm 291 */ 
     then ;
 
 : MEASURE3  ( -- )              \ Show distance in cm or a dash
-    start-us  base @ >r  decimal
-    begin   pdistance dup 0< 0= if
-                dup 3 u.r space  dm 15 ms
-            else  ." - " then
-            drop  5 ms
+    base @ >r  decimal
+    begin   pdistance dup 0< 0= if  \ Valid measurement?
+                dup 3 u.r space     \ Yes, show result
+            else  ." - " then       \ No, print dash
+            drop  9 ms
     key? until 
     r> base ! ;
 
