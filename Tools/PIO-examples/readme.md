@@ -36,6 +36,7 @@
 - [****Ultrasonic sensor pio driver****](Ultrasonic-sensor-pio-1.f) ; HC-SR04, etc. ultrasonic sensor driver with result in cm
 - [****Ultrasonic sensor pio driver****](Ultrasonic-sensor-pio-2.f) ; HC-SR04, etc. shorter ultrasonic sensor driver with result in mm
 - [****Flexible bamboe driver****](Bamboe-driver-pio.f) ; Bamboe driver for 1 to 5 chained shift registers
+- [****Drive four RC-servos****](Servo%20(GPIO8-11)%2050Hz,%20200%20range.f) ; Driver for four RC-servos, pulsewidth from .5ms to 2.5ms
 
 ***
 

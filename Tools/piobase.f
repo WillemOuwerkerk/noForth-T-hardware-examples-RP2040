@@ -119,7 +119,7 @@ end-code
 : >TXF      ( u sm -- )     4 + pio! ;      \ Store TX data in FIFO
 : RXF>      ( sm -- u )     8 + pio@ ;      \ Fetch RX data from FIFO
 : EXEC-OPC  ( instr sm -- ) 4 swap sm-offset+ pio! ; \ Exec. instruction
-: SYNC      ( sm's -- )     7 8 0 field! ;  \ Sync. clock divider
+: CLOCK     ( sm's -- )     7 8 0 field! ;  \ Sync. clock divider
 : RESTART   ( sm's -- )     7 4 0 field! ;  \ Restart state machine
 
 : SET-FREQ  ( u sm -- )
