@@ -1,11 +1,12 @@
-\ More portable disassembler vsn 0.3
+\ More portable disassembler vsn 0.3a
 \
 \ Version 0.2c: Changed factorisation & removed decode bug from .IN
 \               Opcode decoding & integrated with PIO-ass!
 \ Version 0.2d: Added .PINCONTROL & integrated in vsn 0.3d of PIO-ass
 \ Version 0.2e: Added .SM for more complete state machine overview
 \ Version 0.2f: Simplyfied structure, thanks to A.N.
-\ Version 0.3:  Added mutiple PIO code support
+\ Version 0.3:  Added multiple PIO code support
+\ Version 0.3a: Clarified .SM display
 
 hex
 v: inside also definitions
@@ -142,10 +143,10 @@ v: extra definitions
     cr ." Pull: "  r@ 8 + p@  dup 19 1F .fld
     ." dir: " dup 13 1 .fld  ." auto: " dup 11 1 .fld
     ." steal: " 1E 1 .fld
-    cr ." Set: " r@ 14 + p@  dup 5 1F .fld  \ Show PIN control
-    dup 1A 7 .fld  ."  Side: " dup A 1F .fld
+    cr ." Set: " r@ 14 + p@  dup 5 1F .fld  ch # emit \ Show PIN control
+    dup 1A 7 .fld  ."  Side: " dup A 1F .fld  ch # emit
     dup 1D 7 .fld  r> 4 + p@ 40000000 and if ." optional " then
-    ."  Out: " dup 0 1F .fld  dup 14 7 .fld
+    ."  Out: " dup 0 1F .fld  ch # emit  dup 14 7 .fld
     ."  In: " F 1F .fld
     base ! ;
 
