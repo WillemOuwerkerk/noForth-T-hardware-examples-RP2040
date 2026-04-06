@@ -37,8 +37,18 @@
 - [****Ultrasonic sensor pio driver****](Ultrasonic-sensor-pio-2.f) ; HC-SR04, etc. shorter ultrasonic sensor driver with result in mm
 - [****Flexible bamboe driver****](Bamboe-driver-pio.f) ; Bamboe driver for 1 to 5 chained shift registers
 - [****Drive four RC-servos****](Servo%20(GPIO8-11)%2050Hz,%20200%20range.f) ; Driver for four RC-servos, pulsewidth from .5ms to 2.5ms
+- [****Drive ten RC-servos****](10-servo-control-using-exec-(GPIO4to13).f) ; Driver for 10 RC-servos, pulsewidth from .7ms to 2.5ms
 
 ***
+
+<h3>10 servo PIO exemple running</h3>
+<video width="640" height="480" controls>
+  <source src="..\..\Pics\10-servo-PIO-demo.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+***
+
 
 <h3>One PIO state machine</h3>
 
