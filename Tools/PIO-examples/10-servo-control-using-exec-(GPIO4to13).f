@@ -110,7 +110,7 @@ create RELOAD  10 ,     \ TRANS_COUNT0 reload
     9 umin >r                           \ +n
     r@ 6 * opcodes1 +                   \ +n addr
     r> 4 >  2 and + swap                \ addr +n
-    dm 74 umin  dm 19 +                 \ addr +n+19
+    dm 80 umin  dm 13 +                 \ addr +n+19
     hx 1F /mod >r                       \ addr mod
     r@ 0 ?do
         over i 2* + 1+  hx FF swap c!   \ addr mod
@@ -127,19 +127,19 @@ need tasks
 
 task: SERVOS
 : MOVES     ( -- )
-    dm 75 0 do 
-        i 8 servo
-        dm 74 i - 9 servo  40 ms
-    loop
-    dm 75 0 do 
-        i 9 servo
-        dm 74 i - 8 servo  40 ms
-    loop ;
+    begin
+        dm 80 0 do 
+            i 8 servo
+            dm 80 i -  5 umax  9 servo  40 ms
+        loop
+        dm 80 0 do 
+            dm 80 i - 8 servo
+            i  5 umax  9 servo  40 ms
+        loop
+    again ;
 
-: RUN       ( -- )    begin  moves  again ;
-: DEMO      ( -- )    start  ['] run  servos start-task ;
+: DEMO      ( -- )    start  ['] moves  servos start-task ;
 
-demo
-tasks
+demo  tasks
 
 \ End ;;;

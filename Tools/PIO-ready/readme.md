@@ -11,10 +11,17 @@ These files need only the file [****piobase.f****](../piobase.f) to execute.
 - [****Bluetooth UART****](uart-5,-(GPIO8&9)-bluetooth-KEY-&-EMIT.f) ; 9600 baud Bluetooth KEY & EMIT for noForth
 - [****Ultrasonic-sensor****](Ultrasonic-sensor-pio-ready-1.f) ; HC-SR04, etc. universal ultrasonic sensor driver with result in cm
 - [****Ultrasonic-sensor****](Ultrasonic-sensor-pio-ready-2.F) ; HC-SR04, etc. shorter universal ultrasonic sensor driver with result in mm
+- [****Drive ten RC-servos****](10-servo-control-using-exec-(GPIO4to13)-pio-ready.f) ; PIO driver for 10 RC-servos, pulsewidth from .7ms to 2.5ms. Uses state machine 0 & 1 of PIO0 and the EXEC function on the OUT opcode
+
+***
 
 ![](../../Pics/us-echo.png)
-			**Ultrasonic sensor in action**
+	**Ultrasonic sensor in action**
 
+***
+***
 
+![](../../Pics/8-servo%20logic%20analizer%20output.jpg)
+    **PIO servo controller 8 of ten outputs visible**
 
-
+***
