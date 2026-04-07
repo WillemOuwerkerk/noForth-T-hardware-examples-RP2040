@@ -56,7 +56,7 @@ hex
 \ The 8-word opcode buffer must be 32-byte aligned!
 here 20 mod negate 20 + allot
 
-\ Two times eight words for totally 10 servo's & pause
+\ The two opcode buffers (16 half-words) must be 32-byte aligned!
 here    \ First 5 servos
     FF01 h,  FF01 h,  EE01 h,   \ Servo 0
     FF02 h,  E102 h,  E102 h,   \ Servo 1
