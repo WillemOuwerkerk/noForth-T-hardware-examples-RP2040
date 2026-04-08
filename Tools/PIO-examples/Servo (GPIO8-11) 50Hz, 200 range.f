@@ -2,6 +2,8 @@
 \ This program stores the pulse reference value in ISR
 \ The pulsewidth is ~500µs to 2500µs alrigth for most small RC-servo's
 
+\ need pio\     ( Load the pio assembler & disassembler first )
+
 decimal 
 
 \ The range is 0 to 200, 0 outputs a .5ms pulse, 200 gives a 2.5ms pulse

@@ -6,7 +6,7 @@
 
 *)
 
-\ need pio\     \ Needs the PIO assembler to be loaded first
+\ need pio\     ( Load the pio assembler & disassembler first )
 
 clean-pio  decimal              \ Clear PIO
 0 0 {pio

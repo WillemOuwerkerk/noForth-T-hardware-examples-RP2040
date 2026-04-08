@@ -50,6 +50,8 @@ pio}
 pio}
 *)
 
+\ need piobase\     ( needs the piobase.f file loaded first )
+
 hex
 : PIO-PULSE
     00000000 50200000 ! \ CTRL stop all state machines
@@ -127,7 +129,7 @@ create RELOAD  10 ,     \ TRANS_COUNT0 reload
 15:20   = Transfer request select; 0 to 3A = DREQ, 3B=Timer0, etc.
 *)
 : START         ( -- )
-  reload    5000,0040 !   \ READ_ADDR1      \ DMA for state machine 1 & 0
+  reload    5000,0040 !   \ READ_ADDR1      \ DMA 1 & 0 for state machine 0
   5000,001C 5000,0044 !   \ WRITE_ADDR1
   1         5000,0048 !   \ TRANS_COUNT1
   0000,0009 5000,004C !   \ CTRL_TRIG1 (CHAIN=0)
@@ -136,7 +138,7 @@ create RELOAD  10 ,     \ TRANS_COUNT0 reload
   10        5000,0008 !   \ TRANS_COUNT0
   0000,0955 5000,000C !   \ CTRL_TRIG0 (DREQ=0, Ring=32, CHAIN=1)
 
-  reload    5000,00C0 !   \ READ_ADDR3      \ DMA for state machine 3 & 2
+  reload    5000,00C0 !   \ READ_ADDR3      \ DMA 3 & 2 for state machine 1
   5000,009C 5000,00C4 !   \ WRITE_ADDR3
   1         5000,00C8 !   \ TRANS_COUNT3
   0000,1009 5000,00CC !   \ CTRL_TRIG3 (CHAIN=2)
