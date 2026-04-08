@@ -5,6 +5,8 @@
 
 ***
 
+**The starting of a tasks and a status view of the running tasks**
+
 ![](../Image/multitasker-tasks-view.jpg)
 
 ***

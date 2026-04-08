@@ -28,7 +28,7 @@ After noForth t is booted, take the following actions.
 
 ***
 
-** noForth t duo booted and using dual CDC **
+**noForth t duo booted and using dual CDC**
 ![](../../Pics/Dual-CDC-USB.jpg)
 
 ***
