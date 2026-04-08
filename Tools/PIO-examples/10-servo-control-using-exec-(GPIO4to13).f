@@ -1,7 +1,7 @@
 (* 10 servo pulse width control, W.0. april 2026
 
     Only 7 PIO instructions are needed 
-    The pulse width is from .7ms to 2.5ms 
+    The pulse width is from about .5ms to 2.5ms 
     It may be adjusted by a combination of 
     the state machine freqency and the number range
     wich goes from decimal 0 to 96 because of the
@@ -105,20 +105,19 @@ create RELOAD  10 ,     \ TRANS_COUNT0 reload
   0000,9955 5000,008C ! ; \ CTRL_TRIG2 (DREQ=1, Ring=32, CHAIN=3) 9A45/9955
 
 
-\ Modify the code in the PIO-opcodes array
+\ Modify the code in the PIO-opcodes array. It calculates
+\ the three servo index address. Then it calculates how
+\ many opcodes get the maximum delay en sets these. Now
+\ it stores the remainder delay and/or zero delays.
 : SERVO     ( +n servo -- )     \ valid +n = 13 to 93
-    9 umin >r                           \ +n
-    r@ 6 * opcodes1 +                   \ +n addr
-    r> 4 >  2 and + swap                \ addr +n
-    dm 80 umin  dm 13 +                 \ addr +n+19
-    hx 1F /mod >r                       \ addr mod
-    r@ 0 ?do
-        over i 2* + 1+  hx FF swap c!   \ addr mod
-    loop
-    swap r@ 2* + swap                   \ addr mod
-    3 r> - 0 ?do
-        hx E0 or  over i 2* + 1+ c!  0  \ addr 0
-    loop  2drop ;
+    9 umin >r   r@ 6 *  opcodes1 +      \ +n addr     Opcode address 'servo'
+    r> 4 >  2 and +  swap               \ addr +n     Correct for pause call
+    dm 80 umin  dm 13 +                 \ addr +n+13  Scale servo pulse range
+    hx 1F /mod 2>r                      \ addr        Get delay values for opcodes
+    r@ for  hx FF over 1+ c!  2 +  next \ addr        Store maximum delays
+    2r>  3 swap - for                   \ addr mod    Calc. remainder opc. to adjust
+        hx E0 or  over 1+ c!  2 +   0   \ addr 0      Store rest delay or zero delay
+    next  2drop ;
 
 
 \ Small background demo for two servos on GPIO12 & GPIO13
