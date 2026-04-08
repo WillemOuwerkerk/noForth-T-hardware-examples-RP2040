@@ -4,3 +4,7 @@
 - [****stk.f****](stk.f) ; Calculate the address of the stack location of a background task. It can be used to manipulate these stacks directly.
 
 ***
+
+![](../Image/multitasker-tasks-view.jpg)
+
+***

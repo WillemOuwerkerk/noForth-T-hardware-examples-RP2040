@@ -25,3 +25,10 @@ After noForth t is booted, take the following actions.
     6) Type: FREEZE <enter>
     7) Type: COLD or press reset and ready
        noForth will boot with a dual CDC driver
+
+***
+
+** noForth t duo booted and using dual CDC **
+![](../../Pics/Dual-CDC-USB.jpg)
+
+***
