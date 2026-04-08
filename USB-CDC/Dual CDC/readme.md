@@ -28,7 +28,17 @@ After noForth t is booted, take the following actions.
 
 ***
 
+**Dual CDC driver in detail**
+
+![](../../Pics/Dual-CDC-on-Windows.jpg)
+
+***
+
+***
+
+
 **noForth t duo booted and using dual CDC**
+
 ![](../../Pics/Dual-CDC-USB.jpg)
 
 ***
