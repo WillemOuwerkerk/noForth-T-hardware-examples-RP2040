@@ -9,6 +9,8 @@ TEMPO   - Uses numbers from 7D0 and higher
 
 *)
 
+\ need piobase\     ( Load the piobase.f file first )
+
 hex
 : TOGGLE1   \ GPIO-25 LED control
     0000 50200000 !

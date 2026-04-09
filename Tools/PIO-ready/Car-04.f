@@ -19,6 +19,8 @@
 
 *)
 
+\ need WS2812\     ( Load the WS2812B-multi-color-driver.f file first )
+
 hex
 2345 value SEED0        \ at least one of the seeds must be seeded with a non-zero number
 6789 value SEED1

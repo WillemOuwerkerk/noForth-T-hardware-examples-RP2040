@@ -32,6 +32,8 @@
 \ Pull: 0  dir: 0  auto: 0  steal: 0
 \ Set: 28 1  Side: 28 2 optional  Out: 28 1  In: 0
 
+\ need piobase\     ( Load the piobase.f file first )
+
 hex
 \ Data Color (0 to FFFF), Number of leds (0 to 1024)
 \ When length is zero, a reset (strobe) puls is generated

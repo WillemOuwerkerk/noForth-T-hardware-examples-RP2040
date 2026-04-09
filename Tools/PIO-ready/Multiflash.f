@@ -9,6 +9,8 @@ LED-OFF - LED off
 
 *)
 
+\ need piobase\     ( Load the piobase.f file first )
+
 hex
 :  MULTI-FLASH  \ WS2812 on GPIO23 & LED on GPIO-25 & GPIO-26
     0000 50200000 !

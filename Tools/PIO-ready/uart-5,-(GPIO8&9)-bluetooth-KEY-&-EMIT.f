@@ -2,6 +2,8 @@
     Single UART, TX on state machine 0 & RX on state machine 1 of PIO 0
 *)
 
+\ need piobase\     ( Load the piobase.f file first )
+
 : PIO-PROG      ( -- )
     0000 50300000 !
     1F000 503000CC !

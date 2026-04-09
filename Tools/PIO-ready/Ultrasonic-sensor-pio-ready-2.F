@@ -5,7 +5,7 @@ Works on: HC-SR04, US-100, US-015, RCW-0001, RCWL-1605, etc.
 \ Trigger = GPIO29
 \ Echo    = GPIO28
 
-\ need pio\     ( Needs the PIO assembler to be loaded first )
+\ need piobase\     ( Load the piobase.f file first )
 
 clean-pio  decimal          \ Reset PIO control
 0 0 {pio                    \ Use SM-0 on PIO-0

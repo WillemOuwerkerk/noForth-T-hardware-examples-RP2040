@@ -1,3 +1,5 @@
+\ need piobase\     ( Load the piobase.f file first )
+
 : PIO-PROG
     0000 50200000 !
     1F000 502000CC !

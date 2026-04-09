@@ -50,7 +50,7 @@ pio}
 pio}
 *)
 
-\ need piobase\     ( needs the piobase.f file loaded first )
+\ need piobase\     ( Load the piobase.f file first )
 
 hex
 : PIO-PULSE
@@ -128,24 +128,18 @@ create RELOAD  10 ,     \ TRANS_COUNT0 reload
 11:14   = Chain to other DMA
 15:20   = Transfer request select; 0 to 3A = DREQ, 3B=Timer0, etc.
 *)
-: START         ( -- )
-  reload    5000,0040 !   \ READ_ADDR1      \ DMA 1 & 0 for state machine 0
-  5000,001C 5000,0044 !   \ WRITE_ADDR1
-  1         5000,0048 !   \ TRANS_COUNT1
-  0000,0009 5000,004C !   \ CTRL_TRIG1 (CHAIN=0)
-  opcodes1  5000,0000 !   \ READ_ADDR0
-  5020,0010 5000,0004 !   \ WRITE_ADDR0
-  10        5000,0008 !   \ TRANS_COUNT0
-  0000,0955 5000,000C !   \ CTRL_TRIG0 (DREQ=0, Ring=32, CHAIN=1)
+: SET-DMA       ( ctrl cnt wr rd +n -- )    \ Set DMA control registers for DMA +n
+    40 *  5000,0000 +  10 bounds do  i !  4 +loop ;
 
-  reload    5000,00C0 !   \ READ_ADDR3      \ DMA 3 & 2 for state machine 1
-  5000,009C 5000,00C4 !   \ WRITE_ADDR3
-  1         5000,00C8 !   \ TRANS_COUNT3
-  0000,1009 5000,00CC !   \ CTRL_TRIG3 (CHAIN=2)
-  opcodes2  5000,0080 !   \ READ_ADDR2
-  5020,0014 5000,0084 !   \ WRITE_ADDR2
-  10        5000,0088 !   \ TRANS_COUNT2
-  0000,9955 5000,008C ! ; \ CTRL_TRIG2 (DREQ=1, Ring=32, CHAIN=3)
+\ DMA0 CTRL = DREQ=0, Ring=32, CHAIN=1
+\ DMA1 CTRL = CHAIN=0
+\ DMA2 CTRL = DREQ=1, Ring=32, CHAIN=3
+\ DMA3 CTRL = CHAIN=2
+: START         ( -- )
+    0955 10 5020,0010 opcodes1  0 set-dma   \ DMA 0 for state machine 0
+    0009 01 5000,001C reload    1 set-dma   \ DMA 1 for state machine 0
+    9955 10 5020,0014 opcodes2  2 set-dma ; \ DMA 2 for state machine 1
+    1009 01 5000,009C reload    3 set-dma   \ DMA 3 for state machine 1
 
 
 \ Modify the code in the PIO-opcodes array. It calculates
@@ -153,13 +147,13 @@ create RELOAD  10 ,     \ TRANS_COUNT0 reload
 \ many opcodes get the maximum delay en sets these. Now
 \ it stores the remainder delay and/or zero delays.
 : SERVO     ( +n servo -- )     \ valid +n = 13 to 93
-    9 umin >r   r@ 6 *  opcodes1 +      \ +n addr     Opcode address 'servo'
+    9 umin >r   r@ 6 *  opcodes1 +      \ +n addr     Address of opcode row for 'servo'
     r> 4 >  2 and +  swap               \ addr +n     Correct for pause call
     dm 80 umin  dm 13 +                 \ addr +n+13  Scale servo pulse range
     hx 1F /mod 2>r                      \ addr        Get delay values for opcodes
     r@ for  hx FF over 1+ c!  2 +  next \ addr        Store maximum delays
     2r>  3 swap - for                   \ addr mod    Calc. remainder opc. to adjust
-        hx E0 or  over 1+ c!  2 +   0   \ addr 0      Store rest delay or zero delay
+        hx E0 or  over 1+ c!  2 +   0   \ addr 0      Store mod or zero delay
     next  2drop ;
 
 

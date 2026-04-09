@@ -6,6 +6,8 @@ Starts flashing when it's loaded
 
 *)
 
+\ need piobase\     ( Load the piobase.f file first )
+
 hex
 : PIO-PROG  ( -- )
     0000 50200000 !
