@@ -94,10 +94,10 @@ pio-pulse
 
 
 hex
-\ The 16 half-word opcode buffer must be 32-byte aligned!
+\ The 16 half-words opcode buffer must be 32-byte aligned!
 here 20 mod negate 20 + allot
 
-\ The two opcode buffers (16 half-words) must be 32-byte aligned!
+\ The two opcode buffers (16 half-words)
 here    \ First 5 servos
     FF01 h,  FF01 h,  EE01 h,   \ Servo 0
     FF02 h,  E102 h,  E102 h,   \ Servo 1
@@ -106,11 +106,11 @@ here    \ First 5 servos
     FF10 h,  E110 h,  E110 h,   \ Servo 4
     0003 h,  ( one> )           \ Pause, jump to 3th PIO-opcode
 here    \ Next 5 servos
-    FF01 h,  FF01 h,  EF01 h,   \ Servo 0
-    FF02 h,  E102 h,  E102 h,   \ Servo 1
-    EC04 h,  E004 h,  E004 h,   \ Servo 2
-    FF08 h,  E108 h,  E108 h,   \ Servo 3
-    FF10 h,  E110 h,  E110 h,   \ Servo 4
+    FF01 h,  FF01 h,  EF01 h,   \ Servo 5
+    FF02 h,  E102 h,  E102 h,   \ Servo 6
+    EC04 h,  E004 h,  E004 h,   \ Servo 7
+    FF08 h,  E108 h,  E108 h,   \ Servo 8
+    FF10 h,  E110 h,  E110 h,   \ Servo 9
     0003 h,  ( one> )           \ Pause, jump to 3th PIO-opcode
 constant OPCODES2
 constant OPCODES1
