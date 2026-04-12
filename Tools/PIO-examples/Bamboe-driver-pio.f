@@ -1,4 +1,4 @@
-(* Variable length bamboe driver (1 to 5) in only 8 PIO-opcodes
+(* Variable length bamboe driver (1 to 8) in only 8 PIO-opcodes
 
 \ 6 bitmask   constant OUT  \ Bamboe data out
 \ 7 bitmask   constant CLK  \ Bamboe clock
@@ -33,13 +33,13 @@ pio}
 
 \ This example limits the number of chained bamboe's to 5
 : >BAMBOE   ( bn .. b0 +n -- )
-    5 umin  dup 1-  0 >txf          \ Move number of chained bamboes to fifo
+    8 umin  dup 1-  0 >txf          \ Move number of chained bamboes to fifo
     for                             \ Loop +n times
         dm 24 lshift                \ Align byte to the left
         begin  0 tx-depth 3 < until \ Space in fifo?
         0 >txf                      \ Yes, move aligned byte to fifo
     next ;
 
-\ Example: 2 3 7 3 >bamboe  ( Output data to 3 bamboe's )
+\ Example:  2 3 7  3 >bamboe  ( Output data to 3 bamboe's )
 
 \ End ;;;
