@@ -35,7 +35,7 @@
 - [****DHT22 moisture sensor driver****](PIO-DHT22-1.f) ; DHT22 moisture/temperture sensor read out
 - [****Ultrasonic sensor pio driver****](Ultrasonic-sensor-pio-1.f) ; HC-SR04, etc. ultrasonic sensor driver with result in cm
 - [****Ultrasonic sensor pio driver****](Ultrasonic-sensor-pio-2.f) ; HC-SR04, etc. shorter ultrasonic sensor driver with result in mm
-- [****Flexible bamboe driver****](Bamboe-driver-pio.f) ; Bamboe driver for 1 to 5 chained shift registers
+- [****Flexible bamboe driver****](Bamboe-driver-pio.f) ; Bamboe driver for 1 to 8 chained shift registers
 - [****Drive four RC-servos****](Servo%20(GPIO8-11)%2050Hz,%20200%20range.f) ; PIO driver for four RC-servos, pulsewidth from .5ms to 2.5ms. Using state machine 0 to 3 on PIO0
 - [****Drive ten RC-servos****](10-servo-control-using-exec-(GPIO4to13).f) ; PIO driver for 10 RC-servos, pulsewidth from about .5ms to 2.5ms. Uses state machine 0 & 1 of PIO0 and the EXEC function on the OUT opcode
 
