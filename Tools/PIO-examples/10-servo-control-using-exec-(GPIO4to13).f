@@ -135,6 +135,6 @@ task: SERVOS
 
 : DEMO      ( -- )    start  ['] moves  servos start-task ;
 
-demo  tasks
+shield PSERVO\
 
 \ End ;;;

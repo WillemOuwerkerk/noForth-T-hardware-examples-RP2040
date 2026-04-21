@@ -31,7 +31,7 @@ clean-pio  decimal              \ Clear PIO
     over =exec
 pio}
 
-\ This example limits the number of chained bamboe's to 5
+\ This example limits the number of chained bamboe's to 8
 : >BAMBOE   ( bn .. b0 +n -- )
     8 umin  dup 1-  0 >txf          \ Move number of chained bamboes to fifo
     for                             \ Loop +n times

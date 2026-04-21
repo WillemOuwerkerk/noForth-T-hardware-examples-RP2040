@@ -1,4 +1,4 @@
-## PIO example programs ##
+## PIO example programs
 
 - [****My first PIO program****](Bit%20toggle-1%20(GPIO25).f) ; Simple LED flasher on GPIO25
 - [****LED flasher & trace output****](Bit%20toggle-2%20(GPIO25&26).f) ; Controllable LED flasher on GPIO25 & GPIO26 using a loop
@@ -43,13 +43,10 @@
 
 ***
 
-
 <h3>One PIO state machine</h3>
 
 ![](../../Pics/SM0.jpg)
 
 ***
-
-
 
 ***
