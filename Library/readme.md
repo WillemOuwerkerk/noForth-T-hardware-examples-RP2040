@@ -6,6 +6,7 @@
 - [****Lib-source-50.f****](Lib-source-50.f) ; The complete library in source form
 - [****adjust0.f****](adjust0.f) ; Restore the main library pointer
 - [****finish.f****](finish.f) ; Cut of library tools, restore all pointers and add the noForth tools chapter
+- [****print-stack.f****](print-stack.f) ; Show stack comment of the wanted labrary chapter
 
 ***
 
