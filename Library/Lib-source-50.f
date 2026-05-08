@@ -8037,6 +8037,7 @@ UCA1 = OLED
 \ OLED primitives
 v: inside also  definitions
 hex
+0 value SCRL                \ Scrolling &CR
 0 value INV?                \ Partly inverted display?
 : INV       ( b1 -- b2 )    inv? invert xor ;
 : WHITE     ( -- )          true to inv? ;
@@ -8100,10 +8101,14 @@ v: extra definitions
     next
     drop  0 >data ;
 
+: &HOME         ( -- )
+    #h 8 * to scrl  0 scroll    \ Reset administration
+    0 #h 1- xy ;                \ To upper left corner
+
 : .ROWS         ( a +n )        for count >data next drop ;
 : .G-ROWS       ( a -- )        4 for count >data  incr x next drop ;
 : &EOL          ( +n -- )       false &fill ;       \ Fill +n rows with zero
-: &HOME         ( -- )          false dup xy ;      \ To upper left corner
+\ : &HOME         ( -- )          false dup xy ;      \ To upper left corner
 : &ERASE        ( -- )          &home  9 for 0 i xy 80 &eol next ;
 \ : &PAGE         ( -- )          &erase  &home ;
 \ : &CR           ( -- )          0  y #h +  xy ;     \ Simple CR
@@ -8137,6 +8142,7 @@ need [if]
 \ Add separate files with a small, big, bold & graphic character set.
 v: inside also  definitions
 hex
+0 value SCRL                \ Scrolling &CR
 0 value INV?                \ Partly inverted display?
 : INV       ( b1 -- b2 )    inv? invert xor ;
 : WHITE     ( -- )          true to inv? ;
@@ -8197,11 +8203,15 @@ v: extra definitions
     next  drop
     0 data} ;
 
+: &HOME         ( -- )
+    #h 8 * to scrl  0 scroll    \ Reset administration
+    0 #h 1- xy ;                \ To upper left corner
+
 : .ROWS         ( a +n )        dup 1+ {data  for count >data next drop  i2c} ;
 : .G-ROWS       ( a -- )        4 {data  4 for count >data  incr x next drop  i2c} ;
 : &EOL          ( +n -- )       dup {data  for  0 >data  next  i2c} ;
 : &ERASE        ( -- )          480 0 &fill ;       \ Erase screen
-: &HOME         ( -- )          0 0 xy ;            \ To upper left corner
+\ : &HOME         ( -- )          0 0 xy ;            \ To upper left corner
 \ : &PAGE         ( -- )          &erase  &home ;
 \ : &CR           ( -- )          0  y #h +  xy ;   \ Simple CR
 0 value O-EMIT  \ OLED emit vector
@@ -8225,7 +8235,7 @@ shield I2C-OLED\
 chapter &CR
 hex
 v: inside also definitions  ( Scrolling display )
-0 value SCRL                \ Scrolling &CR
+\ 0 value SCRL                \ Scrolling &CR
 v: extra definitions
 : &PAGE     ( -- )          \ Erase display, line 0 on top
     #h 8 * to scrl 0 scroll \ Reset administration
