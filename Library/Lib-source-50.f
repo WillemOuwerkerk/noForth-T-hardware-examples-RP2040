@@ -2796,12 +2796,12 @@ chapter -HEAD
 chapter BITARRAY
 hex \ Bit array for compact noting of precence or on/off state
 v: extra definitions
-\ : LOC       ( bit-nr a -- bit byte-addr ) \ Bit location in byte-addr
-\    cell+ over 3 rshift +  >r \ Convert to byte addresses
-\    07 and bitmask  r> ;    \ Convert low nibble to bit mask
-code LOC    ( bit-nr a -- bit byte-addr ) \ Calc. bit location in byte-addr
-    680C3304 ,  195B08E5 ,  402C2507 ,
-    40A52501 ,  C804600D ,  46A7CA10 ,
+\ : LOC       ( bit-nr a -- bit byte-addr ) \ Bit location in word-addr
+\    cell+ over 5 rshift +  >r \ Convert to byte addresses
+\    1F and bitmask  r> ;    \ Convert low nibble to bit mask
+code LOC    ( bit-nr a -- bit byte-addr ) \ Calc. bit location in word-addr
+    680C3304 ,  00AD0965 ,  251F195B ,
+    2501402C ,  600D40A5 ,  CA10C804 ,  FFFF46A7 ,
 end-code
                         \ Leave bit & word-adr
 : BITARRAY
@@ -2813,7 +2813,7 @@ end-code
 : *SET      ( nr a -- )       loc *bis ; \ Set bit nr in array a
 : *CLR      ( nr a -- )       loc *bic ; \ Erase bit nr from array a
 : GET*      ( nr a -- 0|msk ) loc bit* ; \ Bit nr set in array a?
-: *ZERO     ( a -- )          @+ 2* 2* 0 fill ; \ Erase bit-map a
+: *ZERO     ( a -- )          @+ cells 0 fill ; \ Erase bit-map a
 v: fresh
 %%
 
@@ -2823,7 +2823,7 @@ v: extra definitions
 : *COPY     ( a1 a2 -- )    \ Copy array a1 to array a2
     >r  r@ *zero            \ Erase the complete target array a2
     @+ r@ @ min             \ Address of array a1 & shortest array length
-    2* 2*                   \ Convert this to bytes
+    cells                   \ Convert this to bytes
     r> cell+ swap move ;    \ Move array a1 to destination array a2
 v: fresh
 %%
