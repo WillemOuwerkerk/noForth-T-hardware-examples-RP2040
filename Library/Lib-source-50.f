@@ -2810,9 +2810,9 @@ end-code
         swap 0<> -  dup ,   \ Remember size
         cells allot ;       \ Round length, reserve array
 
-: *SET      ( nr a -- )       loc *bis ; \ Set bit nr in array a
-: *CLR      ( nr a -- )       loc *bic ; \ Erase bit nr from array a
-: GET*      ( nr a -- 0|msk ) loc bit* ; \ Bit nr set in array a?
+: *SET      ( nr a -- )       loc **bis ; \ Set bit nr in array a
+: *CLR      ( nr a -- )       loc **bic ; \ Erase bit nr from array a
+: GET*      ( nr a -- 0|msk ) loc bit** ; \ Bit nr set in array a?
 : *ZERO     ( a -- )          @+ cells 0 fill ; \ Erase bit-map a
 v: fresh
 %%
