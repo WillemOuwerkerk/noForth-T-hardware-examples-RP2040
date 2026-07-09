@@ -3414,8 +3414,18 @@ chapter IMAGE
 hex v: inside also  definitions
   1000,0000 constant XIP        \ Start of XIP memory
 v: forth definitions
-: CORE      ( -- end start )    1000,0100 @+ +  xip ; \ Forth core only
-: CORE+     ( -- end start )    1004,1000 @+ +  xip ; \ Second Forth core too
+: CORE      ( -- end start )    \ Boot image only!
+    1000,0100 dup @ +   \ noForth first core
+    4 cfg @ if          \ noForth dual core?
+        dup @ +         \ Yes, add second core too
+    then  xip ;
+
+: CORE+     ( -- end start )    \ Boot & auxillary image too
+    1008,1000 dup @ +   \ noForth first core
+    4 cfg @ if          \ noForth dual core?
+        dup @ +         \ Yes, add second core too
+    then  xip ;
+
 : CORE+LIB  ( -- end start )    libhere  xip ;        \ Both cores & library
 
 v: inside definitions
@@ -3436,7 +3446,7 @@ v: forth definitions
         chks negate .xx         \ checksum
     repeat
     drop 2drop ." :0000000001FF" cr
-    C8 us  config ;             \ To keep USB alive
+    40 ms  config ;             \ To keep USB alive
 v: fresh
 %%
 
