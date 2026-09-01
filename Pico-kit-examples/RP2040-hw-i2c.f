@@ -123,7 +123,6 @@ cr .( I2C basis loaded ) here over - dm .
 cr .( with I2C extensions ) here over - dm .
 
 v: fresh
-' scan-i2c  to app
 shield HW-I2C\ \ freeze
 cr .( Length with examples )  here swap - dm .
 

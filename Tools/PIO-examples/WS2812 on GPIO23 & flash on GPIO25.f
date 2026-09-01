@@ -3,8 +3,8 @@
 clean-pio  decimal          \ Empty code space mirror
 0 0 {pio                    \ Use state machine-0 on PIO-0
     3333333 =freq           \ On 3.333.333 Hz frequency
-    23 1 =side-pins         \ GPIO 23 for SIDE-SET & SET
-    23 1 =set-pins
+    28 1 =side-pins         \ GPIO 23 for SIDE-SET & SET
+    28 1 =set-pins
     0 =out-dir              \ OSR shift left
     1 pindirs set,
     begin,
@@ -38,7 +38,7 @@ pio}
 
 \ Slow pulses on the LED mounted on GPIO 25
 1 0 {pio        \ Use state machine-1 on pio-0
-    2200 =freq              \ State machine 0 runs on 2200 Hz
+    6000 =freq              \ State machine 0 runs on 6000 Hz
     25 1 =set-pins          \ GPIO 25 for SET
                             \ The program starts behind WS2812 program
     1 pindirs set,          \ Pin is output
@@ -48,7 +48,8 @@ pio}
         15 [] 1 pins set,   \ LED on (pin 25)
         15 [] 31 y set,     \ Max. delay using Y
         begin,
-            15 [] nop,      \ Extra delay
+            15 [] nop,      \ Extra delays
+            15 [] nop,
             15 [] 0 pins set, \ LED off (pin 25)
         15 [] y--? until,   \ Wait longer
     again,

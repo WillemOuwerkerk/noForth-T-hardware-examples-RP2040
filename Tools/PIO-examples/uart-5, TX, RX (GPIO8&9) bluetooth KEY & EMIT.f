@@ -1,5 +1,5 @@
-(*  Alternative UART pins on the Picu using this software
-    Single UART, TX on state machine 0 & RX on state machine 1 of PIO 0
+(*  Alternative UART pins on the Pico using this software
+    Single UART, TX on state machine 0 & RX on state machine 1 of PIO 1
 *)
 
 v: pios also  definitions

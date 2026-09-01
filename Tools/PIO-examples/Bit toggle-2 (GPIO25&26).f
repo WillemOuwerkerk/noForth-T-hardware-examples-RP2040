@@ -3,7 +3,7 @@
 clean-pio  decimal          \ Empty code space mirror
 \ Slow pulse on the LED mounted on GPIO 25 & 26 with wrapping
 0 0 {pio        \ Use state machine-0 & pio-0
-    2000 =freq              \ On 2000 Hz frequency
+    6000 =freq              \ On 2000 Hz frequency
     26 1 =side-pins  opt    \ GPIO 25 for SIDE
     25 2 =set-pins          \ GPIO 25 & 26 for SET
 \ Program
@@ -13,6 +13,10 @@ clean-pio  decimal          \ Empty code space mirror
         1 side  7 [] 1 pins set,    \ LED on (pin 25 & 26 on)
         7 [] 31 y set,              \ Max. delay using Y
         begin,
+            7 [] nop,
+            7 [] nop,
+            7 [] nop,
+            7 [] nop,
             7 [] 0 pins set,        \ LED (pin 25 & 26 off)
         7 [] y--? until,            \ Wait longer
     wrap
