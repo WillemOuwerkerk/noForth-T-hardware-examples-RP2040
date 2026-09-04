@@ -79,23 +79,23 @@ code>                           \ Otherwise the address 'libhere' & true
 end-code
 
 : FIND-CHAPTER ( a b -- sa )
-    >fhere count 2dup upper \ Place as counted string a,b at FP, make uppercase
-    fc  libstart  ?abort ;  \ Issue error when not found!
+    >fhere count 2dup upper     \ Place as counted string a,b at FP, make uppercase
+    fc  libstart  ?abort ;      \ Issue error when not found!
 
-: LOAD-CHAPTER ( a b -- )   \ a,b=name, load a source section
-    find-chapter
-    @input >r 2>r           \ Save current input source
-    to source-id            \ Set new input source
-    #ib >in !  interpret    \ Force a REFILL when loading source section
-    2r> r> !input ;         \ ib #ib,>in@ source-id restore input source
+: LOAD-CHAPTER ( a b -- )       \ a,b=name, load a source section
+    base @ >r  find-chapter
+    @input >r 2>r               \ Save current input source
+    to source-id                \ Set new input source
+    #ib >in !  interpret        \ Force a REFILL when loading source section
+    2r> r> !input  r> base ! ;  \ ib #ib,>in@ source-id restore input source
 
-: REFILL-CHAPTER ( s-id -- f ) \ Get next line from a source section
-    to ib  false            \ Start of new line
-    ib c@ 09 = ?exit        \ End of source section, ready
-    ib FF + ib  0D scan     \ Find 0D (end of current line)
-    dup ib - to #ib         \ Calc. & save line length
-    1+ to source-id  drop   \ Save start of next line (behind 0D)
-    >in !  true  ;          \ Refill succeeded
+: REFILL-CHAPTER ( s-id -- f )  \ Get next line from a source section
+    to ib  false                \ Start of new line
+    ib c@ 09 = ?exit            \ End of source section, ready
+    ib FF + ib  0D scan         \ Find 0D (end of current line)
+    dup ib - to #ib             \ Calc. & save line length
+    1+ to source-id  drop       \ Save start of next line (behind 0D)
+    >in !  true  ;              \ Refill succeeded
 
 v: extra definitions
 : NEEDED    ( a u -- )          \ Add library word when it's not present
