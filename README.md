@@ -31,3 +31,6 @@ Usefull hardware [documentation](pico-rp2040-dev-board.pdf) about various RP2040
 
 ![Pico with headers for noForth DUO-R](https://github.com/WillemOuwerkerk/noForth-T-hardware-examples-RP2040-/assets/11397265/4e747dc8-8551-425e-b57e-7ade88b18e25)
 
+[***](https://github.com/WillemOuwerkerk/noForth-T-for-the-RP2350)
+
+
